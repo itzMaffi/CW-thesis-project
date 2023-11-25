@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/itzMaffi/CW-thesis-project#readme",
   "prettier": {
-    "trailingComma": "all",
+    "trailingComma": "es5",
     "tabWidth": 2,
     "semi": true,
     "singleQuote": true
