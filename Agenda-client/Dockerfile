@@ -1,45 +1,30 @@
-# syntax = docker/dockerfile:1
+# syntax=docker/dockerfile:1
 
-# Adjust NODE_VERSION as desired
-ARG NODE_VERSION=20.9.0
-FROM node:${NODE_VERSION}-slim as base
-
-LABEL fly_launch_runtime="Vite"
-
-# Vite app lives here
+# Base Node Image
+FROM node:20.9.0-slim AS build
 WORKDIR /app
-
-# Set production environment
-ENV NODE_ENV="production"
-
-
-# Throw-away build stage to reduce size of final image
-FROM base as build
 
 # Install packages needed to build node modules
 RUN apt-get update -qq && \
     apt-get install -y build-essential pkg-config python-is-python3
 
+# Copy package.json and package-lock.json for the Agenda-client
+COPY Agenda-client/package*.json ./Agenda-client/
+
+# Change to Agenda-client directory
+WORKDIR /app/Agenda-client
+
 # Install node modules
-COPY --link package-lock.json package.json ./
 RUN npm ci --include=dev
 
-# Copy application code
-COPY --link . .
+# Copy application code from Agenda-client
+COPY Agenda-client/ ./
 
-# Build application
+# Build the application
 RUN npm run build
 
-# Remove development dependencies
-RUN npm prune --omit=dev
-
-
-# Final stage for app image
-FROM nginx
-
-# Copy built application
-COPY --from=build /app/dist /usr/share/nginx/html
-
-# Start the server by default, this can be overwritten at runtime
+# Final Stage - Nginx to serve the client
+FROM nginx:alpine
+COPY --from=build /app/Agenda-client/dist /usr/share/nginx/html
 EXPOSE 80
-CMD [ "/usr/sbin/nginx", "-g", "daemon off;" ]
+CMD ["nginx", "-g", "daemon off;"]
