@@ -1,0 +1,30 @@
+{
+  "name": "cw-thesis-project",
+  "version": "1.0.0",
+  "description": "Codeworks senior thesis project",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itzMaffi/CW-thesis-project.git"
+  },
+  "contributors": [
+    "Dinara Bekeshova",
+    "Guangzheng Li",
+    "Mads Baadsmand",
+    "Michele Maffei",
+    "Oguz Tugan"
+  ],
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/itzMaffi/CW-thesis-project/issues"
+  },
+  "homepage": "https://github.com/itzMaffi/CW-thesis-project#readme",
+  "prettier": {
+    "trailingComma": "all",
+    "tabWidth": 2,
+    "semi": true,
+    "singleQuote": true
+  }
+}
