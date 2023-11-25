@@ -1,13 +1,8 @@
 name: Fly Deploy
-
 on:
   push:
     branches:
       - main
-
-env:
-  FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
-
 jobs:
   deploy:
     name: Deploy app
@@ -15,4 +10,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: superfly/flyctl-actions/setup-flyctl@master
+      - name: Change to Agenda-client directory
+        run: cd Agenda-client
       - run: flyctl deploy --remote-only
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}

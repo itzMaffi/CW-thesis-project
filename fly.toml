@@ -1,14 +1,14 @@
-# fly.toml app configuration file generated for agenda-client on 2023-11-24T21:09:19+01:00
+# fly.toml app configuration file generated for agenda-client-silent-paper-3570 on 2023-11-25T16:53:30+01:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "agenda-client"
+app = "awesome-agenda-cw"
 primary_region = "ams"
 
 [build]
-  builder = "docker"
   dockerfile = "Agenda-client/Dockerfile"
+
 
 [http_service]
   internal_port = 80
