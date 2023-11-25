@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Codeworks senior thesis project",
   "scripts": {
-    "test": "cd Agenda-client; npm i; npm test"
+    "test": "cd Agenda-client && npm i && npm test"
   },
   "repository": {
     "type": "git",
