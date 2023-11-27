@@ -7,8 +7,9 @@ export default function LectureComponent() {
   const lecture:Lecture = curriculumDb.getLectureBy(+(lectureId ?? 1))
   return (
     <>
+    <div className='flex align-center justify-center w-full'>
     {lecture && 
-      <div className='rounded-md border border-orange-400 divide-dashed w-96 '>
+      <div className='rounded-md border border-orange-400 divide-dashed w-3/5 h-screen'>
         <h2>{lecture.name}</h2>
         <h3>Code examples:</h3>
         <p>{lecture.codeExamples}</p>
@@ -16,7 +17,12 @@ export default function LectureComponent() {
         <p>{lecture.extraResources}</p>
         <h3>Summary:</h3>
         <li>{lecture.summary}</li>
-      </div>}
+      </div>
+      
+      }
+      {!lecture && <h3>lecture does not exist</h3>}
+    </div>
+    
     </>
     
   );
