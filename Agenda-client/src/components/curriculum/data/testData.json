@@ -1,0 +1,103 @@
+{
+  "curriculum": [
+    {
+      "toy_problem_name": "Yarra",
+      "lecture_name": "Day 1 Lecture",
+      "lecture_id": 1,
+      "lecture_url": "https://tools.codeworks.me/#/syllabus/data-structures-1",
+      "exercise_name": "Day 1 Exercise"
+    },
+    {
+      "lecture_name": "Day 2 Lecture",
+      "lecture_id": 2,
+      "lecture_url": "https://tools.codeworks.me/#/syllabus/data-structures-1",
+      "exercise_name": "Day 2 Exercise"
+    },
+    {
+      "toy_problem_name": "Yarra",
+      "lecture_name": "Day 3 Lecture",
+      "lecture_id": 3,
+      "lecture_url": "https://tools.codeworks.me/#/syllabus/data-structures-1",
+      "exercise_name": "Day 3 Exercise"
+    },
+    {
+      "toy_problem_name": "Yarra",
+      "lecture_name": "Day 4 Lecture",
+      "lecture_id": 4,
+      "lecture_url": "https://tools.codeworks.me/#/syllabus/data-structures-1",
+      "exercise_name": "Day 4 Exercise"
+    },
+    {
+      "toy_problem_name": "Yarra",
+      "lecture_name": "Day 5 Lecture",
+      "lecture_id": 5,
+      "lecture_url": "https://tools.codeworks.me/#/syllabus/data-structures-1",
+      "exercise_name": "Day 5 Exercise"
+    },
+    {
+      "toy_problem_name": "Yarra",
+      "lecture_name": "Day 6 Lecture",
+      "lecture_id": 6,
+      "lecture_url": "https://tools.codeworks.me/#/syllabus/data-structures-1",
+      "exercise_name": "Day 6 Exercise"
+    },
+    {
+      "toy_problem_name": "Yarra",
+      "lecture_name": "Day 7 Lecture",
+      "lecture_id": 7,
+      "lecture_url": "https://tools.codeworks.me/#/syllabus/data-structures-1",
+      "exercise_name": "Day 7 Exercise"
+    }
+  ],
+  "lectures": [
+    {
+      "id": 1,
+      "name": "Day 1 Lecture",
+      "codeExamples": "Code example content",
+      "summary":  "Summary content",
+      "extraResources": "Extra extraResources content"
+    },
+    {
+      "id": 2,
+      "name": "Day 2 Lecture",
+      "codeExamples": "Code example content",
+      "summary":  "Summary content",
+      "extraResources": "Extra extraResources content"
+    },
+    {
+      "id": 3,
+      "name": "Day 3 Lecture",
+      "codeExamples": "Code example content",
+      "summary":  "Summary content",
+      "extraResources": "Extra extraResources content"
+    },
+    {
+      "id": 4,
+      "name": "Day 4 Lecture",
+      "codeExamples": "Code example content",
+      "summary":  "Summary content",
+      "extraResources": "Extra extraResources content"
+    },
+    {
+      "id": 5,
+      "name": "Day 5 Lecture",
+      "codeExamples": "Code example content",
+      "summary":  "Summary content",
+      "extraResources": "Extra extraResources content"
+    },
+    {
+      "id": 6,
+      "name": "Day 6 Lecture",
+      "codeExamples": "Code example content",
+      "summary":  "Summary content",
+      "extraResources": "Extra extraResources content"
+    },
+    {
+      "id": 7,
+      "name": "Day 7 Lecture",
+      "codeExamples": "Code example content",
+      "summary":  "Summary content",
+      "extraResources": "Extra extraResources content"
+    }
+]
+}
