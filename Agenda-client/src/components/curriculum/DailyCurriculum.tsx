@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import curriculum from './testData.json';
+import * as curriculumDb from './curriculumDb'
 
 export default function DailyCurriculum() {
   const [day, setDay] = useState(0)
-  const dailyCurriculum = curriculum[day];
+  const dailyCurriculum = curriculumDb.getCurriculumOfTheDay(day);
   return (
     <div className='rounded-md border border-orange-400 divide-dashed w-96 '>
       <button onClick={()=>setDay(day+1)}>change day</button>
