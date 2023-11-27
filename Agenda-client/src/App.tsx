@@ -1,4 +1,4 @@
-import DailyCurriculum from "./components/dailycurriculum/DailyCurriculum";
+import DailyCurriculum from "./components/curriculum/DailyCurriculum";
 
 function App() {
   return (
