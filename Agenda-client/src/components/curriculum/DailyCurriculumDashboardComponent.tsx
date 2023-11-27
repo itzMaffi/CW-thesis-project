@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import * as curriculumDb from './data/curriculumDb'
+import curriculumDb from './data/curriculumDb'
 import { Link } from 'react-router-dom';
 
 export default function DailyCurriculum() {
   const [day, setDay] = useState(0)
   const dailyCurriculum = curriculumDb.getCurriculumOfTheDay(day);
   return (
-    <div className='rounded-md border border-orange-400 divide-dashed w-96 '>
+    <div className='rounded-md border border-orange-400 divide-dashed w-96 h-48'>
       <button onClick={()=>setDay(day+1)}>change day</button>
       <h2>Todays Curriculum</h2>
       {dailyCurriculum.toy_problem_name && <p>Toy Problem: {dailyCurriculum.toy_problem_name}</p>}
