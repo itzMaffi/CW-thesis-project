@@ -16,3 +16,12 @@ export type Widget = {
 export type ComponentsMapper = {
   [type: string]: JSX.Element
 }
+
+export default interface User {
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  avatar?: string;
+  cirriculumProgress: number;
+}
