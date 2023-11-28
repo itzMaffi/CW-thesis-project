@@ -29,6 +29,14 @@ export class CurriculumDB {
     if (lecture) this.pinnedLectures.add(lecture);
   }
 
+  pinLectureBy(id: number) {
+    if (id)
+    {
+      const lecture = this.getLectureBy(id);
+      this.pinLecture(lecture);
+    } 
+  }
+
   getPinnedLectures():Lecture[]
   {
     return Array.from(this.pinnedLectures);
