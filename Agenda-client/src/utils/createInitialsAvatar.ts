@@ -10,11 +10,12 @@ export const createInitialsAvatar = (user: User) => {
   canvas.height = 100;
   const context = canvas.getContext('2d');
   if (context) {
-    context.fillStyle = '#FEE2D4';
+    // Note: HTML canvas expects a standard CSS color value, not custom Tailwind colors
+    context.fillStyle = '#FFE6D8';
     context.fillRect(0, 0, canvas.width, canvas.height);
     context.font = '50px Arial';
     context.textAlign = 'center';
-    context.fillStyle = '#FC6F2A';
+    context.fillStyle = '#FF7B10';
     context.fillText(initials, 50, 70);
   }
   return canvas.toDataURL();

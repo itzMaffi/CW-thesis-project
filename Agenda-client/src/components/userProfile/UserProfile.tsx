@@ -33,31 +33,31 @@ export const UserProfile: FC = () => {
   return (
     <div
       data-testid="userProfile"
-      className="flex flex-col justify-around w-full h-full p-1"
+      className="flex flex-col justify-around w-full h-full p-[1px]"
     >
-      <div className="profile flex justify-between h-1/2">
-        <div className="avatar w-2/4">
+      <div className="profile flex justify-between gap-1">
+        <div className="avatar grow flex-shrink-0">
           <img
             className="rounded-lg"
             src={avatar}
-            width={100}
-            height={100}
+            width={63}
+            height={63}
             alt="Profile"
           />
         </div>
-        <div className="userInfo w-2/4 flex flex-col justify-center">
+        <div className="userInfo text-sm flex flex-col self-end justify-center grow">
           <h2>
             {user.firstName} {user.lastName}
           </h2>
           <p>{user.email}</p>
         </div>
-        <div className="flex justify-center w-1/4">
+        <div className="flex flex-end grow-0 shrink-0">
           <button
             data-testid="logoutButton"
-            className="text-white p-2 w-[41px] h-[41px] rounded-lg bg-gradient-to-r from-[#FEE2D4] from-[-7%] to-[#FC6F2A] to-45% hover:bg-[#FC6F2A]"
+            className="text-white p-2 h-fit rounded-lg bg-gradient-to-r from-cw-light-orange from-[-7%] to-cw-orange to-45% hover:bg-cw-orange active:scale-90 shadow-lg active:shadow-inner"
             onClick={handleLogout}
           >
-            <img src={logoutIcon} width={18} height={18} />
+            <img src={logoutIcon} width={16} height={16} />
           </button>
         </div>
       </div>
