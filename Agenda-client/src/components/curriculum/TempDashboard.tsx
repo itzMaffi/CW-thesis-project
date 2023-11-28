@@ -16,15 +16,11 @@ export default function TempDashboard() {
 
   return (
     <>
-      <div className="flex align-center justify-center w-screen h-screen">
-        <DailyCurriculum setPinnedLectures={setPinnedLectures} />
-        {pinnedLectures.map((lecture) => (
-          <PinnedLectureDashboardComponent
-            key={lecture.id}
-            lecture={lecture}
-          ></PinnedLectureDashboardComponent>
-        ))}
-      </div>
+    <div className='flex align-center justify-center w-screen h-screen'>
+      <DailyCurriculum />
+      {pinnedLectures.map(lecture=> <PinnedLectureDashboardComponent key={lecture.id} lecture={lecture}></PinnedLectureDashboardComponent>)}
+    </div>
+    
     </>
   );
 }
