@@ -54,50 +54,50 @@
       "id": 1,
       "name": "Day 1 Lecture",
       "codeExamples": "Code example content",
-      "summary":  "Summary content",
+      "summary": "Summary content",
       "extraResources": "Extra extraResources content"
     },
     {
       "id": 2,
       "name": "Day 2 Lecture",
       "codeExamples": "Code example content",
-      "summary":  "Summary content",
+      "summary": "Summary content",
       "extraResources": "Extra extraResources content"
     },
     {
       "id": 3,
       "name": "Day 3 Lecture",
       "codeExamples": "Code example content",
-      "summary":  "Summary content",
+      "summary": "Summary content",
       "extraResources": "Extra extraResources content"
     },
     {
       "id": 4,
       "name": "Day 4 Lecture",
       "codeExamples": "Code example content",
-      "summary":  "Summary content",
+      "summary": "Summary content",
       "extraResources": "Extra extraResources content"
     },
     {
       "id": 5,
       "name": "Day 5 Lecture",
       "codeExamples": "Code example content",
-      "summary":  "Summary content",
+      "summary": "Summary content",
       "extraResources": "Extra extraResources content"
     },
     {
       "id": 6,
       "name": "Day 6 Lecture",
       "codeExamples": "Code example content",
-      "summary":  "Summary content",
+      "summary": "Summary content",
       "extraResources": "Extra extraResources content"
     },
     {
       "id": 7,
       "name": "Day 7 Lecture",
       "codeExamples": "Code example content",
-      "summary":  "Summary content",
+      "summary": "Summary content",
       "extraResources": "Extra extraResources content"
     }
-]
+  ]
 }
