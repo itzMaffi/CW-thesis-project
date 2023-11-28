@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Codeworks senior thesis project",
   "scripts": {
-    "test": "cd Agenda-client; npm i; npm test"
+    "test": "cd Agenda-client; npm i; npm test",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\""
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,7 @@
     "trailingComma": "es5",
     "tabWidth": 2,
     "semi": true,
-    "singleQuote": true
+    "singleQuote": true,
+    "useTabs": false
   }
 }
