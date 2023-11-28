@@ -7,39 +7,41 @@ export class CurriculumDB {
   private constructor() {}
 
   pinnedLectures: Set<Lecture> = new Set<Lecture>();
-
+  
   public static GetInstance(): CurriculumDB {
     if (!CurriculumDB.instance) CurriculumDB.instance = new CurriculumDB();
 
     return CurriculumDB.instance;
   }
 
-  getCurriculumOfTheDay(day: number): Curriculum {
-    return CurriculumData.curriculum[day];
+  async getCurriculumOfTheDay(day: number): Promise<Curriculum> {
+    return await Promise.resolve(CurriculumData.curriculum[day]);
   }
 
-  getLectureBy(id: number): Lecture {
+  async getLectureBy(id: number): Promise<Lecture> {
     const lecture = CurriculumData.lectures.find((el) => el.id == id);
     if (!lecture) throw new Error('lecture does not exist');
 
-    return lecture;
+    return Promise.resolve(lecture);
   }
 
-  pinLecture(lecture: Lecture) {
+  async pinLecture(lecture: Lecture) {
     if (lecture) this.pinnedLectures.add(lecture);
+    return Promise.resolve();
   }
 
-  pinLectureBy(id: number) {
+  async pinLectureBy(id: number) {
     if (id)
-    {
-      const lecture = this.getLectureBy(id);
+    { 
+      const lecture = await this.getLectureBy(id);
       this.pinLecture(lecture);
     } 
+    return Promise.resolve(void 0);
   }
 
-  getPinnedLectures():Lecture[]
+  async getPinnedLectures(): Promise<Lecture[]>
   {
-    return Array.from(this.pinnedLectures);
+    return Promise.resolve(Array.from(this.pinnedLectures));
   }
 }
 

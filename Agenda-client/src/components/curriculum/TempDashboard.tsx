@@ -1,11 +1,20 @@
 import curriculumDb from './data/curriculumDb';
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import DailyCurriculum from './DailyCurriculumDashboardComponent';
 import PinnedLectureDashboardComponent from './PinnedLectureDashboardComponent';
+import Lecture from './interfaces/Lecture';
 
 export default function TempDashboard() {
 
-  const [pinnedLectures, setPinnedLectures] = useState(curriculumDb.getPinnedLectures());
+  const [pinnedLectures, setPinnedLectures] = useState<Lecture[]>([]);
+
+  useEffect(()=> {
+    (async ()=> {
+      const lectures = await curriculumDb.getPinnedLectures()
+      setPinnedLectures(lectures);
+    }
+    )();
+  },[])
 
   return (
     <>
