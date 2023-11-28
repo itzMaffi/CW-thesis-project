@@ -17,12 +17,16 @@ export const schedule: Schedule =
   }
 } 
 
+export type LayoutLecture = {
+  [key:string]:Lecture
+}
+
 export class CurriculumDB {
   private static instance?: CurriculumDB;
   private constructor() {}
 
-  pinnedLectures: Set<Lecture> = new Set<Lecture>();
-
+  pinnedLectures: LayoutLecture = {};
+  
   public static GetInstance(): CurriculumDB {
     if (!CurriculumDB.instance) CurriculumDB.instance = new CurriculumDB();
 
@@ -44,19 +48,24 @@ export class CurriculumDB {
     return lecture;
   }
 
-  async pinLecture(lecture: Lecture) {
-    if (lecture) this.pinnedLectures.add(lecture);
+  async pinLecture(lecture: Lecture, layoutId:string ='') {
+    if (lecture) this.pinnedLectures[layoutId] = lecture;
   }
 
-  async pinLectureBy(id: number) {
-    if (id) {
-      const lecture = await this.getLectureBy(id);
-      this.pinLecture(lecture);
-    }
+  async pinLectureBy(id: number, layoutId:string) {
+
+    const lecture = await this.getLectureBy(id);
+    this.pinLecture(lecture, layoutId);
   }
 
-  async getPinnedLectures(): Promise<Lecture[]> {
-    return Array.from(this.pinnedLectures);
+  async getPinnedLectures(): Promise<LayoutLecture>
+  {
+    return this.pinnedLectures;
+  }
+
+  async getLectureByLayoutId(layoutId:string): Promise<Lecture> {
+    console.log('getting lecture: '+layoutId)
+    return this.pinnedLectures[layoutId];
   }
 }
 
