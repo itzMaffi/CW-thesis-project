@@ -1,14 +1,9 @@
 import { useState, useEffect } from 'react';
 import curriculumDb from './data/curriculumDb';
 import { Link } from 'react-router-dom';
-import Lecture from './interfaces/Lecture';
 import Curriculum from './interfaces/Curriculum';
 
-export default function DailyCurriculum({
-  setPinnedLectures,
-}: {
-  setPinnedLectures: (lectures: Lecture[]) => void;
-}) {
+export default function DailyCurriculum() {
   const [day, setDay] = useState(0);
   const [dailyCurriculum, setDailyCurriculum] = useState<Curriculum>();
 
@@ -22,8 +17,6 @@ export default function DailyCurriculum({
 
   async function onPin() {
     await curriculumDb.pinLectureBy(dailyCurriculum!.lecture_id);
-    const lectures = await curriculumDb.getPinnedLectures();
-    setPinnedLectures(lectures);
   }
 
   return (
