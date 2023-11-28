@@ -14,7 +14,7 @@ export default function LectureComponent() {
       const lecture = await curriculumDb.getLectureBy(+(lectureId ?? 1));
       setLecture(lecture);
     })();
-  }, []);
+  },[]);
 
   async function onPin() {
     await curriculumDb.pinLecture(lecture!);

@@ -4,11 +4,7 @@ import { Link } from 'react-router-dom';
 import Lecture from './interfaces/Lecture';
 import Curriculum from './interfaces/Curriculum';
 
-export default function DailyCurriculum({
-  setPinnedLectures,
-}: {
-  setPinnedLectures: (lectures: Lecture[]) => void;
-}) {
+export default function DailyCurriculum({ setPinnedLectures }: { setPinnedLectures: (lectures: Lecture[]) => void }) {
   const [day, setDay] = useState(0);
   const [dailyCurriculum, setDailyCurriculum] = useState<Curriculum>();
 

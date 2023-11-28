@@ -7,7 +7,7 @@ export class CurriculumDB {
   private constructor() {}
 
   pinnedLectures: Set<Lecture> = new Set<Lecture>();
-
+  
   public static GetInstance(): CurriculumDB {
     if (!CurriculumDB.instance) CurriculumDB.instance = new CurriculumDB();
 
@@ -30,13 +30,15 @@ export class CurriculumDB {
   }
 
   async pinLectureBy(id: number) {
-    if (id) {
+    if (id)
+    { 
       const lecture = await this.getLectureBy(id);
       this.pinLecture(lecture);
-    }
+    } 
   }
 
-  async getPinnedLectures(): Promise<Lecture[]> {
+  async getPinnedLectures(): Promise<Lecture[]>
+  {
     return Array.from(this.pinnedLectures);
   }
 }
