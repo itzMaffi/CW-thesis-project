@@ -41,7 +41,7 @@ function Dashboard() {
           <ResponsiveGridLayout
             className="border-2 border-red-500"
             breakpoints={{ lg: 1024, md: 768, sm: 640 }}
-            cols={{ lg: 4, md: 2, sm: 1 }}
+            cols={{ lg:4, md: 2, sm: 1 }}
             layouts={layouts}
             onLayoutChange={handleLayoutChange}
           >
