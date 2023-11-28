@@ -3,42 +3,16 @@ import { Widget } from './types';
 
 const defaultLayouts: Layouts = {
   lg: [
-    { i: '1', x: 0, y: 0, h: 2, w: 3, isResizable: false },
-    { i: '2', x: 3, y: 0, h: 2, w: 5, isResizable: false },
-    { i: '3', x: 8, y: 0, h: 2, w: 3, isResizable: false },
-    { i: '4', x: 11, y: 0, h: 2, w: 1, isResizable: false },
-  ],
-  md: [
-    { i: '1', x: 0, y: 0, h: 1, w: 10, isResizable: false },
-    { i: '2', x: 5, y: 0, h: 2, w: 5, isResizable: false },
-    { i: '3', x: 2, y: 1, h: 2, w: 3, isResizable: false },
-    { i: '4', x: 5, y: 1, h: 3, w: 3, isResizable: false },
-  ],
-  sm: [
-    { i: '1', x: 0, y: 0, h: 2, w: 3, isResizable: false },
-    { i: '2', x: 3, y: 0, h: 2, w: 5, isResizable: false },
-    { i: '3', x: 8, y: 0, h: 2, w: 3, isResizable: false },
-    { i: '4', x: 11, y: 0, h: 2, w: 1, isResizable: false },
-  ],
-  xs: [
-    { i: '1', x: 0, y: 0, h: 2, w: 3, isResizable: false },
-    { i: '2', x: 3, y: 0, h: 2, w: 5, isResizable: false },
-    { i: '3', x: 8, y: 0, h: 2, w: 3, isResizable: false },
-    { i: '4', x: 11, y: 0, h: 2, w: 1, isResizable: false },
-  ],
-  xxs: [
-    { i: '1', x: 0, y: 0, h: 2, w: 3, isResizable: false },
-    { i: '2', x: 3, y: 0, h: 2, w: 5, isResizable: false },
-    { i: '3', x: 8, y: 0, h: 2, w: 3, isResizable: false },
-    { i: '4', x: 11, y: 0, h: 2, w: 1, isResizable: false },
+    { i: '1', x: 3, y: 0, h: 1, w: 1, isResizable: false },
+    { i: '2', x: 0, y: 0, h: 2, w: 1, isResizable: false },
+    { i: '3', x: 1, y: 0, h: 2, w: 2, isResizable: false },
   ],
 };
 
 const defaultWidgets: Widget[] = [
-  { i: '1', type: '1' },
-  { i: '2', type: '2' },
-  { i: '3', type: '1' },
-  { i: '4', type: '3' },
+  { i: '1', type: 'login' },
+  { i: '2', type: 'helpRequest' },
+  { i: '3', type: 'lectureOfTheDay' },
 ];
 
 class db {
