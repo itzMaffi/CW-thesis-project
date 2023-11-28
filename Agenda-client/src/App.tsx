@@ -1,4 +1,6 @@
 import Dashboard from './components/Dashboard/Dashboard';
+import LectureComponent from './components/curriculum/LectureComponent';
+import { BrowserRouter, Routes, Route}  from 'react-router-dom'
 
 function App() {
   return (
