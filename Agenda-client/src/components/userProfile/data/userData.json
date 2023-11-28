@@ -1,0 +1,10 @@
+{
+	"userDetails": {
+		"id": "1234567890",
+		"firstName": "Jane",
+		"lastName": "Doe",
+		"email": "janedoe@example.com",
+		"avatar": "",
+		"cirriculumProgress": 76
+	}
+}
