@@ -1,15 +1,15 @@
 import { FC, useEffect, useState } from 'react';
 import logoutIcon from '../../assets/fi-rs-sign-out.svg';
-import User from './interfaces/User';
+import User from '../../utils/types';
 import userData from './data/userData.json';
-import { ProgressBar } from '../cirruculumProgress/ProgressBar';
+import { CurriculumProgress } from '../cirruculumProgress/CurriculumProgress';
+import { createInitialsAvatar } from '../../utils/createInitialsAvatar';
 
 export const UserProfile: FC = () => {
   const [user, setUser] = useState<User>({} as User);
-  // const [avatar, setAvatar] = useState<string>('');
+  const [avatar, setAvatar] = useState<string>('');
 
   useEffect(() => {
-    // TODO fetch user data from backend
     const user: User = {
       id: userData.userDetails.id,
       firstName: userData.userDetails.firstName,
@@ -19,6 +19,10 @@ export const UserProfile: FC = () => {
       cirriculumProgress: userData.userDetails.cirriculumProgress,
     };
     setUser(user);
+
+    if (user.avatar) setAvatar(user.avatar);
+
+    setAvatar(createInitialsAvatar(user));
   }, []);
 
   const handleLogout = () => {
@@ -26,55 +30,38 @@ export const UserProfile: FC = () => {
     console.log('logout');
   };
 
-  // const createInitialsAvatar = (user: User) => {
-  //   const initials = user.firstName[0] + user.lastName[0];
-  //   const canvas = document.createElement('canvas');
-  //   canvas.width = 100;
-  //   canvas.height = 100;
-  //   const context = canvas.getContext('2d');
-  //   if (context) {
-  //     context.fillStyle = '#FC6F2A';
-  //     context.fillRect(0, 0, canvas.width, canvas.height);
-  //     context.font = '50px Arial';
-  //     context.textAlign = 'center';
-  //     context.fillStyle = '#FFFFFF';
-  //     context.fillText(initials, 50, 70);
-  //   }
-  //   return canvas.toDataURL();
-  // };
-
-  const getAvatar = (user: User) => {
-    // TODO fetch avatar from backend
-    if (user.avatar) return user.avatar;
-
-    // return createInitialsAvatar(user);
-  };
-
   return (
     <div
       data-testid="userProfile"
-      className="flex flex-col bg-white justify-between rounded-[20px] border min-w-[400px] h-fit p-2 m-4"
+      className="flex flex-col justify-around w-full h-full p-1"
     >
-      <div className="profile flex justify-between gap-2">
-        <div className="avatar rounded-lg border bg-[#FEE2D4] flex-shrink-0">
-          <img src={getAvatar(user)} width={100} height={100} alt="Profile" />
+      <div className="profile flex justify-between h-1/2">
+        <div className="avatar w-2/4">
+          <img
+            className="rounded-lg"
+            src={avatar}
+            width={100}
+            height={100}
+            alt="Profile"
+          />
         </div>
-        <div className="userInfo">
+        <div className="userInfo w-2/4 flex flex-col justify-center">
           <h2>
             {user.firstName} {user.lastName}
           </h2>
           <p>{user.email}</p>
         </div>
-        <div className="logout">
+        <div className="flex justify-center w-1/4">
           <button
-            className="flex justify-center items-center gap-1 flex-shrink-0 bg-gradient-to-r from-[#FEE2D4] from-[-7%] to-[#FC6F2A] to-45% hover:bg-[#FC6F2A] text-white w-[41px] h-[41px] rounded-bl-[20px] rounded-tr-[20px]"
+            data-testid="logoutButton"
+            className="text-white p-2 w-[41px] h-[41px] rounded-lg bg-gradient-to-r from-[#FEE2D4] from-[-7%] to-[#FC6F2A] to-45% hover:bg-[#FC6F2A]"
             onClick={handleLogout}
           >
             <img src={logoutIcon} width={18} height={18} />
           </button>
         </div>
       </div>
-      <ProgressBar progress={user.cirriculumProgress} />
+      <CurriculumProgress progress={user.cirriculumProgress} />
     </div>
   );
 };
