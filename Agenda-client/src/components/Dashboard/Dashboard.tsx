@@ -29,26 +29,32 @@ function Dashboard() {
     }
   }, []);
 
-  function handleLayoutChange(_: Layout[], allLayouts: Layouts) {
+  async function handleLayoutChange(_: Layout[], allLayouts: Layouts) {
+    await dbInstance.saveLayouts(allLayouts);
     setLayouts(allLayouts);
   }
 
   return (
     <>
       {layouts && widgets ? (
-        <ResponsiveGridLayout
-          className="border-2 border-red-500"
-          breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
-          cols={{ lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 }}
-          layouts={layouts}
-          onLayoutChange={handleLayoutChange}
-        >
-          {widgets.map((widget: Widget) => (
-            <div key={widget.i} className="border-2 border-[#EB993F] p-2 rounded-lg bg-white">
-              {resolveComponent(widget.type)}
-            </div>
-          ))}
-        </ResponsiveGridLayout>
+        <div className="max-w-[1280px] mx-auto">
+          <ResponsiveGridLayout
+            className="border-2 border-red-500"
+            breakpoints={{ lg: 1024, md: 768, sm: 640 }}
+            cols={{ lg:4, md: 2, sm: 1 }}
+            layouts={layouts}
+            onLayoutChange={handleLayoutChange}
+          >
+            {widgets.map((widget: Widget) => (
+              <div
+                key={widget.i}
+                className="border-2 border-[#EB993F] p-2 rounded-lg bg-white"
+              >
+                {resolveComponent(widget.type)}
+              </div>
+            ))}
+          </ResponsiveGridLayout>
+        </div>
       ) : (
         <div>LOADING</div>
       )}
