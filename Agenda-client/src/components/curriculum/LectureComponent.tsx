@@ -1,15 +1,23 @@
 import { Params, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import Lecture from './interfaces/Lecture';
 import curriculumDb from './data/curriculumDb';
 import { useNavigate } from 'react-router-dom';
 
 export default function LectureComponent() {
   const { lectureId }: Readonly<Params<string>> = useParams();
-  const lecture: Lecture = curriculumDb.getLectureBy(+(lectureId ?? 1));
+  const [lecture, setLecture] = useState<Lecture>();
   const navigate = useNavigate();
 
-  function onPin() {
-    curriculumDb.pinLecture(lecture);
+  useEffect(() => {
+    (async () => {
+      const lecture = await curriculumDb.getLectureBy(+(lectureId ?? 1));
+      setLecture(lecture);
+    })();
+  });
+
+  async function onPin() {
+    await curriculumDb.pinLecture(lecture!);
     navigate('/');
   }
 
@@ -24,21 +32,21 @@ export default function LectureComponent() {
             >
               Pin
             </button>
-            <h2 className='text-2xl'>{lecture.name}</h2>
+            <h2 className="text-2xl">{lecture.name}</h2>
             <iframe
               width="420"
               height="315"
               src="https://www.youtube.com/embed/tgbNymZ7vqY"
             ></iframe>
-            <h3 className='text-xl'>Code examples:</h3>
+            <h3 className="text-xl">Code examples:</h3>
             <p>{lecture.codeExamples}</p>
-            <h3 className='text-xl'>Extra Resources:</h3>
+            <h3 className="text-xl">Extra Resources:</h3>
             <p>{lecture.extraResources}</p>
-            <h3 className='text-xl'>Summary:</h3>
+            <h3 className="text-xl">Summary:</h3>
             <ul>{lecture.summary}</ul>
           </div>
         )}
-        {!lecture && <h3 className='text-xl'>lecture does not exist</h3>}
+        {!lecture && <h3 className="text-xl">lecture does not exist</h3>}
       </div>
     </>
   );
