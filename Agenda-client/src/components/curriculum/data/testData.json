@@ -1,6 +1,7 @@
 {
   "curriculum": [
     {
+      "id":1,
       "toy_problem_name": "Yarra",
       "lecture_name": "Day 1 Lecture",
       "lecture_id": 1,
@@ -8,12 +9,14 @@
       "exercise_name": "Day 1 Exercise"
     },
     {
+      "id":2,
       "lecture_name": "Day 2 Lecture",
       "lecture_id": 2,
       "lecture_url": "https://tools.codeworks.me/#/syllabus/data-structures-1",
       "exercise_name": "Day 2 Exercise"
     },
     {
+      "id":3,
       "toy_problem_name": "Yarra",
       "lecture_name": "Day 3 Lecture",
       "lecture_id": 3,
@@ -21,6 +24,7 @@
       "exercise_name": "Day 3 Exercise"
     },
     {
+      "id":4,
       "toy_problem_name": "Yarra",
       "lecture_name": "Day 4 Lecture",
       "lecture_id": 4,
@@ -28,6 +32,7 @@
       "exercise_name": "Day 4 Exercise"
     },
     {
+      "id":5,
       "toy_problem_name": "Yarra",
       "lecture_name": "Day 5 Lecture",
       "lecture_id": 5,
@@ -35,6 +40,7 @@
       "exercise_name": "Day 5 Exercise"
     },
     {
+      "id":6,
       "toy_problem_name": "Yarra",
       "lecture_name": "Day 6 Lecture",
       "lecture_id": 6,
@@ -42,6 +48,7 @@
       "exercise_name": "Day 6 Exercise"
     },
     {
+      "id":7,
       "toy_problem_name": "Yarra",
       "lecture_name": "Day 7 Lecture",
       "lecture_id": 7,
