@@ -1,6 +1,21 @@
 import Curriculum from '../interfaces/Curriculum';
 import Lecture from '../interfaces/Lecture';
+import Schedule from '../interfaces/Schedule';
 import CurriculumData from './testData.json';
+
+export const schedule: Schedule =
+{
+  curriculumDayMap:
+  {
+  1:"Monday",
+  2:"Tuesday",
+  3:"Wednesday",
+  4:"Thursday",
+  5:"Friday",
+  6:"Saturday",
+  7:"Monday",
+  }
+} 
 
 export class CurriculumDB {
   private static instance?: CurriculumDB;
@@ -16,6 +31,10 @@ export class CurriculumDB {
 
   async getCurriculumOfTheDay(day: number): Promise<Curriculum> {
     return CurriculumData.curriculum[day];
+  }
+
+  async getCurriculum(): Promise<Curriculum[]> {
+    return CurriculumData.curriculum;
   }
 
   async getLectureBy(id: number): Promise<Lecture> {
