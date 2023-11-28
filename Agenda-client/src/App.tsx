@@ -2,7 +2,6 @@ import Dashboard from './components/Dashboard/Dashboard';
 import LectureComponent from './components/curriculum/LectureComponent';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import SyllabusPage from './components/curriculum/SyllabusPage';
-import TempDashboard from './components/curriculum/TempDashboard';
 
 function App() {
   return (

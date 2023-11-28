@@ -3,6 +3,8 @@ import curriculumDb from './data/curriculumDb';
 import { Link } from 'react-router-dom';
 import Curriculum from './interfaces/Curriculum';
 import { schedule } from './data/curriculumDb';
+import { Widget, WidgetType } from '../../utils/Widget';
+import layoutDb from '../../utils/layoutsDB';
 
 export default function SyllabusPage() {
   const [curriculum, setCurriculum] = useState<Curriculum[]>([]);
@@ -16,7 +18,10 @@ export default function SyllabusPage() {
   }, []);
 
   async function onPin(lectureId: number) {
-    await curriculumDb.pinLectureBy(lectureId);
+    const widget:Widget = new Widget(WidgetType.pinnedLecture);
+    await curriculumDb.pinLectureBy(lectureId, widget.i);
+    
+    await layoutDb.saveWidget(widget);
   }
 
   console.log('tests: ' + curriculum )

@@ -3,6 +3,9 @@ import { useEffect, useState } from 'react';
 import Lecture from './interfaces/Lecture';
 import curriculumDb from './data/curriculumDb';
 import { useNavigate } from 'react-router-dom';
+import layoutDb from '../../utils/layoutsDB';
+import { Widget, WidgetType } from '../../utils/Widget';
+
 
 export default function LectureComponent() {
   const { lectureId }: Readonly<Params<string>> = useParams();
@@ -17,7 +20,10 @@ export default function LectureComponent() {
   }, []);
 
   async function onPin() {
-    await curriculumDb.pinLecture(lecture!);
+    const widget:Widget = new Widget(WidgetType.pinnedLecture);
+    await curriculumDb.pinLectureBy(+lectureId!, widget.i);
+    
+    await layoutDb.saveWidget(widget);
     navigate('/');
   }
 

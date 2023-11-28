@@ -1,15 +1,18 @@
 import { useEffect, useState } from 'react';
 import resolveComponent from '../../utils/componentResolver';
-import { Widget } from '../../utils/types';
+import { Widget } from '../../utils/Widget';
 import { Layout, Layouts, Responsive, WidthProvider } from 'react-grid-layout';
 import 'react-grid-layout/css/styles.css';
-import { dbInstance } from '../../utils/layoutsDB';
+import dbInstance from '../../utils/layoutsDB';
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
 function Dashboard() {
   const [layouts, setLayouts] = useState<Layouts>();
   const [widgets, setWidgets] = useState<Widget[]>();
+  const [shouldUpdate, setShouldUpdate] = useState<boolean>();
+
+  dbInstance.setWidgetCallback(()=>{ setShouldUpdate(!shouldUpdate) });
 
   useEffect(() => {
     async function fetchLayouts() {
@@ -27,7 +30,7 @@ function Dashboard() {
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [shouldUpdate]);
 
   async function handleLayoutChange(_: Layout[], allLayouts: Layouts) {
     await dbInstance.saveLayouts(allLayouts);
@@ -50,7 +53,7 @@ function Dashboard() {
                 key={widget.i}
                 className="border-2 border-[#EB993F]  rounded-lg bg-white"
               >
-                {resolveComponent(widget.type)}
+                {resolveComponent(widget.type, widget.i)}
               </div>
             ))}
           </ResponsiveGridLayout>
