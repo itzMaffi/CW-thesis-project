@@ -1,11 +1,27 @@
-export function DummyOne() {
-  return <div>ONEONE I'm a dummy component ONEONE</div>
+export function DummyLogin() {
+  return <div>LOGIN</div>;
 }
 
-export function DummyTwo() {
-  return <div>TWOTWO I'm a dummy component TWOTWO</div>
+export function DummyHelpRequest() {
+  return <div>HELP REQUEST</div>;
 }
 
-export function DummyThree() {
-  return <div>THREETHREE I'm a dummy component THREETHREE</div>
+export function DummyLectureOfTheDay() {
+  return <div>LECTURE OF THE DAY</div>;
+}
+
+export function DummySchedule() {
+  return <div>SCHEDULE</div>;
+}
+
+export function DummyNews() {
+  return <div>NEWS</div>;
+}
+
+export function DummyPins() {
+  return <div>PINNED LECTURES</div>;
+}
+
+export function DummySyllabus() {
+  return <div>PINNED LECTURES</div>;
 }
