@@ -14,8 +14,8 @@ export type Widget = {
 };
 
 export type ComponentsMapper = {
-  [type: string]: JSX.Element
-}
+  [type: string]: JSX.Element;
+};
 
 export default interface User {
   id: string;
