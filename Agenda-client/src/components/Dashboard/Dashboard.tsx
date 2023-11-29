@@ -64,7 +64,7 @@ function Dashboard() {
             {widgets.map((widget: Widget) => (
               <div
                 key={widget.i}
-                className="border-2 border-[#EB993F]  rounded-lg bg-white"
+                className="border-2 border-cw-orange rounded-lg bg-white overflow-auto"
               >
                 {resolveComponent(widget.type, widget.i)}
               </div>
