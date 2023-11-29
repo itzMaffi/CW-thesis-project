@@ -34,7 +34,7 @@ function Dashboard() {
           widgetsFromDb,
         ]);
 
-        setState({layouts:layouts,widgets:widgets});
+        setState({ layouts: layouts, widgets: widgets });
       } catch (error) {
         console.log(error);
       }
@@ -42,7 +42,9 @@ function Dashboard() {
   }
 
   async function handleLayoutChange(_: Layout[], allLayouts: Layouts) {
-    Object.values(allLayouts).flatMap((value)=> value).forEach((value)=>value.isResizable=false);
+    Object.values(allLayouts)
+      .flatMap((value) => value)
+      .forEach((value) => (value.isResizable = false));
     await dbInstance.saveLayouts(allLayouts);
   }
 
