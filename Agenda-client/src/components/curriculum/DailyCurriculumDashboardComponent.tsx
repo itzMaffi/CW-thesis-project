@@ -26,7 +26,7 @@ export default function DailyCurriculum() {
 
   return (
     dailyCurriculum && (
-      <div className="rounded-md border border-orange-400 divide-dashed w-96 h-48">
+      <div className="w-full h-full">
         <button onClick={() => setDay(day + 1)}>change day</button>
         <h2>Todays Curriculum</h2>
         {dailyCurriculum.toy_problem_name && (

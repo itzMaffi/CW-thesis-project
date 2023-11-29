@@ -15,7 +15,7 @@ export default function PinnedLectureDashboardComponent({layoutKey}:{layoutKey:s
 
   return (
     lecture && <Link to={'Lecture/' + lecture.id}>
-      <div className="rounded-md border border-orange-400 divide-dashed w-96 ">
+      <div className="h-full w-full">
         <h2>Pinned Lecture</h2>
         <h3>{lecture.name}</h3>
         <p>Description:</p>
