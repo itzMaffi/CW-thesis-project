@@ -81,7 +81,7 @@ const NewHelpRequest: React.FC = () => {
     setShowList(false);
   };
   useEffect(() => {
-    const handleGlobalClick = (event) => {
+    const handleGlobalClick = (event: any) => {
       if (!isSelected && !event.target.closest('.input-area')) {
         setShowList(false);
       }
