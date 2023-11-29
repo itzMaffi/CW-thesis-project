@@ -34,10 +34,10 @@ export const UserProfile: FC = () => {
       data-testid="userProfile"
       className="flex flex-col justify-around w-full h-full p-px"
     >
-      <div className="profile flex justify-between gap-1">
-        <div className="avatar grow flex-shrink-0">
+      <div className="profile flex justify-between pt-2">
+        <div className="avatar grow flex-shrink-0 pl-2">
           <img
-            className="rounded-lg"
+            className="rounded-[0.5rem]"
             src={avatar}
             width={63}
             height={63}
@@ -53,7 +53,7 @@ export const UserProfile: FC = () => {
         <div className="flex flex-end grow-0 shrink-0">
           <button
             data-testid="logoutButton"
-            className="text-white p-2 h-fit rounded-lg bg-gradient-to-r from-cw-light-orange from-[-7%] to-cw-orange to-45% hover:bg-cw-orange active:scale-90 shadow-lg active:shadow-inner"
+            className="text-white p-2 h-fit rounded-[0.5rem] bg-gradient-to-r from-cw-light-orange from-[-7%] to-cw-orange to-45% hover:bg-cw-orange active:scale-90 shadow-lg active:shadow-inner"
             onClick={handleLogout}
           >
             <img src={logoutIcon} width={16} height={16} />
