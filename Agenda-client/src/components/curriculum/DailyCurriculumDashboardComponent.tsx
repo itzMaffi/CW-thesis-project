@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 import curriculumDb from './data/curriculumDb';
 import { Link } from 'react-router-dom';
 import Curriculum from './interfaces/Curriculum';
-import layoutDb from '../../utils/layoutsDB';
-import { Widget, WidgetType } from '../../utils/Widget';
+import pinLecture from './LectureService';
 
 export default function DailyCurriculum() {
   const [day, setDay] = useState(0);
@@ -18,10 +17,7 @@ export default function DailyCurriculum() {
   }, [day]);
 
   async function onPin() {
-    const widget:Widget = new Widget(WidgetType.pinnedLecture);
-    await curriculumDb.pinLectureBy(dailyCurriculum!.lecture_id, widget.i);
-    
-    await layoutDb.saveWidget(widget);
+    await pinLecture(dailyCurriculum!.lecture_id);
   }
 
   return (
