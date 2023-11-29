@@ -14,7 +14,6 @@ const SLACK_CHANNEL = process.env.SLACK_CHANNEL;
 const SLACK_TOKEN = process.env.SLACK_TOKEN;
 
 let cachedMessages: string[] = [];
-let lastUpdateTime: number = 0;
 
 const CACHE_TTL = 5 * 60 * 1000;
 
@@ -39,7 +38,6 @@ async function fetchSlackMessages() {
       if (data.ok) {
         const texts = data.messages.map((message) => message.text);
         cachedMessages = texts;
-        lastUpdateTime = Date.now();
       } else {
         console.error('Slack API responded with an error');
       }
