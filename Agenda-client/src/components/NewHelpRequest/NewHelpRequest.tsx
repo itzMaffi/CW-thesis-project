@@ -58,8 +58,10 @@ const NewHelpRequest: React.FC = () => {
   const [showList, setShowList] = useState(false);
   const [selectedStudent, setSelectedStudent] = useState('');
   const [filteredStudents, setFilteredStudents] = useState<string[]>([]);
-  const [submitting, setSubmitting] = useState(false);
-  const [formError, setFormError] = useState('');
+
+  // TODO: to do it later
+  // const [submitting, setSubmitting] = useState(false);
+  // const [formError, setFormError] = useState('');
   const [inputValue, setInputValue] = useState('');
   const [isSelected, setIsSelected] = useState(false);
   const [showError, setShowError] = useState(false);
@@ -107,8 +109,8 @@ const NewHelpRequest: React.FC = () => {
   const onFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     try {
       e.preventDefault();
-      setFormError('');
-      setSubmitting(true);
+      // setFormError('');
+      // setSubmitting(true);
       setInputValue('');
       setIsSelected(false);
       setTextAreaValue('');
@@ -117,11 +119,11 @@ const NewHelpRequest: React.FC = () => {
       if (err instanceof Error) {
         console.log(err);
         // Now you can safely access Error properties like 'message'
-        setFormError(err.message);
+        // setFormError(err.message);
       } else {
         // Handle the case where err is not an Error object
         console.log('An unknown error occurred');
-        setFormError('An unknown error occurred');
+        // setFormError('An unknown error occurred');
       }
     }
   };
