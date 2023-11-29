@@ -3,8 +3,6 @@ import curriculumDb from './data/curriculumDb';
 import { Link } from 'react-router-dom';
 import Curriculum from './interfaces/Curriculum';
 import { schedule } from './data/curriculumDb';
-import { Widget, WidgetType } from '../../utils/Widget';
-import layoutDb from '../../utils/layoutsDB';
 import pinLecture from './LectureService';
 
 export default function SyllabusPage() {

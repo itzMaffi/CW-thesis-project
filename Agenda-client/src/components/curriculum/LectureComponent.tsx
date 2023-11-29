@@ -3,8 +3,6 @@ import { useEffect, useState } from 'react';
 import Lecture from './interfaces/Lecture';
 import curriculumDb from './data/curriculumDb';
 import { useNavigate } from 'react-router-dom';
-import layoutDb from '../../utils/layoutsDB';
-import { Widget, WidgetType } from '../../utils/Widget';
 import pinLecture from './LectureService';
 
 
