@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import StudentsList from './StudentsList';
 
 const NewHelpRequest: React.FC = () => {
@@ -114,8 +114,15 @@ const NewHelpRequest: React.FC = () => {
       setTextAreaValue('');
       ////// await logic to send the question to the backend
     } catch (err) {
-      console.log(err);
-      setFormError(err.toString());
+      if (err instanceof Error) {
+        console.log(err);
+        // Now you can safely access Error properties like 'message'
+        setFormError(err.message);
+      } else {
+        // Handle the case where err is not an Error object
+        console.log('An unknown error occurred');
+        setFormError('An unknown error occurred');
+      }
     }
   };
 
@@ -123,7 +130,7 @@ const NewHelpRequest: React.FC = () => {
     setShowList(false);
   };
   useEffect(() => {
-    const handleGlobalClick = (event) => {
+    const handleGlobalClick = (event: any) => {
       // if (isSelected && !event.target.closest('.input-area')) {
       //   setShowList(false);
       // }
@@ -147,7 +154,7 @@ const NewHelpRequest: React.FC = () => {
       }
     };
 
-    const handleEscapeKeyPress = (event) => {
+    const handleEscapeKeyPress = (event: { key: string }) => {
       if (event.key === 'Escape') {
         deleteSelectedStudent();
         setInputValue('');
