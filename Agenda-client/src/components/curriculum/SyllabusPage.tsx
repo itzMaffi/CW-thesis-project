@@ -5,6 +5,7 @@ import Curriculum from './interfaces/Curriculum';
 import { schedule } from './data/curriculumDb';
 import { Widget, WidgetType } from '../../utils/Widget';
 import layoutDb from '../../utils/layoutsDB';
+import pinLecture from './LectureService';
 
 export default function SyllabusPage() {
   const [curriculum, setCurriculum] = useState<Curriculum[]>([]);
@@ -18,10 +19,7 @@ export default function SyllabusPage() {
   }, []);
 
   async function onPin(lectureId: number) {
-    const widget:Widget = new Widget(WidgetType.pinnedLecture);
-    await curriculumDb.pinLectureBy(lectureId, widget.i);
-    
-    await layoutDb.saveWidget(widget);
+    await pinLecture(lectureId);
   }
 
   console.log('tests: ' + curriculum )

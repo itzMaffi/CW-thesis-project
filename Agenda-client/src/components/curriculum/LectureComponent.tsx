@@ -5,6 +5,7 @@ import curriculumDb from './data/curriculumDb';
 import { useNavigate } from 'react-router-dom';
 import layoutDb from '../../utils/layoutsDB';
 import { Widget, WidgetType } from '../../utils/Widget';
+import pinLecture from './LectureService';
 
 
 export default function LectureComponent() {
@@ -20,10 +21,7 @@ export default function LectureComponent() {
   }, []);
 
   async function onPin() {
-    const widget:Widget = new Widget(WidgetType.pinnedLecture);
-    await curriculumDb.pinLectureBy(+lectureId!, widget.i);
-    
-    await layoutDb.saveWidget(widget);
+    await pinLecture(+lectureId!);
     navigate('/');
   }
 
