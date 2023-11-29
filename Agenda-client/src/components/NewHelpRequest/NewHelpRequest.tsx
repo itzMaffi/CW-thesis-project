@@ -1,60 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import StudentsList from './StudentsList';
 
-const NewHelpRequest: React.FC = () => {
-  const studentsList: string[] = [
-    'David Burch Jr.',
-    'Brittney Moore',
-    'David Molina',
-    'Stacy Cuevas',
-    'Jasmine Jacobson',
-    'Troy Brooks',
-    'Jennifer Montes',
-    'Barry Wallace',
-    'Denise Webb',
-    'Elizabeth Fuller',
-    'Bill Cameron',
-    'Adrienne Smith',
-    'Isaiah Hahn',
-    'Benjamin Hansen',
-    'Karen Howell',
-    'Debra Gibbs',
-    'Traci Rodriguez',
-    'Jeffrey Ramos',
-    'David Ayala',
-    'Daisy Davis',
-    'Diane Wilson',
-    'Nicholas Pena',
-    'Stephanie Wilson',
-    'Sabrina Gonzales',
-    'Cheryl Rice',
-    'Nicholas Stevens',
-    'Robert Johnson',
-    'Glenda Figueroa',
-    'Michael Fernandez',
-    'Olivia Boone',
-    'Tony Brown',
-    'Amanda Lewis',
-    'Kenneth Williamson',
-    'Robert Davis',
-    'Diane Walker',
-    'Shane Johnson',
-    'Julia Mcgee',
-    'Terry Morse',
-    'Michael Martinez',
-    'Tyler Brown',
-    'Angela Hubbard',
-    'Karen Perez',
-    'Philip Young',
-    'Timothy Davis',
-    'Nicholas Perez',
-    'Kristina Richards',
-    'Danielle Howard',
-    'Tammy Graham',
-    'Paul Jackson',
-    'Tina Lawson',
-  ];
+import dummyStudents from './data/dummystudentslist.json';
 
+const NewHelpRequest: React.FC = () => {
   const [showList, setShowList] = useState(false);
   const [selectedStudent, setSelectedStudent] = useState('');
   const [filteredStudents, setFilteredStudents] = useState<string[]>([]);
@@ -82,8 +31,9 @@ const NewHelpRequest: React.FC = () => {
   useEffect(() => {
     setSelectedStudent(inputValue);
     if (inputValue) {
-      const matchedStudents = studentsList.filter((student) =>
-        student.toLowerCase().includes(inputValue.toLowerCase())
+      const matchedStudents = dummyStudents.studentsList.filter(
+        (student: string) =>
+          student.toLowerCase().includes(inputValue.toLowerCase())
       );
 
       if (matchedStudents.length > 0) {
@@ -217,7 +167,7 @@ const NewHelpRequest: React.FC = () => {
                   students={
                     filteredStudents.length > 0
                       ? filteredStudents
-                      : studentsList
+                      : dummyStudents.studentsList
                   }
                 />
               ) : (
