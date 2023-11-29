@@ -124,12 +124,12 @@ const NewHelpRequest: React.FC = () => {
       onSubmit={onFormSubmit}
       className="flex flex-col justify-center items-center min-w-full"
     >
-      <div className="bg-cw-orange min-w-full text-center p-2 text-lg font-bold font-sans text-white rounded-tr-md rounded-tl-md">
+      <div className="bg-cw-orange min-w-full text-center p-2 text-lg font-bold font-sans text-white ">
         New help request
       </div>
       <div className=" flex flex-col gap-2 min-w-full max-w-full">
         <div className="flex flex-col justify-center items-center gap-2 min-w-full p-2 mt-1">
-          <div className="text-sm text-gray-300 cursor-default">
+          <div className="text-sm text-gray-500 cursor-default">
             Are you coding with other students?
           </div>
 
@@ -149,7 +149,7 @@ const NewHelpRequest: React.FC = () => {
               value={isSelected ? '' : inputValue}
               onChange={valueChangeHandler}
               placeholder={isSelected ? '' : 'Add students here'}
-              className="p-2 shadow-sm min-w-full max-w-full placeholder-[#aab8c2] rounded-md border border-slate-200"
+              className="p-2 shadow-sm min-w-full max-w-full placeholder-gray-400 rounded-md border border-slate-200"
             />
             {!showError && showList ? (
               <StudentsList
@@ -174,11 +174,11 @@ const NewHelpRequest: React.FC = () => {
           </div>
         </div>
         <div className="flex flex-col justify-center items-center  gap-2 p-2">
-          <div className="text-sm text-gray-300 cursor-default">
+          <div className="text-sm text-gray-500 cursor-default">
             Anything else you want us to know?
           </div>
           <textarea
-            className="question-area resize-none rounded-md shadow-sm p-1 min-w-full max-w-full pl-2 placeholder-[#aab8c2]rounded-md border border-slate-200"
+            className="question-area resize-none shadow-sm p-1 min-w-full max-w-full pl-2 placeholder-gray-400 rounded-md border border-slate-200"
             name="help-question"
             id="help-question"
             cols={30}
