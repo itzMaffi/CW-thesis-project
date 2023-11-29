@@ -64,7 +64,6 @@ export class CurriculumDB {
   }
 
   async getLectureByLayoutId(layoutId:string): Promise<Lecture> {
-    console.log('getting lecture: '+layoutId)
     return this.pinnedLectures[layoutId];
   }
 }

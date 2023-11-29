@@ -10,11 +10,17 @@ const ResponsiveGridLayout = WidthProvider(Responsive);
 function Dashboard() {
   const [layouts, setLayouts] = useState<Layouts>();
   const [widgets, setWidgets] = useState<Widget[]>();
-  const [shouldUpdate, setShouldUpdate] = useState<boolean>();
+  const [shouldUpdate, setShouldUpdate] = useState<boolean>(false);
 
-  dbInstance.setWidgetCallback(()=>{ setShouldUpdate(!shouldUpdate) });
+  console.log('rendering')
+  dbInstance.setWidgetCallback(()=>{
+      console.log('should update callback')
+      console.log('shouldUpdate_before: ' + shouldUpdate)
+      setShouldUpdate(!shouldUpdate)
+     });
 
   useEffect(() => {
+    console.log('running use effect')
     async function fetchLayouts() {
       const layoutsFromDb = await dbInstance.layouts;
       setLayouts(layoutsFromDb);
@@ -33,8 +39,9 @@ function Dashboard() {
   }, [shouldUpdate]);
 
   async function handleLayoutChange(_: Layout[], allLayouts: Layouts) {
+    console.log('layout changed called')
     await dbInstance.saveLayouts(allLayouts);
-    setLayouts(allLayouts);
+    //setLayouts(allLayouts);
   }
 
   return (
