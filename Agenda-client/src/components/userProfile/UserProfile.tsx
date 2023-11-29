@@ -6,7 +6,7 @@ import { CurriculumProgress } from '../cirruculumProgress/CurriculumProgress';
 import { createInitialsAvatar } from '../../utils/createInitialsAvatar';
 
 export const UserProfile: FC = () => {
-  const [user, setUser] = useState<User>({} as User);
+  const [user, setUser] = useState<User>();
   const [avatar, setAvatar] = useState<string>('');
 
   useEffect(() => {
@@ -20,9 +20,8 @@ export const UserProfile: FC = () => {
     };
     setUser(user);
 
-    if (user.avatar) setAvatar(user.avatar);
-
-    setAvatar(createInitialsAvatar(user));
+    if (!user.avatar) setAvatar(createInitialsAvatar(user));
+    else setAvatar(user.avatar);
   }, []);
 
   const handleLogout = () => {
@@ -30,10 +29,10 @@ export const UserProfile: FC = () => {
     console.log('logout');
   };
 
-  return (
+  return user ? (
     <div
       data-testid="userProfile"
-      className="flex flex-col justify-around w-full h-full p-[1px]"
+      className="flex flex-col justify-around w-full h-full p-px"
     >
       <div className="profile flex justify-between gap-1">
         <div className="avatar grow flex-shrink-0">
@@ -63,5 +62,7 @@ export const UserProfile: FC = () => {
       </div>
       <CurriculumProgress progress={user.cirriculumProgress} />
     </div>
+  ) : (
+    <div>loading..</div>
   );
 };
