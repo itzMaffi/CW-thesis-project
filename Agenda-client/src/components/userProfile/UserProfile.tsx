@@ -32,9 +32,9 @@ export const UserProfile: FC = () => {
   return user ? (
     <div
       data-testid="userProfile"
-      className="flex flex-col justify-around w-full h-full p-px"
+      className="flex flex-col justify-around w-full h-full p-2 overflow-hidden"
     >
-      <div className="profile flex justify-between pt-2">
+      <div className="profile flex justify-between pt-1">
         <div className="avatar grow flex-shrink-0 pl-2">
           <img
             className="rounded-[0.5rem]"
