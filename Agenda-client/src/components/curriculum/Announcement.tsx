@@ -8,8 +8,8 @@ const Announcement: React.FC = () => {
       const response = await fetch('http://localhost:3000/slack-messages');
 
       if (response.ok) {
-        const data = await response.json(); 
-        setSlackMessages(data); 
+        const data = await response.json();
+        setSlackMessages(data);
       } else {
         console.error('Server responded with an error:', response.status);
       }
