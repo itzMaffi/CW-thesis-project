@@ -81,7 +81,7 @@ const NewHelpRequest: React.FC = () => {
     setShowList(false);
   };
   useEffect(() => {
-    const handleGlobalClick = (event: any) => {
+    const handleGlobalClick = (event) => {
       if (!isSelected && !event.target.closest('.input-area')) {
         setShowList(false);
       }
@@ -122,80 +122,78 @@ const NewHelpRequest: React.FC = () => {
   return (
     <form
       onSubmit={onFormSubmit}
-      className="flex flex-col justify-center items-center"
+      className="flex flex-col justify-center items-center min-w-full"
     >
-      <div>
-        <div className="bg-cw-orange min-w-full text-center p-2 text-lg font-bold font-sans text-white rounded-tr-md rounded-tl-md">
-          New help request
-        </div>
-        <div className=" flex flex-col gap-2">
-          <div className="flex flex-col justify-center items-center gap-2 min-w-full p-2 mt-1">
-            <div className="text-sm text-gray-300 cursor-default">
-              Are you coding with other students?
-            </div>
+      <div className="bg-cw-orange min-w-full text-center p-2 text-lg font-bold font-sans text-white rounded-tr-md rounded-tl-md">
+        New help request
+      </div>
+      <div className=" flex flex-col gap-2 min-w-full max-w-full">
+        <div className="flex flex-col justify-center items-center gap-2 min-w-full p-2 mt-1">
+          <div className="text-sm text-gray-300 cursor-default">
+            Are you coding with other students?
+          </div>
 
-            <div onClick={showListHandler} className="min-w-full input-area">
-              {isSelected ? (
-                <div className="flex justify-center items-center  gap-2  fixed z-10 mt-1 ml-2 pl-2 pt-0.5 shadow-md rounded-2xl  bg-slate-200 ">
-                  <div className="cursor-default">{selectedStudent}</div>
-                  <button className="text-md  bg-white pl-2 pr-2 rounded-xl shadow active:scale-90">
-                    x
-                  </button>
-                </div>
-              ) : (
-                <></>
-              )}
-              <input
-                type="text"
-                value={isSelected ? '' : inputValue}
-                onChange={valueChangeHandler}
-                placeholder={isSelected ? '' : 'Add students here'}
-                className="p-2 shadow-sm min-w-full placeholder-[#aab8c2] rounded-md border border-slate-200"
+          <div onClick={showListHandler} className="min-w-full input-area">
+            {isSelected ? (
+              <div className="flex justify-center items-center  gap-2  fixed z-10 mt-1 ml-2 pl-2 pt-0.5 shadow-md rounded-2xl  bg-slate-200 ">
+                <div className="cursor-default">{selectedStudent}</div>
+                <button className="text-md  bg-white pl-2 pr-2 rounded-xl shadow active:scale-90">
+                  x
+                </button>
+              </div>
+            ) : (
+              <></>
+            )}
+            <input
+              type="text"
+              value={isSelected ? '' : inputValue}
+              onChange={valueChangeHandler}
+              placeholder={isSelected ? '' : 'Add students here'}
+              className="p-2 shadow-sm min-w-full max-w-full placeholder-[#aab8c2] rounded-md border border-slate-200"
+            />
+            {!showError && showList ? (
+              <StudentsList
+                onSelectStudent={selectStudentHandler}
+                students={
+                  filteredStudents.length > 0
+                    ? filteredStudents
+                    : dummyStudents.studentsList
+                }
               />
-              {!showError && showList ? (
-                <StudentsList
-                  onSelectStudent={selectStudentHandler}
-                  students={
-                    filteredStudents.length > 0
-                      ? filteredStudents
-                      : dummyStudents.studentsList
-                  }
-                />
-              ) : (
-                <></>
-              )}
+            ) : (
+              <></>
+            )}
 
-              {showError ? (
-                <div className="no-match text-cw-orange w-[281px] h-12 overflow-y-auto absolute z-50 shadow text-center pt-3  bg-cw-light-orange ">
-                  No matched students
-                </div>
-              ) : (
-                <></>
-              )}
-            </div>
+            {showError ? (
+              <div className="no-match text-cw-orange w-[281px] h-12 overflow-y-auto absolute z-50 shadow text-center pt-3  bg-cw-light-orange ">
+                No matched students
+              </div>
+            ) : (
+              <></>
+            )}
           </div>
-          <div className="flex flex-col justify-center items-center  gap-2 p-2">
-            <div className="text-sm text-gray-300 cursor-default">
-              Anything else you want us to know?
-            </div>
-            <textarea
-              className="question-area resize-none rounded-md shadow-sm p-1 min-w-full pl-2 placeholder-[#aab8c2]rounded-md border border-slate-200"
-              name="help-question"
-              id="help-question"
-              cols={30}
-              rows={2}
-              value={textAreaValue}
-              onChange={(e) => setTextAreaValue(e.target.value)}
-              maxLength={50}
-              placeholder="Optional (max 50 char)"
-            ></textarea>
-            <button
-              className="w-24 bg-cw-orange font-bold font-sans text-white p-1 rounded-md  mt-1  hover:bg-cw-orange active:scale-90 shadow-lg active:shadow-inner"
-              type="submit"
-            >
-              Send
-            </button>
+        </div>
+        <div className="flex flex-col justify-center items-center  gap-2 p-2">
+          <div className="text-sm text-gray-300 cursor-default">
+            Anything else you want us to know?
           </div>
+          <textarea
+            className="question-area resize-none rounded-md shadow-sm p-1 min-w-full max-w-full pl-2 placeholder-[#aab8c2]rounded-md border border-slate-200"
+            name="help-question"
+            id="help-question"
+            cols={30}
+            rows={2}
+            value={textAreaValue}
+            onChange={(e) => setTextAreaValue(e.target.value)}
+            maxLength={50}
+            placeholder="Optional (max 50 char)"
+          ></textarea>
+          <button
+            className="w-24 bg-cw-orange font-bold font-sans text-white p-1 rounded-md  mt-1  hover:bg-cw-orange active:scale-90 shadow-lg active:shadow-inner"
+            type="submit"
+          >
+            Send
+          </button>
         </div>
       </div>
     </form>
