@@ -16,23 +16,22 @@ const defaultWidgets: Widget[] = [
 ];
 
 class db {
+  private static instance?: db;
 
-  private static instance?:db;
-  
-  private constructor(){
+  private constructor() {
     this._layouts = defaultLayouts;
     this._widgets = defaultWidgets;
   }
 
-  public static GetInstance(){
-    if(!db.instance) db.instance = new db();
+  public static GetInstance() {
+    if (!db.instance) db.instance = new db();
 
     return db.instance;
   }
 
   private _layouts: Layouts;
   private _widgets: Widget[];
-  private updateDashboard?: ()=> void;
+  private updateDashboard?: () => void;
 
   get layouts(): Promise<Layouts> {
     return Promise.resolve(this._layouts);
@@ -47,16 +46,22 @@ class db {
     return Promise.resolve(this._layouts);
   }
 
-  saveWidget(widget:Widget): Promise<void>{
-
+  saveWidget(widget: Widget): Promise<void> {
     this._widgets.push(widget);
-    this._layouts.lg.push( { i: widget.i, x: 0, y: 0, h: 1, w: 1, isResizable: false },);
+    this._layouts.lg.push({
+      i: widget.i,
+      x: 0,
+      y: Infinity,
+      h: 1,
+      w: 1,
+      isResizable: false,
+    });
 
     this.updateDashboard && this.updateDashboard();
     return Promise.resolve();
   }
 
-  setWidgetCallback(updateDashboard:()=> void){
+  setWidgetCallback(updateDashboard: () => void) {
     this.updateDashboard = updateDashboard;
   }
 }

@@ -7,43 +7,47 @@ import dbInstance from '../../utils/layoutsDB';
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
-function Dashboard() {
-  const [layouts, setLayouts] = useState<Layouts>();
-  const [widgets, setWidgets] = useState<Widget[]>();
-  const [shouldUpdate, setShouldUpdate] = useState<boolean>(false);
+type DashboardState = {
+  layouts: Layouts;
+  widgets: Widget[];
+};
 
-  console.log('rendering')
-  dbInstance.setWidgetCallback(()=>{
-      console.log('should update callback')
-      console.log('shouldUpdate_before: ' + shouldUpdate)
-      setShouldUpdate(!shouldUpdate)
-     });
+function Dashboard() {
+  const [state, setState] = useState<DashboardState>();
+
+  dbInstance.setWidgetCallback(() => {
+    UpdateWidgetAndLayout();
+  });
 
   useEffect(() => {
-    console.log('running use effect')
-    async function fetchLayouts() {
-      const layoutsFromDb = await dbInstance.layouts;
-      setLayouts(layoutsFromDb);
-    }
+    UpdateWidgetAndLayout();
+  }, []);
 
-    async function fetchWidgets() {
-      const widgetsFromDb = await dbInstance.widgets;
-      setWidgets(widgetsFromDb);
-    }
+  function UpdateWidgetAndLayout() {
+    (async () => {
+      try {
+        const layoutsFromDb = dbInstance.layouts;
+        const widgetsFromDb = dbInstance.widgets;
 
-    try {
-      Promise.all([fetchLayouts(), fetchWidgets()]);
-    } catch (error) {
-      console.log(error);
-    }
-  }, [shouldUpdate]);
+        const [layouts, widgets] = await Promise.all([
+          layoutsFromDb,
+          widgetsFromDb,
+        ]);
 
-  async function handleLayoutChange(_: Layout[], allLayouts: Layouts) {
-    console.log('layout changed called')
-    await dbInstance.saveLayouts(allLayouts);
-    //setLayouts(allLayouts);
+        setState({layouts:layouts,widgets:widgets});
+      } catch (error) {
+        console.log(error);
+      }
+    })();
   }
 
+  async function handleLayoutChange(_: Layout[], allLayouts: Layouts) {
+    Object.values(allLayouts).flatMap((value)=> value).forEach((value)=>value.isResizable=false);
+    await dbInstance.saveLayouts(allLayouts);
+  }
+
+  const layouts = state?.layouts;
+  const widgets = state?.widgets;
   return (
     <>
       {layouts && widgets ? (
