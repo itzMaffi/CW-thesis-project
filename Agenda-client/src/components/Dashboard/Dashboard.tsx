@@ -4,7 +4,6 @@ import { Widget } from '../../utils/types';
 import { Layout, Layouts, Responsive, WidthProvider } from 'react-grid-layout';
 import 'react-grid-layout/css/styles.css';
 import { dbInstance } from '../../utils/layoutsDB';
-import Announcement from '../curriculum/Announcement';
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
@@ -37,7 +36,6 @@ function Dashboard() {
 
   return (
     <>
-      <Announcement />
       {layouts && widgets ? (
         <div className="max-w-[1280px] mx-auto">
           <ResponsiveGridLayout
