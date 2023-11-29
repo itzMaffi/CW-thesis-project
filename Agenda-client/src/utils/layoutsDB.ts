@@ -6,7 +6,6 @@ const defaultLayouts: Layouts = {
     { i: '1', x: 3, y: 0, h: 1, w: 1, isResizable: false },
     { i: '2', x: 0, y: 0, h: 2, w: 1, isResizable: false },
     { i: '3', x: 1, y: 0, h: 2, w: 2, isResizable: false },
-
   ],
 };
 
