@@ -52,7 +52,6 @@ function Dashboard() {
   const widgets = state?.widgets;
   return (
     <>
-      <Announcement />
       {layouts && widgets ? (
         <div className="max-w-[1280px] mx-auto">
           <ResponsiveGridLayout

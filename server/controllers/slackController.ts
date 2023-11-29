@@ -3,6 +3,13 @@ dotenv.config();
 
 import { Request, Response } from 'express';
 
+interface SlackApiResponse {
+  ok: boolean;
+  messages: {
+    text: string;
+  }[];
+}
+
 const SLACK_CHANNEL = process.env.SLACK_CHANNEL;
 const SLACK_TOKEN = process.env.SLACK_TOKEN;
 
@@ -22,13 +29,6 @@ async function getSlackMessages(req: Request, res: Response) {
     );
 
     if (response.ok) {
-      interface SlackApiResponse {
-        ok: boolean;
-        messages: {
-          text: string;
-        }[];
-      }
-
       const data = (await response.json()) as SlackApiResponse;
 
       if (data.ok) {
