@@ -14,4 +14,5 @@ export enum WidgetType {
   helpRequest,
   lectureOfTheDay,
   pinnedLecture,
+  announcement,
 }
