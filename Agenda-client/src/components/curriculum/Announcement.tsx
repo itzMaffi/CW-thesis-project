@@ -22,7 +22,7 @@ const Announcement: React.FC = () => {
     // initial fetch when component loads
     fetchSlackMessages();
 
-    // Poll every 5 minutes
+    // Poll every 5 minutes the cached messages from backend
     const intervalId = setInterval(() => {
       fetchSlackMessages();
     }, 300000);

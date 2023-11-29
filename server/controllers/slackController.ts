@@ -13,7 +13,12 @@ interface SlackApiResponse {
 const SLACK_CHANNEL = process.env.SLACK_CHANNEL;
 const SLACK_TOKEN = process.env.SLACK_TOKEN;
 
-async function getSlackMessages(req: Request, res: Response) {
+let cachedMessages: string[] = [];
+let lastUpdateTime: number = 0;
+
+const CACHE_TTL = 5 * 60 * 1000;
+
+async function fetchSlackMessages() {
   try {
     const channelId = SLACK_CHANNEL;
     const token = SLACK_TOKEN;
@@ -33,17 +38,27 @@ async function getSlackMessages(req: Request, res: Response) {
 
       if (data.ok) {
         const texts = data.messages.map((message) => message.text);
-        res.json(texts);
+        cachedMessages = texts;
+        lastUpdateTime = Date.now();
       } else {
-        res.status(500).json({ error: 'Slack API responded with an error' });
+        console.error('Slack API responded with an error');
       }
     } else {
-      throw new Error('Failed to fetch Slack messages');
+      console.error('Failed to fetch Slack messages');
     }
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Failed to fetch Slack messages' });
   }
+}
+
+// initial fetch when server starts
+fetchSlackMessages();
+
+// update every 5mins
+setInterval(fetchSlackMessages, CACHE_TTL);
+
+function getSlackMessages(req: Request, res: Response) {
+  res.json(cachedMessages);
 }
 
 export { getSlackMessages };
