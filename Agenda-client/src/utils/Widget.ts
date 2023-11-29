@@ -1,19 +1,17 @@
 export class Widget {
+  i: string;
+  type: WidgetType;
 
-  i:string;
-  type:WidgetType;
-
-  constructor(type:WidgetType)
-  {
-    const layoutId:string = crypto.randomUUID();
+  constructor(type: WidgetType) {
+    const layoutId: string = crypto.randomUUID();
     this.i = layoutId;
     this.type = type;
   }
-};
+}
 
 export enum WidgetType {
   login,
   helpRequest,
   lectureOfTheDay,
-  pinnedLecture
+  pinnedLecture,
 }

@@ -5,7 +5,6 @@ import curriculumDb from './data/curriculumDb';
 import { useNavigate } from 'react-router-dom';
 import pinLecture from './LectureService';
 
-
 export default function LectureComponent() {
   const { lectureId }: Readonly<Params<string>> = useParams();
   const [lecture, setLecture] = useState<Lecture>();

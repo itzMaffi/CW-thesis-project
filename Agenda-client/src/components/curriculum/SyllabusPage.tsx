@@ -11,7 +11,7 @@ export default function SyllabusPage() {
   useEffect(() => {
     (async () => {
       const curriculum = await curriculumDb.getCurriculum();
-      console.log(curriculum)
+      console.log(curriculum);
       setCurriculum(curriculum);
     })();
   }, []);
@@ -20,31 +20,29 @@ export default function SyllabusPage() {
     await pinLecture(lectureId);
   }
 
-  console.log('tests: ' + curriculum )
+  console.log('tests: ' + curriculum);
 
   return (
     <>
       <h2>Syllabus</h2>
 
-      {
-        curriculum.map((el) => (
-          <details key={el.id}>
-            <summary>{schedule.curriculumDayMap[el.id]}</summary>
-            {el.toy_problem_name && <p>Toy Problem: {el.toy_problem_name}</p>}
-            <p>
-              Lecture:{' '}
-              <Link to={'Lecture/' + el.lecture_id}>{el.lecture_name}</Link>
-            </p>
-            <button
-              onClick={() => onPin(el.lecture_id)}
-              className="bg-blue-700 rounded-sm text-white p-1.5 self-end w-1/6"
-            >
-              pin lecture
-            </button>
-            <p>Exercise: {el.exercise_name}</p>
-          </details>
-        ))
-        }
+      {curriculum.map((el) => (
+        <details key={el.id}>
+          <summary>{schedule.curriculumDayMap[el.id]}</summary>
+          {el.toy_problem_name && <p>Toy Problem: {el.toy_problem_name}</p>}
+          <p>
+            Lecture:{' '}
+            <Link to={'Lecture/' + el.lecture_id}>{el.lecture_name}</Link>
+          </p>
+          <button
+            onClick={() => onPin(el.lecture_id)}
+            className="bg-blue-700 rounded-sm text-white p-1.5 self-end w-1/6"
+          >
+            pin lecture
+          </button>
+          <p>Exercise: {el.exercise_name}</p>
+        </details>
+      ))}
     </>
   );
 }
