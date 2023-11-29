@@ -29,7 +29,6 @@ const NewHelpRequest: React.FC = () => {
   };
 
   useEffect(() => {
-    setSelectedStudent(inputValue);
     if (inputValue) {
       const matchedStudents = dummyStudents.studentsList.filter(
         (student: string) =>
@@ -43,19 +42,20 @@ const NewHelpRequest: React.FC = () => {
       } else {
         setShowList(false);
         setShowError(true);
-        console.log('something wrong');
       }
     } else {
       setFilteredStudents([]);
       setShowList(false);
     }
+
+    setSelectedStudent(inputValue);
   }, [inputValue]);
 
   const valueChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    // const inputValue = event.target.value;
     setInputValue(event.target.value);
   };
 
+  //TODO: maybe need the comment wenn the backend added
   const onFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     try {
       e.preventDefault();
@@ -68,10 +68,9 @@ const NewHelpRequest: React.FC = () => {
     } catch (err) {
       if (err instanceof Error) {
         console.log(err);
-        // Now you can safely access Error properties like 'message'
+
         // setFormError(err.message);
       } else {
-        // Handle the case where err is not an Error object
         console.log('An unknown error occurred');
         // setFormError('An unknown error occurred');
       }
@@ -83,9 +82,6 @@ const NewHelpRequest: React.FC = () => {
   };
   useEffect(() => {
     const handleGlobalClick = (event: any) => {
-      // if (isSelected && !event.target.closest('.input-area')) {
-      //   setShowList(false);
-      // }
       if (!isSelected && !event.target.closest('.input-area')) {
         setShowList(false);
       }
@@ -128,9 +124,8 @@ const NewHelpRequest: React.FC = () => {
       onSubmit={onFormSubmit}
       className="flex flex-col justify-center items-center"
     >
-      <div className="">
-        {/* ////TODO: use the orange color from dinara */}
-        <div className="bg-orange-500 min-w-full text-center p-2 text-lg font-bold font-sans text-white rounded-tr-md rounded-tl-md">
+      <div>
+        <div className="bg-cw-orange min-w-full text-center p-2 text-lg font-bold font-sans text-white rounded-tr-md rounded-tl-md">
           New help request
         </div>
         <div className=" flex flex-col gap-2">
@@ -139,15 +134,11 @@ const NewHelpRequest: React.FC = () => {
               Are you coding with other students?
             </div>
 
-            {/* ////TODO: check here */}
             <div onClick={showListHandler} className="min-w-full input-area">
               {isSelected ? (
                 <div className="flex justify-center items-center  gap-2  fixed z-10 mt-1 ml-2 pl-2 pt-0.5 shadow-md rounded-2xl  bg-slate-200 ">
                   <div className="cursor-default">{selectedStudent}</div>
-                  <button
-                    // onClick={deleteSelectedStudent}
-                    className="text-md  bg-white pl-2 pr-2 rounded-xl shadow active:scale-90"
-                  >
+                  <button className="text-md  bg-white pl-2 pr-2 rounded-xl shadow active:scale-90">
                     x
                   </button>
                 </div>
@@ -174,10 +165,9 @@ const NewHelpRequest: React.FC = () => {
                 <></>
               )}
 
-              {/* /////TODO: showError */}
               {showError ? (
                 <div className="no-match text-cw-orange w-[281px] h-12 overflow-y-auto absolute z-50 shadow text-center pt-3  bg-cw-light-orange ">
-                  no matched Students
+                  No matched students
                 </div>
               ) : (
                 <></>
@@ -200,7 +190,7 @@ const NewHelpRequest: React.FC = () => {
               placeholder="Optional (max 50 char)"
             ></textarea>
             <button
-              className="w-24 bg-orange-500 font-bold font-sans text-white p-1 rounded-md  mt-1  hover:bg-cw-orange active:scale-90 shadow-lg active:shadow-inner"
+              className="w-24 bg-cw-orange font-bold font-sans text-white p-1 rounded-md  mt-1  hover:bg-cw-orange active:scale-90 shadow-lg active:shadow-inner"
               type="submit"
             >
               Send
