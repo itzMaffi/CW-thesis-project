@@ -131,6 +131,9 @@ const NewHelpRequest: React.FC = () => {
         setShowList(false);
       }
 
+      if (!event.target.closest('.question-area')) {
+        setTextAreaValue('');
+      }
       if (showError && !event.target.closest('.input-area')) {
         deleteSelectedStudent();
         setInputValue('');
@@ -166,13 +169,13 @@ const NewHelpRequest: React.FC = () => {
       onSubmit={onFormSubmit}
       className="flex flex-col justify-center items-center"
     >
-      <div className="bg-gray-50 shadow-md rounded-md">
+      <div className="">
         {/* ////TODO: use the orange color from dinara */}
         <div className="bg-orange-500 min-w-full text-center p-2 text-lg font-bold font-sans text-white rounded-tr-md rounded-tl-md">
           New help request
         </div>
         <div className=" flex flex-col gap-2">
-          <div className="flex flex-col justify-center items-center gap-2 min-w-full p-2">
+          <div className="flex flex-col justify-center items-center gap-2 min-w-full p-2 mt-1">
             <div className="text-sm text-gray-300 cursor-default">
               Are you coding with other students?
             </div>
@@ -180,11 +183,11 @@ const NewHelpRequest: React.FC = () => {
             {/* ////TODO: check here */}
             <div onClick={showListHandler} className="min-w-full input-area">
               {isSelected ? (
-                <div className="flex justify-center items-center  gap-2  fixed z-10 mt-1 ml-2 pl-2 pt-0.5 shadow-md rounded-2xl opacity-70 bg-slate-200 ">
+                <div className="flex justify-center items-center  gap-2  fixed z-10 mt-1 ml-2 pl-2 pt-0.5 shadow-md rounded-2xl  bg-slate-200 ">
                   <div className="cursor-default">{selectedStudent}</div>
                   <button
                     // onClick={deleteSelectedStudent}
-                    className="text-md  bg-white pl-2 pr-2 rounded-xl shadow"
+                    className="text-md  bg-white pl-2 pr-2 rounded-xl shadow active:scale-90"
                   >
                     x
                   </button>
@@ -197,7 +200,7 @@ const NewHelpRequest: React.FC = () => {
                 value={isSelected ? '' : inputValue}
                 onChange={valueChangeHandler}
                 placeholder={isSelected ? '' : 'Add students here'}
-                className="p-2 shadow-sm min-w-full placeholder-gray-500 rounded-sm"
+                className="p-2 shadow-sm min-w-full placeholder-[#aab8c2] rounded-md border border-slate-200"
               />
               {!showError && showList ? (
                 <StudentsList
@@ -214,8 +217,8 @@ const NewHelpRequest: React.FC = () => {
 
               {/* /////TODO: showError */}
               {showError ? (
-                <div className="no-match w-[281px] h-12 overflow-y-auto absolute z-50 shadow text-center pt-3  bg-slate-100">
-                  no matchedStudents
+                <div className="no-match text-cw-orange w-[281px] h-12 overflow-y-auto absolute z-50 shadow text-center pt-3  bg-cw-light-orange ">
+                  no matched Students
                 </div>
               ) : (
                 <></>
@@ -227,7 +230,7 @@ const NewHelpRequest: React.FC = () => {
               Anything else you want us to know?
             </div>
             <textarea
-              className="resize-none shadow-sm p-1 min-w-full pl-2 placeholder-gray-500 rounded-sm"
+              className="question-area resize-none rounded-md shadow-sm p-1 min-w-full pl-2 placeholder-[#aab8c2]rounded-md border border-slate-200"
               name="help-question"
               id="help-question"
               cols={30}
@@ -238,7 +241,7 @@ const NewHelpRequest: React.FC = () => {
               placeholder="Optional (max 50 char)"
             ></textarea>
             <button
-              className="w-24 bg-orange-500 font-bold font-sans text-white p-1 rounded-md shadow"
+              className="w-24 bg-orange-500 font-bold font-sans text-white p-1 rounded-md  mt-1  hover:bg-cw-orange active:scale-90 shadow-lg active:shadow-inner"
               type="submit"
             >
               Send
