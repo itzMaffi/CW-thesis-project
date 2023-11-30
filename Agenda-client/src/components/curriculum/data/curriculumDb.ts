@@ -23,7 +23,8 @@ export class CurriculumDB {
   private static instance?: CurriculumDB;
   private constructor() {}
 
-  pinnedLectures: LayoutLecture = {};
+  layoutLectureMap: LayoutLecture = {};
+  pinnedLectures: Set<number> = new Set<number>();
 
   public static GetInstance(): CurriculumDB {
     if (!CurriculumDB.instance) CurriculumDB.instance = new CurriculumDB();
@@ -47,7 +48,10 @@ export class CurriculumDB {
   }
 
   async pinLecture(lecture: Lecture, layoutId: string = '') {
-    if (lecture) this.pinnedLectures[layoutId] = lecture;
+    if (lecture) {
+      this.layoutLectureMap[layoutId] = lecture;
+      this.pinnedLectures.add(lecture.id);
+    }
   }
 
   async pinLectureBy(id: number, layoutId: string) {
@@ -55,12 +59,27 @@ export class CurriculumDB {
     this.pinLecture(lecture, layoutId);
   }
 
+  async unPinLecture(id: number, widgetId: string) {
+    this.pinnedLectures.delete(id);
+    delete this.layoutLectureMap[widgetId];
+  }
+
+  async getWidgetIdByLecture(id: number) {
+    return Object.entries(this.layoutLectureMap).find(
+      ([_, lecture]) => lecture.id == id
+    )?.[0];
+  }
+
   async getPinnedLectures(): Promise<LayoutLecture> {
-    return this.pinnedLectures;
+    return this.layoutLectureMap;
   }
 
   async getLectureByLayoutId(layoutId: string): Promise<Lecture> {
-    return this.pinnedLectures[layoutId];
+    return this.layoutLectureMap[layoutId];
+  }
+
+  async isLecturePinned(lectureId: number) {
+    return this.pinnedLectures.has(lectureId);
   }
 }
 
