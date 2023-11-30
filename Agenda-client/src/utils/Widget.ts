@@ -15,4 +15,5 @@ export enum WidgetType {
   lectureOfTheDay,
   pinnedLecture,
   announcement,
+  calendar,
 }

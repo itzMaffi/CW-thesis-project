@@ -5,6 +5,7 @@ import { ComponentsMapper } from './types';
 import { UserProfile } from '../components/userProfile/UserProfile';
 import NewHelpRequest from '../components/NewHelpRequest/NewHelpRequest';
 import Announcement from '../components/curriculum/Announcement';
+import Calendar from '../components/Calendar/Calendar';
 export default function resolveComponent(
   componentType: WidgetType,
 
@@ -18,6 +19,7 @@ export default function resolveComponent(
       <PinnedLectureDashboardComponent layoutKey={layoutKey} />
     ),
     [WidgetType.announcement]: <Announcement />,
+    [WidgetType.calendar]: <Calendar />,
   };
   return components[componentType] || null;
 }
