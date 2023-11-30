@@ -12,10 +12,10 @@ export default function LectureComponent() {
 
   useEffect(() => {
     (async () => {
-      const lecture = await curriculumDb.getLectureBy(+(lectureId ?? 1));
-      setLecture(lecture);
+      const lectureFromDb = await curriculumDb.getLectureBy(+(lectureId ?? 1));
+      setLecture(lectureFromDb);
     })();
-  }, []);
+  }, [lectureId]);
 
   async function onPin() {
     await pinLecture(+lectureId!);
