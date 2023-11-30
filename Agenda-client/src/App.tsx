@@ -3,6 +3,7 @@ import LectureComponent from './components/curriculum/LectureComponent';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import SyllabusPage from './components/curriculum/SyllabusPage';
 import { Navbar } from './components/Navbar/Navbar';
+import { Login } from './components/LoginPage/Login';
 import googleButton from './assets/google_signin_assets/web//svg/dark/web_dark_rd_SI.svg';
 
 // OAuth
@@ -33,7 +34,8 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Dashboard />} />
+          <Route path="/" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route
             path="/lecture/:lectureId"
             element={<LectureComponent></LectureComponent>}
