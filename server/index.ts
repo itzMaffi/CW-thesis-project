@@ -6,7 +6,7 @@ import requestRouter from './routers/request';
 
 const app: Express = express();
 const PORT = 3000;
-const HOST = 'http://127.0.0.1';
+const HOST = 'localhost';
 
 app.options('*', function (req, res, next) {
   // TODO change this to the correct URL of frontend for prod

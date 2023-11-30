@@ -3,7 +3,7 @@ dotenv.config();
 
 import { Request, Response } from 'express';
 
-interface SlackApiResponse {
+interface ISlackApiResponse {
   ok: boolean;
   messages: {
     text: string;
@@ -33,7 +33,7 @@ async function fetchSlackMessages() {
     );
 
     if (response.ok) {
-      const data = (await response.json()) as SlackApiResponse;
+      const data = (await response.json()) as ISlackApiResponse;
 
       if (data.ok) {
         const texts = data.messages.map((message) => message.text);

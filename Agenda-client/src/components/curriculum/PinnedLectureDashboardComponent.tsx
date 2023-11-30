@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import Lecture from './interfaces/Lecture';
+import ILecture from './interfaces/Lecture';
 import curriculumDB from './data/curriculumDb';
 import LecturePin from './LecturePin';
 
@@ -9,7 +9,7 @@ export default function PinnedLectureDashboardComponent({
 }: {
   layoutKey: string;
 }) {
-  const [lecture, setLecture] = useState<Lecture>();
+  const [lecture, setLecture] = useState<ILecture>();
 
   useEffect(() => {
     (async () => {
@@ -21,13 +21,9 @@ export default function PinnedLectureDashboardComponent({
   return (
     lecture && (
       <div className="h-full w-full p-2">
-        <div className="float-right text-cw-orange font-bold text-xl mb-2">
-          <LecturePin lectureId={lecture.id}></LecturePin>
-        </div>
         <h3 className=" text-cw-orange font-bold text-xl mb-2">
           {lecture.name}
         </h3>
-
         <p className="text-gray-700">{lecture.summary}</p>
         <Link
           className="absolute bottom-0 right-0"
@@ -36,6 +32,9 @@ export default function PinnedLectureDashboardComponent({
           <p className="bg-cw-orange px-2 py-1 rounded-tl-xl text-white font-semibold">
             Go to lecture
           </p>
+          <div className="float-right text-cw-orange font-bold text-xl mb-2">
+            <LecturePin lectureId={lecture.id}></LecturePin>
+          </div>
         </Link>
       </div>
     )

@@ -1,12 +1,12 @@
 import { Params, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import Lecture from './interfaces/Lecture';
+import ILecture from './interfaces/Lecture';
 import curriculumDb from './data/curriculumDb';
 import LecturePin from './LecturePin';
 
 export default function LectureComponent() {
   const { lectureId }: Readonly<Params<string>> = useParams();
-  const [lecture, setLecture] = useState<Lecture>();
+  const [lecture, setLecture] = useState<ILecture>();
 
   useEffect(() => {
     (async () => {

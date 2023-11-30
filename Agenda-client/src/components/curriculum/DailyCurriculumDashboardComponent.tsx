@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import curriculumDb from './data/curriculumDb';
 import { Link } from 'react-router-dom';
-import Curriculum from './interfaces/Curriculum';
+import ICurriculum from './interfaces/Curriculum';
 import logo from '../../assets/advancedjs1.png';
 import LecturePin from './LecturePin';
 
 export default function DailyCurriculum() {
   const [day, setDay] = useState(0);
-  const [dailyCurriculum, setDailyCurriculum] = useState<Curriculum>();
+  const [dailyCurriculum, setDailyCurriculum] = useState<ICurriculum>();
 
   useEffect(() => {
     (async () => {

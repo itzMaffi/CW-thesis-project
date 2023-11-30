@@ -1,18 +1,18 @@
 import { Layout } from 'react-grid-layout';
 
-export interface LayoutWithType extends Layout {
+export interface ILayoutWithType extends Layout {
   type: string;
 }
 
 export type UserPreferences = {
-  [breakpoint: string]: LayoutWithType[];
+  [breakpoint: string]: ILayoutWithType[];
 };
 
 export type ComponentsMapper = {
   [type: string]: JSX.Element;
 };
 
-export default interface User {
+export default interface IUser {
   id: string;
   firstName: string;
   lastName: string;

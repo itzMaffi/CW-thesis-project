@@ -1,4 +1,4 @@
-export default interface Lecture {
+export default interface ILecture {
   id: number;
   name: string;
   codeExamples: string;
