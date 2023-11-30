@@ -36,6 +36,7 @@ router.get('/', async (req, res, next) => {
       console.error('Code is not a string');
     }
     console.log('Tokens acquired');
+
     const user = oAuth2Client.credentials;
     console.log('Credentials:', user);
 
@@ -47,8 +48,10 @@ router.get('/', async (req, res, next) => {
   } catch (err) {
     console.error('Error logging in with OAuth2 user', err);
   }
+
+  // if user.access_token
   // TODO change this for prod URL
-  res.redirect(303, 'http://localhost:5173/');
+  res.redirect(303, 'http://localhost:5173/dashboard');
 });
 
 export default router;

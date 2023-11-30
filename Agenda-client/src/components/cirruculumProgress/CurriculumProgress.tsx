@@ -1,10 +1,10 @@
 import { FC } from 'react';
 
-interface CurriculumProgressProps {
+interface ICurriculumProgressProps {
   progress: number;
 }
 
-export const CurriculumProgress: FC<CurriculumProgressProps> = ({
+export const CurriculumProgress: FC<ICurriculumProgressProps> = ({
   progress = 0,
 }) => {
   return (

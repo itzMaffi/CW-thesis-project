@@ -1,9 +1,9 @@
-import Curriculum from '../interfaces/Curriculum';
-import Lecture from '../interfaces/Lecture';
-import Schedule from '../interfaces/Schedule';
+import ICurriculum from '../interfaces/Curriculum';
+import ILecture from '../interfaces/Lecture';
+import ISchedule from '../interfaces/Schedule';
 import CurriculumData from './testData.json';
 
-export const schedule: Schedule = {
+export const schedule: ISchedule = {
   curriculumDayMap: {
     1: 'Monday',
     2: 'Tuesday',
@@ -16,7 +16,7 @@ export const schedule: Schedule = {
 };
 
 export type LayoutLecture = {
-  [key: string]: Lecture;
+  [key: string]: ILecture;
 };
 
 export class CurriculumDB {
@@ -32,22 +32,22 @@ export class CurriculumDB {
     return CurriculumDB.instance;
   }
 
-  async getCurriculumOfTheDay(day: number): Promise<Curriculum> {
+  async getCurriculumOfTheDay(day: number): Promise<ICurriculum> {
     return CurriculumData.curriculum[day];
   }
 
-  async getCurriculum(): Promise<Curriculum[]> {
+  async getCurriculum(): Promise<ICurriculum[]> {
     return CurriculumData.curriculum;
   }
 
-  async getLectureBy(id: number): Promise<Lecture> {
+  async getLectureBy(id: number): Promise<ILecture> {
     const lecture = CurriculumData.lectures.find((el) => el.id == id);
     if (!lecture) throw new Error('lecture does not exist');
 
     return lecture;
   }
 
-  async pinLecture(lecture: Lecture, layoutId: string = '') {
+  async pinLecture(lecture: ILecture, layoutId: string = '') {
     if (lecture) {
       this.layoutLectureMap[layoutId] = lecture;
       this.pinnedLectures.add(lecture.id);
@@ -74,7 +74,7 @@ export class CurriculumDB {
     return this.layoutLectureMap;
   }
 
-  async getLectureByLayoutId(layoutId: string): Promise<Lecture> {
+  async getLectureByLayoutId(layoutId: string): Promise<ILecture> {
     return this.layoutLectureMap[layoutId];
   }
 

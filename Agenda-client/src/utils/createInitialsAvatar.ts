@@ -1,6 +1,6 @@
-import User from '../utils/types';
+import IUser from '../utils/types';
 
-export const createInitialsAvatar = (user: User) => {
+export const createInitialsAvatar = (user: IUser) => {
   if (!user.firstName || !user.lastName)
     throw new Error('User must have a first and last name');
 

@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import curriculumDb from './data/curriculumDb';
 import { Link } from 'react-router-dom';
-import Curriculum from './interfaces/Curriculum';
+import ICurriculum from './interfaces/Curriculum';
 import { schedule } from './data/curriculumDb';
 import LecturePin from './LecturePin';
 
 export default function SyllabusPage() {
-  const [curriculum, setCurriculum] = useState<Curriculum[]>([]);
+  const [curriculum, setCurriculum] = useState<ICurriculum[]>([]);
 
   useEffect(() => {
     (async () => {

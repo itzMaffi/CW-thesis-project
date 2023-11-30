@@ -1,3 +1,3 @@
-export default interface Schedule {
-  curriculumDayMap: {[key:number]: string}
+export default interface ISchedule {
+  curriculumDayMap: { [key: number]: string };
 }

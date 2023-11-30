@@ -1,16 +1,16 @@
 import { FC, useEffect, useState } from 'react';
 import logoutIcon from '../../assets/fi-rs-sign-out.svg';
-import User from '../../utils/types';
+import IUser from '../../utils/types';
 import userData from './data/userData.json';
 import { CurriculumProgress } from '../cirruculumProgress/CurriculumProgress';
 import { createInitialsAvatar } from '../../utils/createInitialsAvatar';
 
 export const UserProfile: FC = () => {
-  const [user, setUser] = useState<User>();
+  const [user, setUser] = useState<IUser>();
   const [avatar, setAvatar] = useState<string>('');
 
   useEffect(() => {
-    const user: User = {
+    const user: IUser = {
       id: userData.userDetails.id,
       firstName: userData.userDetails.firstName,
       lastName: userData.userDetails.lastName,
