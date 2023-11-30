@@ -1,10 +1,13 @@
 import express, { Express } from 'express';
 import cors from 'cors';
 import router from './router';
+import { getTodayEventsJob } from './jobs';
 
 
 const app: Express = express();
 const port = 3000;
+
+getTodayEventsJob.start()
 
 app.use(cors());
 app.use(express.json());

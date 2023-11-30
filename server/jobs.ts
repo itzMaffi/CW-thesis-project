@@ -1,4 +1,5 @@
 import { CronJob } from 'cron';
+import { promises as fs } from 'fs';
 import 'dotenv/config';
 
 const CALENDAR_URL =
@@ -17,9 +18,31 @@ const GCAL_API_KEY = process.env.GCAL_API_KEY;
 // }
 
 async function getTodayEvents() {
+  const todayStart = new Date();
+  const todayEnd = new Date();
+
+  todayStart.setHours(0, 0, 0, 0);
+  todayEnd.setHours(24, 0, 0, 0);
+
   const data = await fetch(CALENDAR_URL + '?key=' + GCAL_API_KEY);
-  const eventsList = await data.json();
-  return eventsList;
+  const apiResponse = await data.json();
+
+  const allEvents = apiResponse.items;
+
+  const todayEvents = allEvents.filter((event: any) => {
+    const eventStart = new Date(event.start.dateTime);
+    return eventStart > todayStart && eventStart < todayEnd;
+  });
+
+  await fs.writeFile('./events.json', JSON.stringify(todayEvents), 'utf-8');
 }
 
-export const getTodayEventsJob = new CronJob('0 0 * * *', getTodayEvents);
+export const getTodayEventsJob = new CronJob(
+  '0 0 * * *',
+  getTodayEvents,
+  undefined,
+  undefined,
+  undefined,
+  undefined,
+  true
+);
