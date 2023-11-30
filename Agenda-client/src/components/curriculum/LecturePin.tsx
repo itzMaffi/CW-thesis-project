@@ -1,5 +1,5 @@
 import Pin from './Pin';
-import { pinLecture, unPinLecture } from './LectureService';
+import { pinLecture, unPinLecture } from '../../services/LectureService';
 import { useEffect, useState } from 'react';
 import curriculumDb from './data/curriculumDb';
 

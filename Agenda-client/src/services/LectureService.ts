@@ -1,6 +1,6 @@
-import { Widget, WidgetType } from '../../utils/Widget';
-import curriculumDb from './data/curriculumDb';
-import layoutDb from '../../utils/layoutsDB';
+import { Widget, WidgetType } from '../utils/Widget';
+import curriculumDb from '../components/curriculum/data/curriculumDb';
+import layoutDb from '../utils/layoutsDB';
 
 export async function unPinLecture(lectureId: number) {
   const widgetId = await curriculumDb.getWidgetIdByLecture(lectureId);
