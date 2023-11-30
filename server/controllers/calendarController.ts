@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
 
-function fetchCalendarEvents(req: Request, res: Response){
-  
+export async function getCalendarEvents(req: Request, res: Response){
+ res.send('OK')
 }
