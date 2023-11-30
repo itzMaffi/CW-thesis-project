@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 export const Navbar: FC = () => {
   return (
-    <div className="w-full bg-white h-14 pt-2  shadow-md fixed top-0 z-10 ">
+    <div className="w-full bg-white h-14 pt-2  shadow-md sticky top-0 z-10 ">
       <div className="max-w-[1280px] mx-auto flex justify-between items-center">
         <img
           className="h-10 "

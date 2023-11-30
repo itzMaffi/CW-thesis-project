@@ -53,7 +53,7 @@ function Dashboard() {
   return (
     <>
       {layouts && widgets ? (
-        <div className="max-w-[1280px] mx-auto mt-14">
+        <div className="max-w-[1280px] mx-auto">
           <ResponsiveGridLayout
             className="border-2 border-red-500"
             breakpoints={{ lg: 1024, md: 768, sm: 640 }}
