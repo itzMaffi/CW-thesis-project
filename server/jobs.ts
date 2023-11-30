@@ -17,6 +17,47 @@ const GCAL_API_KEY = process.env.GCAL_API_KEY;
 //   }
 // }
 
+type CalendarEvent = {
+  kind: string;
+  etag: string;
+  id: string;
+  status: string;
+  htmlLink: string;
+  created: string;
+  updated: string;
+  summary: string;
+  creator: Person;
+  organizer: Organizer;
+  start: EventDateTime;
+  end: EventDateTime;
+  iCalUID: string;
+  sequence: number;
+  eventType: string;
+};
+
+type Person = {
+  email: string;
+};
+
+type Organizer = {
+  email: string;
+  displayName: string;
+  self: boolean;
+};
+
+type EventDateTime = {
+  dateTime: string;
+  timeZone: string;
+};
+
+function cleanupEvent(event: CalendarEvent) {
+  return {
+    summary: event.summary,
+    start: event.start.dateTime,
+    end: event.end.dateTime,
+  };
+}
+
 async function getTodayEvents() {
   const todayStart = new Date();
   const todayEnd = new Date();
@@ -29,10 +70,12 @@ async function getTodayEvents() {
 
   const allEvents = apiResponse.items;
 
-  const todayEvents = allEvents.filter((event: any) => {
-    const eventStart = new Date(event.start.dateTime);
-    return eventStart > todayStart && eventStart < todayEnd;
-  });
+  const todayEvents = allEvents
+    .filter((event: CalendarEvent) => {
+      const eventStart = new Date(event.start.dateTime);
+      return eventStart > todayStart && eventStart < todayEnd;
+    })
+    .map((event: CalendarEvent) => cleanupEvent(event));
 
   await fs.writeFile('./events.json', JSON.stringify(todayEvents), 'utf-8');
 }
