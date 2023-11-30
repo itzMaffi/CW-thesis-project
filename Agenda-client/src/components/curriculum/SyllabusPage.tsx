@@ -3,7 +3,7 @@ import curriculumDb from './data/curriculumDb';
 import { Link } from 'react-router-dom';
 import Curriculum from './interfaces/Curriculum';
 import { schedule } from './data/curriculumDb';
-import pinLecture from './LectureService';
+import LecturePin from './LecturePin';
 
 export default function SyllabusPage() {
   const [curriculum, setCurriculum] = useState<Curriculum[]>([]);
@@ -15,12 +15,6 @@ export default function SyllabusPage() {
       setCurriculum(curriculum);
     })();
   }, []);
-
-  async function onPin(lectureId: number) {
-    await pinLecture(lectureId);
-  }
-
-  console.log('tests: ' + curriculum);
 
   return (
     <>
@@ -34,12 +28,7 @@ export default function SyllabusPage() {
             Lecture:{' '}
             <Link to={'Lecture/' + el.lecture_id}>{el.lecture_name}</Link>
           </p>
-          <button
-            onClick={() => onPin(el.lecture_id)}
-            className="bg-blue-700 rounded-sm text-white p-1.5 self-end w-1/6"
-          >
-            pin lecture
-          </button>
+          <LecturePin lectureId={el.lecture_id} />
           <p>Exercise: {el.exercise_name}</p>
         </details>
       ))}
