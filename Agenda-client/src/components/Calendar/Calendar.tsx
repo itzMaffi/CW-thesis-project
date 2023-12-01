@@ -5,11 +5,16 @@ import { DateTime } from 'luxon';
 
 export default function Calendar() {
   const [events, setEvents] = useState<Event[]>();
+  const [error, setError] = useState<string>('');
 
   useEffect(() => {
     (async () => {
-      const todayEvents: Event[] = await getTodayEvents();
-      setEvents(todayEvents);
+      try {
+        const todayEvents: Event[] = await getTodayEvents();
+        setEvents(todayEvents);
+      } catch (error) {
+        setError(`There was an error getting today's events`);
+      }
     })();
   }, []);
 
@@ -19,7 +24,15 @@ export default function Calendar() {
         Schedule
       </div>
       {events &&
-        events.map((event: Event) => <CalendarEvent key={event.id} event={event}/>)}
+        !error &&
+        events.map((event: Event) => (
+          <CalendarEvent key={event.id} event={event} />
+        ))}
+      {!events && error && (
+        <div className="m-2 p-2 rounded-lg text-red-700 bg-red-200">
+          {error}
+        </div>
+      )}
     </>
   );
 }
