@@ -6,8 +6,9 @@ const defaultLayouts: Layouts = {
     { i: '1', x: 3, y: 0, h: 1, w: 1, isResizable: false },
     { i: '2', x: 0, y: 0, h: 2, w: 1, isResizable: false },
     { i: '3', x: 1, y: 0, h: 2, w: 2, isResizable: false },
-    { i: '4', x: 0, y: 2, h: 2, w: 1, isResizable: false },
-    { i: '5', x: 3, y: 1, h: 4, w: 1, isResizable: false },
+    { i: '4', x: 3, y: 1, h: 2, w: 1, isResizable: false },
+    { i: '5', x: 1, y: 2, h: 2, w: 2, isResizable: false },
+    { i: '6', x: 3, y: 1, h: 4, w: 1, isResizable: false },
   ],
 };
 
@@ -16,7 +17,8 @@ const defaultWidgets: Widget[] = [
   { i: '2', type: WidgetType.helpRequest },
   { i: '3', type: WidgetType.lectureOfTheDay },
   { i: '4', type: WidgetType.announcement },
-  { i: '5', type: WidgetType.calendar },
+  { i: '5', type: WidgetType.quiz },
+  { i: '6', type: WidgetType.calendar },
 ];
 
 

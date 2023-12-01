@@ -4,6 +4,8 @@ import { Widget } from '../../utils/Widget';
 import { Layout, Layouts, Responsive, WidthProvider } from 'react-grid-layout';
 import 'react-grid-layout/css/styles.css';
 import dbInstance from '../../utils/layoutsDB';
+import { useNavigate } from 'react-router-dom';
+import processToken from '../../services/TokenService';
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
@@ -13,6 +15,7 @@ type DashboardState = {
 };
 
 function Dashboard() {
+  const navigate = useNavigate();
   const [state, setState] = useState<DashboardState>();
 
   dbInstance.setWidgetCallback(() => {
@@ -21,7 +24,10 @@ function Dashboard() {
 
   useEffect(() => {
     UpdateWidgetAndLayout();
-  }, []);
+    const isTokenValid = processToken();
+
+    if (!isTokenValid) navigate('/');
+  }, [navigate]);
 
   function UpdateWidgetAndLayout() {
     (async () => {

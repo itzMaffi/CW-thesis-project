@@ -1,7 +1,7 @@
-interface StudentsListProps {
+type StudentsListProps = {
   students: string[];
   onSelectStudent: (student: string) => void;
-}
+};
 
 const StudentsList: React.FC<StudentsListProps> = ({
   students,

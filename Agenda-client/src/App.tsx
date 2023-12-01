@@ -3,6 +3,8 @@ import LectureComponent from './components/curriculum/LectureComponent';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import SyllabusPage from './components/curriculum/SyllabusPage';
 import { Navbar } from './components/Navbar/Navbar';
+import { LogIn } from './components/LoginPage/LogIn';
+import Token from './components/Token/Token';
 
 function App() {
   return (
@@ -10,7 +12,9 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Dashboard />} />
+          <Route path="/" element={<LogIn />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/token/:token" element={<Token />} />
           <Route
             path="/lecture/:lectureId"
             element={<LectureComponent></LectureComponent>}
