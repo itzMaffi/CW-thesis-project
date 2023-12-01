@@ -16,4 +16,5 @@ export enum WidgetType {
   pinnedLecture,
   announcement,
   quiz,
+  calendar,
 }

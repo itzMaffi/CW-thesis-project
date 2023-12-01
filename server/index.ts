@@ -3,10 +3,14 @@ import cors from 'cors';
 import router from './routers/router';
 import authRouter from './routers/oauth';
 import requestRouter from './routers/request';
+import { getTodayEventsJob } from './jobs';
+
 
 const app: Express = express();
 const PORT = 3000;
 const HOST = 'localhost';
+
+getTodayEventsJob.start()
 
 app.options('*', function (req, res, next) {
   // TODO change this to the correct URL of frontend for prod
@@ -21,6 +25,8 @@ app.options('*', function (req, res, next) {
   res.status(200);
   next();
 });
+
+
 
 app.use(cors());
 app.use(express.json());

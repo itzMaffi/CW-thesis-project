@@ -8,6 +8,7 @@ const defaultLayouts: Layouts = {
     { i: '3', x: 1, y: 0, h: 2, w: 2, isResizable: false },
     { i: '4', x: 0, y: 2, h: 2, w: 1, isResizable: false },
     { i: '5', x: 1, y: 2, h: 2, w: 2, isResizable: false },
+    { i: '6', x: 3, y: 1, h: 4, w: 1, isResizable: false },
   ],
 };
 
@@ -17,7 +18,9 @@ const defaultWidgets: Widget[] = [
   { i: '3', type: WidgetType.lectureOfTheDay },
   { i: '4', type: WidgetType.announcement },
   { i: '5', type: WidgetType.quiz },
+  { i: '6', type: WidgetType.calendar },
 ];
+
 
 class db {
   private static instance?: db;

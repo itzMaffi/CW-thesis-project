@@ -1,7 +1,5 @@
-import dotenv from 'dotenv';
-dotenv.config();
-
 import { Request, Response } from 'express';
+import 'dotenv/config'
 
 interface ISlackApiResponse {
   ok: boolean;

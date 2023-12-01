@@ -6,6 +6,7 @@ import { UserProfile } from '../components/userProfile/UserProfile';
 import NewHelpRequest from '../components/NewHelpRequest/NewHelpRequest';
 import Announcement from '../components/curriculum/Announcement';
 import QuizGame from '../components/QuizGame/QuizGame';
+import Calendar from '../components/Calendar/Calendar';
 export default function resolveComponent(
   componentType: WidgetType,
 
@@ -19,7 +20,8 @@ export default function resolveComponent(
       <PinnedLectureDashboardComponent layoutKey={layoutKey} />
     ),
     [WidgetType.announcement]: <Announcement />,
-    [WidgetType.quiz]: <QuizGame/>
+    [WidgetType.quiz]: <QuizGame/>,
+    [WidgetType.calendar]: <Calendar />,
   };
   return components[componentType] || null;
 }
