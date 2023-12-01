@@ -7,7 +7,9 @@ import { GetTokenResponse } from 'google-auth-library/build/src/auth/oauth2clien
 
 // TODO delete after move
 async function getUserData(access_token: string) {
-  const res = await fetch(`https://www.googleapis.com/oauth2/v3/userinfo?access_token${access_token}`);
+  const res = await fetch(
+    `https://www.googleapis.com/oauth2/v3/userinfo?access_token${access_token}`
+  );
   const data = await res.json();
 }
 
@@ -18,7 +20,11 @@ router.get('/', async (req, res, next) => {
   try {
     // TODO if you change this here, you must also change it in the Google Console too
     const redirectUrl = 'http://127.0.0.1:3000/oauth';
-    const oAuth2Client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID, process.env.GOOGLE_CLIENT_SECRET, redirectUrl);
+    const oAuth2Client = new OAuth2Client(
+      process.env.GOOGLE_CLIENT_ID,
+      process.env.GOOGLE_CLIENT_SECRET,
+      redirectUrl
+    );
     let token = '';
     if (typeof code === 'string') {
       const res = (await oAuth2Client.getToken(code)) as GetTokenResponse;
@@ -33,7 +39,10 @@ router.get('/', async (req, res, next) => {
     console.log('Credentials:', user);
 
     if (user.access_token) {
-      const encoded = Buffer.from(JSON.stringify(user), 'binary').toString('base64');
+      const encoded = Buffer.from(
+        JSON.stringify(user.access_token),
+        'binary'
+      ).toString('base64');
       res.redirect(303, `http://localhost:5173/token/${encoded}`);
     } else {
       console.error('Access token is not available');
