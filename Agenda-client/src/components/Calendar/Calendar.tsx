@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getTodayEvents } from './calendarService';
+import clsx from 'clsx';
 
 type Event = {
   summary: string;
@@ -24,7 +25,14 @@ export default function Calendar() {
       </div>
       {events &&
         events.map((event: Event) => (
-          <div>
+          <div
+            className={clsx(
+              'm-2 p-2 rounded-lg',
+              new Date(event.end) < new Date()
+                ? 'bg-cw-light-orange'
+                : 'bg-cw-orange'
+            )}
+          >
             <p>{event.start}</p>
             <p>{event.summary}</p>
             <p>{event.end}</p>
