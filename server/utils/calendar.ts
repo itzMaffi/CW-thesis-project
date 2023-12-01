@@ -16,6 +16,19 @@ const GCAL_API_KEY = process.env.GCAL_API_KEY;
 //   }
 // }
 
+type GCalEventApiResponse = {
+  kind: string;
+  etag: string;
+  summary: string;
+  description: string;
+  updated: string;
+  timeZone: string;
+  accessRole: string;
+  defaultReminders: any[];
+  nextSyncToken: string;
+  items: CalendarEvent[];
+};
+
 type CalendarEvent = {
   kind: string;
   etag: string;
@@ -65,17 +78,21 @@ export async function getTodayEvents() {
   todayStart.setHours(0, 0, 0, 0);
   todayEnd.setHours(24, 0, 0, 0);
 
-  const data = await fetch(CALENDAR_URL + '?key=' + GCAL_API_KEY);
-  const apiResponse = await data.json();
+  try {
+    const data = await fetch(CALENDAR_URL + '?key=' + GCAL_API_KEY);
+    const apiResponse: GCalEventApiResponse = await data.json();
 
-  const allEvents = apiResponse.items;
+    const allEvents = apiResponse.items;
 
-  const todayEvents = allEvents
-    .filter((event: CalendarEvent) => {
-      const eventStart = new Date(event.start.dateTime);
-      return eventStart > todayStart && eventStart < todayEnd;
-    })
-    .map((event: CalendarEvent) => cleanupEvent(event));
+    const todayEvents = allEvents
+      .filter((event: CalendarEvent) => {
+        const eventStart = new Date(event.start.dateTime);
+        return eventStart > todayStart && eventStart < todayEnd;
+      })
+      .map((event: CalendarEvent) => cleanupEvent(event));
 
-  await fs.writeFile('./events.json', JSON.stringify(todayEvents), 'utf-8');
+    await fs.writeFile('./events.json', JSON.stringify(todayEvents), 'utf-8');
+  } catch (error) {
+    console.error(error);
+  }
 }
