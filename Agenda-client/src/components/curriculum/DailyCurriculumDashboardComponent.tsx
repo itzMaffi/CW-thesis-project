@@ -6,7 +6,7 @@ import logo from '../../assets/advancedjs1.png';
 import LecturePin from './LecturePin';
 
 export default function DailyCurriculum() {
-  const [day, setDay] = useState(0);
+  const [day, setDay] = useState(6);
   const [dailyCurriculum, setDailyCurriculum] = useState<ICurriculum>();
 
   useEffect(() => {
