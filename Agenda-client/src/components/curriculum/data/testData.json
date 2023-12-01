@@ -3,106 +3,169 @@
     {
       "id":1,
       "toy_problem_name": "Yarra",
-      "lecture_name": "Day 1 Lecture",
+      "lecture_name": "Object Oriented Programming",
       "lecture_id": 1,
-      "lecture_url": "https://tools.codeworks.me/#/syllabus/data-structures-1",
-      "exercise_name": "Day 1 Exercise"
+      "exercise_name": "Build an Object"
     },
     {
       "id":2,
-      "lecture_name": "Day 2 Lecture",
+      "lecture_name": "Agile Practices",
       "lecture_id": 2,
-      "lecture_url": "https://tools.codeworks.me/#/syllabus/data-structures-1",
-      "exercise_name": "Day 2 Exercise"
+      "exercise_name": "Plan a Sprint"
     },
     {
       "id":3,
       "toy_problem_name": "Yarra",
-      "lecture_name": "Day 3 Lecture",
+      "lecture_name": "Database 3",
       "lecture_id": 3,
-      "lecture_url": "https://tools.codeworks.me/#/syllabus/data-structures-1",
-      "exercise_name": "Day 3 Exercise"
+      "exercise_name": "Data Treatment"
     },
     {
       "id":4,
       "toy_problem_name": "Yarra",
-      "lecture_name": "Day 4 Lecture",
+      "lecture_name": "Design Patterns 1",
       "lecture_id": 4,
-      "lecture_url": "https://tools.codeworks.me/#/syllabus/data-structures-1",
-      "exercise_name": "Day 4 Exercise"
+      "exercise_name": "Refactor for design"
     },
     {
       "id":5,
       "toy_problem_name": "Yarra",
-      "lecture_name": "Day 5 Lecture",
+      "lecture_name": "Version Control",
       "lecture_id": 5,
-      "lecture_url": "https://tools.codeworks.me/#/syllabus/data-structures-1",
-      "exercise_name": "Day 5 Exercise"
+      "exercise_name": "GIT good!"
     },
     {
       "id":6,
       "toy_problem_name": "Yarra",
-      "lecture_name": "Day 6 Lecture",
+      "lecture_name": "Testing",
       "lecture_id": 6,
-      "lecture_url": "https://tools.codeworks.me/#/syllabus/data-structures-1",
-      "exercise_name": "Day 6 Exercise"
+      "exercise_name": "Refactor for tests"
     },
     {
       "id":7,
       "toy_problem_name": "Yarra",
-      "lecture_name": "Day 7 Lecture",
+      "lecture_name": "Web Security",
       "lecture_id": 7,
-      "lecture_url": "https://tools.codeworks.me/#/syllabus/data-structures-1",
-      "exercise_name": "Day 7 Exercise"
+      "exercise_name": "Break in"
     }
   ],
   "lectures": [
     {
       "id": 1,
-      "name": "Day 1 Lecture",
-      "codeExamples": "Code example content",
+      "name": "Object Oriented Programming",
+      "videos": [
+        {
+          "url": "https://www.youtube.com/embed/pTB0EiLXUC8",
+          "questions": ["What happened?","What did you learn?","Why did it happen?"]
+        },
+        {
+          "url": "https://www.youtube.com/embed/SiBw7os-_zI",
+          "questions": ["What happened?","What did you learn?","Why did it happen?"]
+        }
+      ],
+      "codeExamples": "const bcrypt = require('bcrypt');\nconst express = require('express');\nconst app = express();\napp.use(express.json());\n\nconst users = [];\n\napp.post('/signup', async (req, res) => {\n    try {\n        // Hash the password with a salt\n        const hashedPassword = await bcrypt.hash(req.body.password, 10);\n        \n        // Store the new user\n        const user = { username: req.body.username, password: hashedPassword };\n        users.push(user);\n\n        res.status(201).send('User created!');\n    } catch {\n        res.status(500).send();\n    }\n});\n\napp.post('/login', async (req, res) => {\n    const user = users.find(u => u.username === req.body.username);\n    if (user == null) {\n        return res.status(400).send('Cannot find user');\n    }\n\n    try {\n        if (await bcrypt.compare(req.body.password, user.password)) {\n            res.send('Success');\n        } else {\n            res.send('Not Allowed');\n        }\n    } catch {\n        res.status(500).send();\n    }\n});\n\napp.listen(3000);\n",
       "summary": "Introduction to Object-Oriented Programming.",
       "extraResources": "Extra resources content"
     },
     {
       "id": 2,
-      "name": "Day 2 Lecture",
-      "codeExamples": "Code example content",
+      "name": "Agile Practices",
+      "videos": [
+        {
+          "url": "https://www.youtube.com/embed/8eVXTyIZ1Hs",
+          "questions": ["What happened?","What did you learn?","Why did it happen?"]
+        },
+        {
+          "url": "https://www.youtube.com/embed/Bez7wmAsxjE",
+          "questions": ["What happened?","What did you learn?","Why did it happen?"]
+        }
+      ],
+      "codeExamples": "const bcrypt = require('bcrypt');\nconst express = require('express');\nconst app = express();\napp.use(express.json());\n\nconst users = [];\n\napp.post('/signup', async (req, res) => {\n    try {\n        // Hash the password with a salt\n        const hashedPassword = await bcrypt.hash(req.body.password, 10);\n        \n        // Store the new user\n        const user = { username: req.body.username, password: hashedPassword };\n        users.push(user);\n\n        res.status(201).send('User created!');\n    } catch {\n        res.status(500).send();\n    }\n});\n\napp.post('/login', async (req, res) => {\n    const user = users.find(u => u.username === req.body.username);\n    if (user == null) {\n        return res.status(400).send('Cannot find user');\n    }\n\n    try {\n        if (await bcrypt.compare(req.body.password, user.password)) {\n            res.send('Success');\n        } else {\n            res.send('Not Allowed');\n        }\n    } catch {\n        res.status(500).send();\n    }\n});\n\napp.listen(3000);\n",
       "summary": "Exploring Agile Software Development Practices.",
       "extraResources": "Extra resources content"
     },
     {
       "id": 3,
-      "name": "Day 3 Lecture",
-      "codeExamples": "Code example content",
+      "name": "Database 3",
+      "videos": [
+        {
+          "url": "https://www.youtube.com/embed/GFQaEYEc8_8",
+          "questions": ["What happened?","What did you learn?","Why did it happen?"]
+        }
+      ],
+      "codeExamples": "const bcrypt = require('bcrypt');\nconst express = require('express');\nconst app = express();\napp.use(express.json());\n\nconst users = [];\n\napp.post('/signup', async (req, res) => {\n    try {\n        // Hash the password with a salt\n        const hashedPassword = await bcrypt.hash(req.body.password, 10);\n        \n        // Store the new user\n        const user = { username: req.body.username, password: hashedPassword };\n        users.push(user);\n\n        res.status(201).send('User created!');\n    } catch {\n        res.status(500).send();\n    }\n});\n\napp.post('/login', async (req, res) => {\n    const user = users.find(u => u.username === req.body.username);\n    if (user == null) {\n        return res.status(400).send('Cannot find user');\n    }\n\n    try {\n        if (await bcrypt.compare(req.body.password, user.password)) {\n            res.send('Success');\n        } else {\n            res.send('Not Allowed');\n        }\n    } catch {\n        res.status(500).send();\n    }\n});\n\napp.listen(3000);\n",
       "summary": "Database Normalization Techniques.",
       "extraResources": "Extra resources content"
     },
     {
       "id": 4,
-      "name": "Day 4 Lecture",
-      "codeExamples": "Code example content",
+      "name": "Design Patterns 1",
+      "videos": [
+        {
+          "url": "https://www.youtube.com/embed/v9ejT8FO-7I",
+          "questions": ["What happened?","What did you learn?","Why did it happen?"]
+        },
+        {
+          "url": "https://www.youtube.com/embed/_BpmfnqjgzQ",
+          "questions": ["What happened?","What did you learn?","Why did it happen?"]
+        },
+        {
+          "url": "https://www.youtube.com/embed/GCraGHx6gso",
+          "questions": ["What happened?","What did you learn?","Why did it happen?"]
+        },
+        {
+          "url": "https://www.youtube.com/embed/EcFVTgRHJLM",
+          "questions": ["What happened?","What did you learn?","Why did it happen?"]
+        }
+      ],
+      "codeExamples": "const bcrypt = require('bcrypt');\nconst express = require('express');\nconst app = express();\napp.use(express.json());\n\nconst users = [];\n\napp.post('/signup', async (req, res) => {\n    try {\n        // Hash the password with a salt\n        const hashedPassword = await bcrypt.hash(req.body.password, 10);\n        \n        // Store the new user\n        const user = { username: req.body.username, password: hashedPassword };\n        users.push(user);\n\n        res.status(201).send('User created!');\n    } catch {\n        res.status(500).send();\n    }\n});\n\napp.post('/login', async (req, res) => {\n    const user = users.find(u => u.username === req.body.username);\n    if (user == null) {\n        return res.status(400).send('Cannot find user');\n    }\n\n    try {\n        if (await bcrypt.compare(req.body.password, user.password)) {\n            res.send('Success');\n        } else {\n            res.send('Not Allowed');\n        }\n    } catch {\n        res.status(500).send();\n    }\n});\n\napp.listen(3000);\n",
       "summary": "Understanding Software Design Patterns.",
       "extraResources": "Extra resources content"
     },
     {
       "id": 5,
-      "name": "Day 5 Lecture",
-      "codeExamples": "Code example content",
+      "name": "Version Control",
+      "videos": [
+        {
+          "url": "https://www.youtube.com/embed/RGOj5yH7evk",
+          "questions": ["What happened?","What did you learn?","Why did it happen?"]
+        },
+        {
+          "url": "https://www.youtube.com/embed/RCVjgwoVbvI",
+          "questions": ["What happened?","What did you learn?","Why did it happen?"]
+        }
+      ],
+      "codeExamples": "const bcrypt = require('bcrypt');\nconst express = require('express');\nconst app = express();\napp.use(express.json());\n\nconst users = [];\n\napp.post('/signup', async (req, res) => {\n    try {\n        // Hash the password with a salt\n        const hashedPassword = await bcrypt.hash(req.body.password, 10);\n        \n        // Store the new user\n        const user = { username: req.body.username, password: hashedPassword };\n        users.push(user);\n\n        res.status(201).send('User created!');\n    } catch {\n        res.status(500).send();\n    }\n});\n\napp.post('/login', async (req, res) => {\n    const user = users.find(u => u.username === req.body.username);\n    if (user == null) {\n        return res.status(400).send('Cannot find user');\n    }\n\n    try {\n        if (await bcrypt.compare(req.body.password, user.password)) {\n            res.send('Success');\n        } else {\n            res.send('Not Allowed');\n        }\n    } catch {\n        res.status(500).send();\n    }\n});\n\napp.listen(3000);\n",
       "summary": "Version Control Systems in Software Development.",
       "extraResources": "Extra resources content"
     },
     {
       "id": 6,
-      "name": "Day 6 Lecture",
-      "codeExamples": "Code example content",
+      "name": "Testing",
+      "videos": [
+        {
+          "url": "https://www.youtube.com/embed/3kzHmaeozDI",
+          "questions": ["What happened?","What did you learn?","Why did it happen?"]
+        }
+      ],
+      "codeExamples":"const bcrypt = require('bcrypt');\nconst express = require('express');\nconst app = express();\napp.use(express.json());\n\nconst users = [];\n\napp.post('/signup', async (req, res) => {\n    try {\n        // Hash the password with a salt\n        const hashedPassword = await bcrypt.hash(req.body.password, 10);\n        \n        // Store the new user\n        const user = { username: req.body.username, password: hashedPassword };\n        users.push(user);\n\n        res.status(201).send('User created!');\n    } catch {\n        res.status(500).send();\n    }\n});\n\napp.post('/login', async (req, res) => {\n    const user = users.find(u => u.username === req.body.username);\n    if (user == null) {\n        return res.status(400).send('Cannot find user');\n    }\n\n    try {\n        if (await bcrypt.compare(req.body.password, user.password)) {\n            res.send('Success');\n        } else {\n            res.send('Not Allowed');\n        }\n    } catch {\n        res.status(500).send();\n    }\n});\n\napp.listen(3000);\n",
       "summary": "Essentials of Software Testing Methodologies.",
       "extraResources": "Extra resources content"
     },
     {
       "id": 7,
-      "name": "Day 7 Lecture",
-      "codeExamples": "Code example content",
+      "name": "Web Security",
+      "videos": [
+        {
+          "url": "https://www.youtube.com/embed/80VviDER96I",
+          "questions": ["What happened?","What did you learn?","Why did it happen?"]
+        },
+        {
+          "url": "https://www.youtube.com/embed/4YOpILi9Oxs",
+          "questions": ["What happened?","What did you learn?","Why did it happen?"]
+        }
+      ],
+      "codeExamples": "const bcrypt = require('bcrypt');\nconst express = require('express');\nconst app = express();\napp.use(express.json());\n\nconst users = [];\n\napp.post('/signup', async (req, res) => {\n    try {\n        // Hash the password with a salt\n        const hashedPassword = await bcrypt.hash(req.body.password, 10);\n        \n        // Store the new user\n        const user = { username: req.body.username, password: hashedPassword };\n        users.push(user);\n\n        res.status(201).send('User created!');\n    } catch {\n        res.status(500).send();\n    }\n});\n\napp.post('/login', async (req, res) => {\n    const user = users.find(u => u.username === req.body.username);\n    if (user == null) {\n        return res.status(400).send('Cannot find user');\n    }\n\n    try {\n        if (await bcrypt.compare(req.body.password, user.password)) {\n            res.send('Success');\n        } else {\n            res.send('Not Allowed');\n        }\n    } catch {\n        res.status(500).send();\n    }\n});\n\napp.listen(3000);\n",
       "summary": "Web Application Security Best Practices.",
       "extraResources": "Extra resources content"
     }
