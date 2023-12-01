@@ -20,7 +20,7 @@ export default function resolveComponent(
       <PinnedLectureDashboardComponent layoutKey={layoutKey} />
     ),
     [WidgetType.announcement]: <Announcement />,
-    [WidgetType.quiz]: <QuizGame/>
+    [WidgetType.quiz]: <QuizGame/>,
     [WidgetType.calendar]: <Calendar />,
   };
   return components[componentType] || null;
