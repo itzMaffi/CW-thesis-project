@@ -3,7 +3,6 @@ import LectureComponent from './components/curriculum/LectureComponent';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import SyllabusPage from './components/curriculum/SyllabusPage';
 import { Navbar } from './components/Navbar/Navbar';
-import QuizGame from './components/QuizGame/QuizGame';
 
 function App() {
   return (
