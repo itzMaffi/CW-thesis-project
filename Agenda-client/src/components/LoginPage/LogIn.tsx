@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import processToken from '../../services/TokenService';
 import { useEffect } from 'react';
-import googleButton from '../../assets/google_signin_assets/web//svg/light/web_light_rd_SI.svg';
+import googleButton from '../../assets/google_signin_assets/web/svg/light/web_light_rd_SI.svg';
 
 export const LogIn: FC = () => {
   const navigate = useNavigate();
