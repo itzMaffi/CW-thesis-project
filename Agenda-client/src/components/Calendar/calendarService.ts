@@ -1,4 +1,5 @@
 export type Event = {
+  id: string;
   summary: string;
   start: string;
   end: string;

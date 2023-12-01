@@ -51,6 +51,7 @@ type EventDateTime = {
 
 function cleanupEvent(event: CalendarEvent) {
   return {
+    id: event.id,
     summary: event.summary,
     start: event.start.dateTime,
     end: event.end.dateTime,

@@ -19,7 +19,7 @@ export default function Calendar() {
         Schedule
       </div>
       {events &&
-        events.map((event: Event) => <CalendarEvent event={event}/>)}
+        events.map((event: Event) => <CalendarEvent key={event.id} event={event}/>)}
     </>
   );
 }
