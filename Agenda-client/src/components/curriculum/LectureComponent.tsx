@@ -19,23 +19,38 @@ export default function LectureComponent() {
     <>
       <div className="flex align-center justify-center w-full">
         {lecture && (
-          <div className="flex flex-col rounded-md border border-orange-400 divide-dashed w-3/5 h-screen">
-            <LecturePin lectureId={lecture.id}></LecturePin>
-            <h2 className="text-2xl">{lecture.name}</h2>
-            <iframe
-              width="420"
-              height="315"
-              src="https://www.youtube.com/embed/tgbNymZ7vqY"
-            ></iframe>
-            <h3 className="text-xl">Code examples:</h3>
+          <div className="flex flex-col w-3/5 p-4 mb-32">
+            <div className='flex mt-8 mb-8' >
+              <h2 className="ml-auto mr-auto text-3xl text-center">{lecture.name}</h2>
+              <span className='text-3xl'><LecturePin lectureId={lecture.id}></LecturePin></span>
+            </div>
+            <div className="flex flex-col items-center w-full">
+              <iframe className="rounded-md"
+                width="640"
+                height="360"
+                src="https://www.youtube.com/embed/tgbNymZ7vqY"
+              ></iframe>
+              <h3 className='text-center mt-8  mb-2 text-2xl'>Check your knowledge</h3>
+              <ul className='w-[640px] list-disc'>
+                <li>What melody did the muppets play?</li>
+                <li>Why did the muppet Animal, stop singing?</li>
+                <li>What has muppets to do with coding?</li>              
+              </ul>
+            </ div>
+            <h3 className="text-2xl mt-8">Code examples:</h3>
+            <hr></hr>
             <p>{lecture.codeExamples}</p>
-            <h3 className="text-xl">Extra Resources:</h3>
+            <h3 className="text-2xl mt-8">Extra Resources:</h3>
+            <hr></hr>
+
             <p>{lecture.extraResources}</p>
-            <h3 className="text-xl">Summary:</h3>
+            <h3 className="text-2xl mt-8">Summary:</h3>
+            <hr></hr>
+
             <ul>{lecture.summary}</ul>
           </div>
         )}
-        {!lecture && <h3 className="text-xl">lecture does not exist</h3>}
+        {!lecture && <h3 className="mt-8 text-xl">lecture does not exist</h3>}
       </div>
     </>
   );
