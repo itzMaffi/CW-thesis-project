@@ -1,5 +1,6 @@
 import Quiz from 'react-quiz-component';
 import questions from './questions';
+import './Quizgame.css';
 
 function QuizGame() {
   return (
