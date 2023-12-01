@@ -4,10 +4,13 @@ import IUser from '../../utils/types';
 import userData from './data/userData.json';
 import { CurriculumProgress } from '../cirruculumProgress/CurriculumProgress';
 import { createInitialsAvatar } from '../../utils/createInitialsAvatar';
+import { useNavigate } from 'react-router-dom';
 
 export const UserProfile: FC = () => {
   const [user, setUser] = useState<IUser>();
   const [avatar, setAvatar] = useState<string>('');
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const user: IUser = {
@@ -25,8 +28,8 @@ export const UserProfile: FC = () => {
   }, []);
 
   const handleLogout = () => {
-    // TODO logout user
-    console.log('logout');
+    localStorage.removeItem('token');
+    navigate('/');
   };
 
   return user ? (

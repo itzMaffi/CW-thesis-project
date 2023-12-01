@@ -12,11 +12,7 @@ router.post('/', async (req, res, next) => {
   // TODO if you change this here, you must also change it in the Google Console too
   const redirectUrl = 'http://127.0.0.1:3000/oauth';
 
-  const oAuth2Client = new OAuth2Client(
-    process.env.GOOGLE_CLIENT_ID,
-    process.env.GOOGLE_CLIENT_SECRET,
-    redirectUrl
-  );
+  const oAuth2Client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID, process.env.GOOGLE_CLIENT_SECRET, redirectUrl);
 
   const authorizeUrl = oAuth2Client.generateAuthUrl({
     // TODO change this from 'offline' for prod later
