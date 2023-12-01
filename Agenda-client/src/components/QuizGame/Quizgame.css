@@ -12,7 +12,6 @@ h2:nth-child(2) {
 
 div h2 {
   border: none !important;
-  display: none;
 }
 
 .react-quiz-container {
@@ -144,6 +143,7 @@ div h2 {
 }
 .react-quiz-container .selection-tag.multiple {
   background: #ff9800;
+  margin-left: 29%;
 }
 .react-quiz-container .selection-tag.segment {
   background: #3db4b9;
@@ -153,6 +153,9 @@ div h2 {
   display: flex;
   justify-content: space-between;
   justify-content: center;
+}
+.react-quiz-container .questionBtnContainer button {
+  background-color: #ff9800;
 }
 .react-quiz-container .quiz-result-filter {
   bottom: 15px;
