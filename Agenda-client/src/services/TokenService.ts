@@ -8,8 +8,9 @@ interface IBearerToken {
 }
 
 const processToken = (): boolean => {
+  //FIXME: returning undefined as a string from localStorage needs to be checked
   const tokenString = localStorage.getItem('token');
-  if (tokenString === null || tokenString === undefined) return false;
+  if (tokenString === 'undefined' || tokenString === null) return false;
 
   const token = JSON.parse(tokenString) as IBearerToken;
 
