@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Params, useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
+// Note: This will be reworked later after demo :)
 export default function Token() {
   const navigate = useNavigate();
   const { token }: Readonly<Params<string>> = useParams();
