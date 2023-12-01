@@ -13,7 +13,7 @@ export const LogIn: FC = () => {
     if (isTokenValid) navigate('/dashboard');
   }, []);
 
-  // OAuth
+  // TODO: OAuth - remove
   function navi(url: string) {
     window.location.href = url;
   }
@@ -25,7 +25,6 @@ export const LogIn: FC = () => {
     });
 
     const data = await response.json();
-
     console.log('data from App.tsx:', data);
 
     navi(data.url);
@@ -42,7 +41,7 @@ export const LogIn: FC = () => {
 
       <button className="btn-auth " type="button" onClick={() => auth()}>
         <img
-          className="btn-auth-img "
+          className="btn-auth-img active:scale-90 "
           src={googleButton}
           alt="google sign in"
         />
