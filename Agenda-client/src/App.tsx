@@ -8,8 +8,7 @@ import QuizGame from './components/QuizGame/QuizGame';
 function App() {
   return (
     <>
-    <QuizGame/>
-      {/* <BrowserRouter>
+      <BrowserRouter>
         <Navbar />
         <Routes>
           <Route path="/" element={<Dashboard />} />
@@ -19,7 +18,7 @@ function App() {
           />
           <Route path="/syllabus" element={<SyllabusPage></SyllabusPage>} />
         </Routes>
-      </BrowserRouter> */}
+      </BrowserRouter>
     </>
   );
 }
