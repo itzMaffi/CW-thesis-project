@@ -1,12 +1,7 @@
 import { useEffect, useState } from 'react';
-import { getTodayEvents } from './calendarService';
+import { getTodayEvents, Event } from './calendarService';
 import clsx from 'clsx';
-
-type Event = {
-  summary: string;
-  start: string;
-  end: string;
-};
+import { DateTime } from 'luxon';
 
 export default function Calendar() {
   const [events, setEvents] = useState<Event[]>();
@@ -24,20 +19,28 @@ export default function Calendar() {
         Schedule
       </div>
       {events &&
-        events.map((event: Event) => (
-          <div
-            className={clsx(
-              'm-2 p-2 rounded-lg',
-              new Date(event.end) < new Date()
-                ? 'bg-cw-light-orange'
-                : 'bg-cw-orange'
-            )}
-          >
-            <p>{event.start}</p>
-            <p>{event.summary}</p>
-            <p>{event.end}</p>
-          </div>
-        ))}
+        events.map((event: Event) => <CalendarEvent event={event}/>)}
     </>
+  );
+}
+
+function CalendarEvent({ event }: { event: Event }) {
+  return (
+    <div
+      className={clsx(
+        'm-2 p-2 rounded-lg',
+        new Date(event.end) < new Date()
+          ? 'bg-gray-100 text-gray-500'
+          : 'bg-cw-light-orange text-cw-dark-orange'
+      )}
+    >
+      <p className="text-sm">
+        {DateTime.fromISO(event.start).toLocaleString(DateTime.TIME_SIMPLE)}
+      </p>
+      <p className="font-semibold text-lg my-2">{event.summary}</p>
+      <p className="text-sm">
+        {DateTime.fromISO(event.end).toLocaleString(DateTime.TIME_SIMPLE)}
+      </p>
+    </div>
   );
 }
