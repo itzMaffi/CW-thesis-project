@@ -66,6 +66,15 @@ class db {
     return Promise.resolve();
   }
 
+  removeWidgetByID(id: string) {
+    this._widgets = this._widgets.filter((el) => el.i !== id);
+    Object.values(this._layouts).forEach(
+      (layout) => (layout = layout.filter((el) => el.i !== id))
+    );
+    this.updateDashboard && this.updateDashboard();
+    return Promise.resolve();
+  }
+
   setWidgetCallback(updateDashboard: () => void) {
     this.updateDashboard = updateDashboard;
   }
