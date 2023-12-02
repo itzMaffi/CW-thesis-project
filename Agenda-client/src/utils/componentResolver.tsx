@@ -14,9 +14,9 @@ import { StackOverflow } from '../components/Stackoverflow/Stackoverflow';
 export default function resolveComponent(widget: Widget) {
   const components: ComponentsMapper = {
     [WidgetType.userProfile]: <UserProfile />,
-    [WidgetType.helpRequest]: <NewHelpRequest />,
+    [WidgetType.helpRequest]: <NewHelpRequest widget={widget} />,
     [WidgetType.stackOverflow]: <StackOverflow />,
-    [WidgetType.lectureOfTheDay]: <DailyCurriculum />,
+    [WidgetType.lectureOfTheDay]: <DailyCurriculum widget={widget} />,
     [WidgetType.pinnedLecture]: (
       <PinnedLectureDashboardComponent widget={widget} />
     ),
