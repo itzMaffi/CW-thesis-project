@@ -1,10 +1,10 @@
 import { Params, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import ILecture from './interfaces/Lecture';
-import curriculumDb from './data/curriculumDb';
+import ILecture from '../curriculum/interfaces/Lecture';
+import curriculumDb from '../curriculum/data/curriculumDb';
 import { CodeBlock, github } from 'react-code-blocks';
-import { WidgetType } from '../../utils/Widget';
-import GenericPin from './GenericPin';
+import { WidgetType } from '../widget/Widget';
+import GenericPin from '../widget/GenericPin';
 
 export default function LectureComponent() {
   const { lectureId }: Readonly<Params<string>> = useParams();

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import resolveComponent from '../../utils/componentResolver';
-import { Widget } from '../../utils/Widget';
+import { Widget } from '../widget/Widget';
 import { Layout, Layouts, Responsive, WidthProvider } from 'react-grid-layout';
 import 'react-grid-layout/css/styles.css';
 import dbInstance from '../../utils/layoutsDB';

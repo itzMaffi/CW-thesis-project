@@ -1,8 +1,8 @@
 import Quiz from 'react-quiz-component';
 import questions from './questions';
 import './Quizgame.css';
-import { Widget } from '../../utils/Widget';
-import WidgetHeader from '../curriculum/WidgetHeader';
+import { Widget } from '../widget/Widget';
+import WidgetHeader from '../widgetHeader/WidgetHeader';
 
 function QuizGame({ widget }: { widget: Widget }) {
   return (

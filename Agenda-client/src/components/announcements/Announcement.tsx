@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Widget } from '../../utils/Widget';
-import WidgetHeader from './WidgetHeader';
+import { Widget } from '../widget/Widget';
+import WidgetHeader from '../widgetHeader/WidgetHeader';
 
 const Announcement: React.FC<{ widget: Widget }> = ({ widget }) => {
   const [slackMessages, setSlackMessages] = useState<string[]>([]);

@@ -1,6 +1,6 @@
 import Pin from './Pin';
-import { pinWidget, unPinWidget } from '../../services/LectureService';
-import { Widget, WidgetType } from '../../utils/Widget';
+import { pinWidget, unPinWidget } from '../../services/widgetService';
+import { Widget, WidgetType } from './Widget';
 import { useEffect, useState } from 'react';
 import layoutsDB from '../../utils/layoutsDB';
 

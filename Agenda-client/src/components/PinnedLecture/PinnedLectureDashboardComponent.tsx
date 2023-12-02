@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import ILecture from './interfaces/Lecture';
-import curriculumDB from './data/curriculumDb';
-import { Widget } from '../../utils/Widget';
-import GenericPin from './GenericPin';
+import ILecture from '../curriculum/interfaces/Lecture';
+import curriculumDB from '../curriculum/data/curriculumDb';
+import { Widget } from '../widget/Widget';
+import GenericPin from '../widget/GenericPin';
 
 export default function PinnedLectureDashboardComponent({
   widget,

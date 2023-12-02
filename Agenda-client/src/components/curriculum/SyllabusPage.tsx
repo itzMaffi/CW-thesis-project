@@ -3,8 +3,8 @@ import curriculumDb from './data/curriculumDb';
 import { Link } from 'react-router-dom';
 import ICurriculum from './interfaces/Curriculum';
 import { schedule } from './data/curriculumDb';
-import GenericPin from './GenericPin';
-import { WidgetType } from '../../utils/Widget';
+import GenericPin from '../widget/GenericPin';
+import { WidgetType } from '../widget/Widget';
 
 export default function SyllabusPage() {
   const [curriculum, setCurriculum] = useState<ICurriculum[]>([]);
