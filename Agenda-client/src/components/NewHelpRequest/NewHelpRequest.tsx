@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import StudentsList from './StudentsList';
 
 import dummyStudents from './data/dummystudentslist.json';
-import { Widget } from '../../utils/Widget';
-import WidgetHeader from '../curriculum/WidgetHeader';
+import { Widget } from '../widget/Widget';
+import WidgetHeader from '../widgetHeader/WidgetHeader';
 
 const NewHelpRequest: React.FC<{ widget: Widget }> = ({
   widget,

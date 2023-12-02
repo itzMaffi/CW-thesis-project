@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-import curriculumDb from './data/curriculumDb';
+import curriculumDb from '../curriculum/data/curriculumDb';
 import { Link } from 'react-router-dom';
-import ICurriculum from './interfaces/Curriculum';
+import ICurriculum from '../curriculum/interfaces/Curriculum';
 import logo from '../../assets/advancedjs1.png';
-import GenericPin from './GenericPin';
-import { Widget, WidgetType } from '../../utils/Widget';
-import WidgetHeader from './WidgetHeader';
+import GenericPin from '../widget/GenericPin';
+import { Widget, WidgetType } from '../widget/Widget';
+import WidgetHeader from '../widgetHeader/WidgetHeader';
 
 export default function DailyCurriculum({ widget }: { widget: Widget }) {
   const [day, setDay] = useState(6);

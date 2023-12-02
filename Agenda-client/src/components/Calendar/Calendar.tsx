@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { getTodayEvents, Event } from './calendarService';
 import clsx from 'clsx';
 import { DateTime } from 'luxon';
-import WidgetHeader from '../curriculum/WidgetHeader';
-import { Widget } from '../../utils/Widget';
+import WidgetHeader from '../widgetHeader/WidgetHeader';
+import { Widget } from '../widget/Widget';
 
 export default function Calendar({ widget }: { widget: Widget }) {
   const [events, setEvents] = useState<Event[]>();

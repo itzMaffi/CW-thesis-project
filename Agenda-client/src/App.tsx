@@ -1,5 +1,5 @@
 import Dashboard from './components/Dashboard/Dashboard';
-import LectureComponent from './components/curriculum/LectureComponent';
+import LectureComponent from './components/LecturePage/LectureComponent';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import SyllabusPage from './components/curriculum/SyllabusPage';
 import { Navbar } from './components/Navbar/Navbar';

@@ -1,5 +1,5 @@
 import { Layouts } from 'react-grid-layout';
-import { Widget, WidgetType } from './Widget';
+import { Widget, WidgetType } from '../components/widget/Widget';
 
 const defaultLayouts: Layouts = {
   lg: [

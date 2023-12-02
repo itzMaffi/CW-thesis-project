@@ -1,5 +1,5 @@
-import { Widget } from '../../utils/Widget';
-import GenericPin from './GenericPin';
+import { Widget } from '../widget/Widget';
+import GenericPin from '../widget/GenericPin';
 
 export default function WidgetHeader({
   children,
