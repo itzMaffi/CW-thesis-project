@@ -20,4 +20,5 @@ export enum WidgetType {
   quiz,
   calendar,
   cirriculumProgress,
+  stackOverflow,
 }

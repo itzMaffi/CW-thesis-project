@@ -9,18 +9,19 @@ import QuizGame from '../components/QuizGame/QuizGame';
 import Calendar from '../components/Calendar/Calendar';
 import { CurriculumProgress } from '../components/cirruculumProgress/CurriculumProgress';
 import userData from '../components/userProfile/data/userData.json';
-
+import { StackOverflow } from '../components/Stackoverflow/Stackoverflow';
 
 export default function resolveComponent(widget: Widget) {
   const components: ComponentsMapper = {
     [WidgetType.userProfile]: <UserProfile />,
-    [WidgetType.helpRequest]: <NewHelpRequest widget={widget} />,
-    [WidgetType.lectureOfTheDay]: <DailyCurriculum widget={widget} />,
+    [WidgetType.helpRequest]: <NewHelpRequest />,
+    [WidgetType.stackOverflow]: <StackOverflow />,
+    [WidgetType.lectureOfTheDay]: <DailyCurriculum />,
     [WidgetType.pinnedLecture]: (
       <PinnedLectureDashboardComponent widget={widget} />
     ),
     [WidgetType.announcement]: <Announcement widget={widget} />,
-    [WidgetType.quiz]: <QuizGame widget={widget}  />,
+    [WidgetType.quiz]: <QuizGame widget={widget} />,
     [WidgetType.calendar]: <Calendar widget={widget} />,
     [WidgetType.cirriculumProgress]: (
       <CurriculumProgress progress={userData.userDetails.cirriculumProgress} />
