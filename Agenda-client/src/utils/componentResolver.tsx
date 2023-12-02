@@ -7,21 +7,27 @@ import NewHelpRequest from '../components/NewHelpRequest/NewHelpRequest';
 import Announcement from '../components/curriculum/Announcement';
 import QuizGame from '../components/QuizGame/QuizGame';
 import Calendar from '../components/Calendar/Calendar';
+import { CurriculumProgress } from '../components/cirruculumProgress/CurriculumProgress';
+import userData from '../components/userProfile/data/userData.json';
+
 export default function resolveComponent(
   componentType: WidgetType,
 
   layoutKey: string
 ) {
   const components: ComponentsMapper = {
-    [WidgetType.login]: <UserProfile />,
+    [WidgetType.userProfile]: <UserProfile />,
     [WidgetType.helpRequest]: <NewHelpRequest />,
     [WidgetType.lectureOfTheDay]: <DailyCurriculum />,
     [WidgetType.pinnedLecture]: (
       <PinnedLectureDashboardComponent layoutKey={layoutKey} />
     ),
     [WidgetType.announcement]: <Announcement />,
-    [WidgetType.quiz]: <QuizGame/>,
+    [WidgetType.quiz]: <QuizGame />,
     [WidgetType.calendar]: <Calendar />,
+    [WidgetType.cirriculumProgress]: (
+      <CurriculumProgress progress={userData.userDetails.cirriculumProgress} />
+    ),
   };
   return components[componentType] || null;
 }
