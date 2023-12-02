@@ -15,14 +15,14 @@ const defaultLayouts: Layouts = {
 };
 
 const defaultWidgets: Widget[] = [
-  { i: '1', type: WidgetType.userProfile },
-  { i: '2', type: WidgetType.helpRequest },
-  { i: '3', type: WidgetType.lectureOfTheDay },
-  { i: '4', type: WidgetType.announcement },
-  { i: '5', type: WidgetType.quiz },
-  { i: '6', type: WidgetType.calendar },
-  { i: '7', type: WidgetType.cirriculumProgress },
-  { i: '8', type: WidgetType.stackOverflow },
+  { id: '1', type: WidgetType.userProfile },
+  { id: '2', type: WidgetType.helpRequest },
+  { id: '3', type: WidgetType.lectureOfTheDay },
+  { id: '4', type: WidgetType.announcement },
+  { id: '5', type: WidgetType.quiz },
+  { id: '6', type: WidgetType.calendar },
+  { id: '7', type: WidgetType.cirriculumProgress },
+  { id: '8', type: WidgetType.stackOverflow },
 ];
 
 class db {
