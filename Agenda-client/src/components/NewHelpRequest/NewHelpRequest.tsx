@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import StudentsList from './StudentsList';
-import axios from 'axios';
 
 import dummyStudents from './data/dummystudentslist.json';
 import { Widget } from '../widget/Widget';
@@ -126,20 +125,6 @@ const NewHelpRequest: React.FC<{ widget: Widget }> = ({
     };
   }, [isSelected, showError]);
 
-  const [query, setQuery] = useState('');
-  const [answers, setAnswers] = useState([]);
-
-  const fetchAnswers = async () => {
-    try {
-      const response = await axios.get(
-        `https://api.stackexchange.com/2.3/search/advanced?order=desc&sort=activity&q=${query}&site=stackoverflow`
-      );
-      setAnswers(response.data.items);
-    } catch (error) {
-      console.error('Error fetching data: ', error);
-    }
-  };
-
   return (
     <form
       onSubmit={onFormSubmit}
@@ -214,28 +199,6 @@ const NewHelpRequest: React.FC<{ widget: Widget }> = ({
             Send
           </button>
         </div>
-      </div>
-
-      <div>
-        <input
-          type="text"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-        <button onClick={fetchAnswers}>Search</button>
-        <ul>
-          {answers.map((answer, index) => (
-            <li key={index}>
-              <a
-                href={`https://stackoverflow.com/questions/${answer.question_id}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {answer.title}
-              </a>
-            </li>
-          ))}
-        </ul>
       </div>
     </form>
   );
