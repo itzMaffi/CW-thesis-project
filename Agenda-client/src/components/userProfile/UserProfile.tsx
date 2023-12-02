@@ -32,14 +32,14 @@ export const UserProfile: FC = () => {
   };
 
   return user ? (
-    <div className="profile flex justify-between w-full h-full p-4 overflow-hidden">
-      <div className="flex gap-4 justify-center items-center">
+    <div className="profile flex justify-between w-full h-full p-2 overflow-hidden">
+      <div className="flex gap-4 justify-between items-center">
         <div className="avatar grow flex-shrink-0">
           <img
             className="rounded-[0.5rem]"
             src={avatar}
-            width={63}
-            height={63}
+            width={84}
+            height={84}
             alt="Profile"
           />
         </div>
