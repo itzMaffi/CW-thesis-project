@@ -2,8 +2,9 @@ import { Params, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import ILecture from './interfaces/Lecture';
 import curriculumDb from './data/curriculumDb';
-import LecturePin from './LecturePin';
 import { CodeBlock, github } from 'react-code-blocks';
+import { WidgetType } from '../../utils/Widget';
+import GenericPin from './GenericPin';
 
 export default function LectureComponent() {
   const { lectureId }: Readonly<Params<string>> = useParams();
@@ -26,7 +27,7 @@ export default function LectureComponent() {
                 {lecture.name}
               </h2>
               <span className="text-3xl">
-                <LecturePin lectureId={lecture.id}></LecturePin>
+                <GenericPin widgetType={WidgetType.pinnedLecture} dataId={''+lecture.id}></GenericPin>
               </span>
             </div>
             <div className="flex flex-col items-center w-full">

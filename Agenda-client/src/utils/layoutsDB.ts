@@ -14,13 +14,13 @@ const defaultLayouts: Layouts = {
 };
 
 const defaultWidgets: Widget[] = [
-  { i: '1', type: WidgetType.userProfile },
-  { i: '2', type: WidgetType.helpRequest },
-  { i: '3', type: WidgetType.lectureOfTheDay },
-  { i: '4', type: WidgetType.announcement },
-  { i: '5', type: WidgetType.quiz },
-  { i: '6', type: WidgetType.calendar },
-  { i: '7', type: WidgetType.cirriculumProgress },
+  { id: '1', type: WidgetType.userProfile },
+  { id: '2', type: WidgetType.helpRequest },
+  { id: '3', type: WidgetType.lectureOfTheDay },
+  { id: '4', type: WidgetType.announcement },
+  { id: '5', type: WidgetType.quiz },
+  { id: '6', type: WidgetType.calendar },
+  { id: '7', type: WidgetType.cirriculumProgress },
 ];
 
 class db {
@@ -57,7 +57,7 @@ class db {
   saveWidget(widget: Widget): Promise<void> {
     this._widgets.push(widget);
     this._layouts.lg.push({
-      i: widget.i,
+      i: widget.id,
       x: 0,
       y: Infinity,
       h: 1,
@@ -70,7 +70,7 @@ class db {
   }
 
   removeWidgetByID(id: string) {
-    this._widgets = this._widgets.filter((el) => el.i !== id);
+    this._widgets = this._widgets.filter((el) => el.id !== id);
     Object.values(this._layouts).forEach(
       (layout) => (layout = layout.filter((el) => el.i !== id))
     );
@@ -80,6 +80,18 @@ class db {
 
   setWidgetCallback(updateDashboard: () => void) {
     this.updateDashboard = updateDashboard;
+  }
+
+  getWidget(id: string): Promise<Widget> {
+    return Promise.resolve(this._widgets.find((el) => el.id === id)!!);
+  }
+
+  async getWidgetByDataId(dataId: string) {
+    return this._widgets.find((widget) => widget.dataId === dataId);
+  }
+
+  removeWidget(widget: Widget): Promise<void> {
+    return this.removeWidgetByID(widget.id);
   }
 }
 

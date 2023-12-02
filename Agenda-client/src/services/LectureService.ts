@@ -11,7 +11,17 @@ export async function unPinLecture(lectureId: number) {
 
 export async function pinLecture(lectureId: number) {
   const widget: Widget = new Widget(WidgetType.pinnedLecture);
-  await curriculumDb.pinLectureBy(lectureId, widget.i);
+  await curriculumDb.pinLectureBy(lectureId, widget.id);
 
   await layoutDb.saveWidget(widget);
+}
+
+export async function pinWidget(widgetType: WidgetType, dataId?: string) {
+  const widget: Widget = new Widget(widgetType, dataId);
+  await layoutDb.saveWidget(widget);
+  return widget;
+}
+
+export async function unPinWidget(widget: Widget) {
+  await layoutDb.removeWidget(widget);
 }

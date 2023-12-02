@@ -69,10 +69,10 @@ function Dashboard() {
           >
             {widgets.map((widget: Widget) => (
               <div
-                key={widget.i}
+                key={widget.id}
                 className="border-2 border-cw-orange rounded-lg bg-white overflow-auto"
               >
-                {resolveComponent(widget.type, widget.i)}
+                {resolveComponent(widget)}
               </div>
             ))}
           </ResponsiveGridLayout>

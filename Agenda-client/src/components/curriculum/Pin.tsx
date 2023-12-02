@@ -3,19 +3,21 @@ import { RiPushpinLine, RiUnpinLine } from 'react-icons/ri';
 export default function Pin({
   isPinned,
   onTogglePin,
+  className,
 }: {
   isPinned: boolean;
   onTogglePin: () => void;
+  className: string;
 }) {
   return isPinned ? (
     <RiUnpinLine
       onClick={onTogglePin}
-      className="ml-4 cursor-pointer text-cw-orange"
+      className={`cursor-pointer ${className}`}
     />
   ) : (
     <RiPushpinLine
       onClick={onTogglePin}
-      className="ml-4 cursor-pointer text-cw-orange"
+      className={`cursor-pointer ${className}`}
     />
   );
 }

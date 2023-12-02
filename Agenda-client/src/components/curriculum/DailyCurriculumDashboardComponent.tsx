@@ -3,9 +3,11 @@ import curriculumDb from './data/curriculumDb';
 import { Link } from 'react-router-dom';
 import ICurriculum from './interfaces/Curriculum';
 import logo from '../../assets/advancedjs1.png';
-import LecturePin from './LecturePin';
+import GenericPin from './GenericPin';
+import { Widget, WidgetType } from '../../utils/Widget';
+import WidgetHeader from './WidgetHeader';
 
-export default function DailyCurriculum() {
+export default function DailyCurriculum({ widget }: { widget: Widget }) {
   const [day, setDay] = useState(6);
   const [dailyCurriculum, setDailyCurriculum] = useState<ICurriculum>();
 
@@ -27,19 +29,21 @@ export default function DailyCurriculum() {
   return (
     dailyCurriculum && (
       <div className="w-full h-full flex flex-col">
-        <div className="bg-cw-orange min-w-full p-2 text-lg font-bold font-sans text-white rounded-tr-md rounded-tl-md flex justify-between">
-          {day !== 0 && (
-            <button className="" onClick={onPreviousDay}>
-              {'<'}
-            </button>
-          )}
-          <h2 className="grow text-center">Lecture of the day</h2>
-          {day < 6 && (
-            <button className="" onClick={onNextDay}>
-              {'>'}
-            </button>
-          )}
-        </div>
+        <WidgetHeader widget={widget}>
+          <div className="flex justify-center">
+            {day !== 0 && (
+              <button className="" onClick={onPreviousDay}>
+                {'<'}
+              </button>
+            )}
+            <div className="ml-4 mr-4 text-center">Lecture of the day</div>
+            {day < 6 && (
+              <button className="" onClick={onNextDay}>
+                {'>'}
+              </button>
+            )}
+          </div>
+        </WidgetHeader>
         <div className="pl-6 pr-6 pt-2 pb-4 flex flex-1 w-full">
           <div className="grow w-1/2">
             {dailyCurriculum.toy_problem_name && (
@@ -53,7 +57,10 @@ export default function DailyCurriculum() {
               <Link to={'Lecture/' + dailyCurriculum.lecture_id}>
                 {dailyCurriculum.lecture_name}
               </Link>
-              <LecturePin lectureId={dailyCurriculum.lecture_id}></LecturePin>
+              <GenericPin
+                widgetType={WidgetType.pinnedLecture}
+                dataId={'' + dailyCurriculum.lecture_id}
+              ></GenericPin>
             </p>
             <h2 className="text-gray-400">Exercise</h2>
             <p>{dailyCurriculum.exercise_name}</p>
