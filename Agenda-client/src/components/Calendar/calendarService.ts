@@ -1,3 +1,5 @@
+const BACKEND_URL = process.env.VITE_BACKEND_URL ?? 'http://localhost:3000';
+
 export type Event = {
   id: string;
   summary: string;
@@ -10,7 +12,7 @@ function sortEvents(aEvent: Event, bEvent: Event) {
 }
 
 export async function getTodayEvents() {
-  const data = await fetch('http://localhost:3000/calendar');
+  const data = await fetch(`${BACKEND_URL}/calendar`);
   const eventList = await data.json();
   eventList.sort(sortEvents);
   return eventList;
