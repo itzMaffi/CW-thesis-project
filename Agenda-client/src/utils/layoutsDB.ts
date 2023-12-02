@@ -9,7 +9,7 @@ const defaultLayouts: Layouts = {
     { i: '4', x: 0, y: 2, h: 2, w: 1, isResizable: false },
     { i: '5', x: 1, y: 2, h: 2, w: 2, isResizable: false },
     { i: '6', x: 3, y: 1, h: 4, w: 1, isResizable: false },
-    { i: '7', x: 3, y: 1, h: 1, w: 1, isResizable: false },
+    { i: '7', x: 0, y: 1, h: 1, w: 1, isResizable: false },
   ],
 };
 
