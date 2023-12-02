@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Codeworks senior thesis project",
   "scripts": {
-    "test": "cd Agenda-client; npm i; npm test",
+    "test": "cd Agenda-client && npm i && npm test",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
     "code": "ts-node server/index.ts & cd Agenda-client && npm run dev"
   },
