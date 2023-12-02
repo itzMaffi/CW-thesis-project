@@ -2,8 +2,14 @@ import React, { useEffect, useState } from 'react';
 import StudentsList from './StudentsList';
 
 import dummyStudents from './data/dummystudentslist.json';
+import { Widget } from '../../utils/Widget';
+import WidgetHeader from '../curriculum/WidgetHeader';
 
-const NewHelpRequest: React.FC = () => {
+const NewHelpRequest: React.FC<{ widget: Widget }> = ({
+  widget,
+}: {
+  widget: Widget;
+}) => {
   const [showList, setShowList] = useState(false);
   const [selectedStudent, setSelectedStudent] = useState('');
   const [filteredStudents, setFilteredStudents] = useState<string[]>([]);
@@ -124,9 +130,7 @@ const NewHelpRequest: React.FC = () => {
       onSubmit={onFormSubmit}
       className="flex flex-col justify-center items-center min-w-full"
     >
-      <div className="bg-cw-orange min-w-full text-center p-2 text-lg font-bold font-sans text-white ">
-        New help request
-      </div>
+      <WidgetHeader widget={widget}>New help request</WidgetHeader>
       <div className=" flex flex-col gap-2 min-w-full max-w-full">
         <div className="flex flex-col justify-center items-center gap-2 min-w-full p-2 mt-1">
           <div className="text-sm text-gray-500 cursor-default">

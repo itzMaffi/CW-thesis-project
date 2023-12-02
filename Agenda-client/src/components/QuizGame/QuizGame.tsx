@@ -1,12 +1,15 @@
 import Quiz from 'react-quiz-component';
 import questions from './questions';
 import './Quizgame.css';
+import { Widget } from '../../utils/Widget';
+import WidgetHeader from '../curriculum/WidgetHeader';
 
-function QuizGame() {
+function QuizGame({ widget }: { widget: Widget }) {
   return (
-    <div>
+    <>
+      <WidgetHeader widget={widget}>Quiz of the day</WidgetHeader>
       <Quiz quiz={questions} shuffleAnswer={true} />
-    </div>
+    </>
   );
 }
 

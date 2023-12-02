@@ -3,7 +3,8 @@ import curriculumDb from './data/curriculumDb';
 import { Link } from 'react-router-dom';
 import ICurriculum from './interfaces/Curriculum';
 import { schedule } from './data/curriculumDb';
-import LecturePin from './LecturePin';
+import GenericPin from './GenericPin';
+import { WidgetType } from '../../utils/Widget';
 
 export default function SyllabusPage() {
   const [curriculum, setCurriculum] = useState<ICurriculum[]>([]);
@@ -28,7 +29,7 @@ export default function SyllabusPage() {
             Lecture:{' '}
             <Link to={'Lecture/' + el.lecture_id}>{el.lecture_name}</Link>
           </p>
-          <LecturePin lectureId={el.lecture_id} />
+          <GenericPin widgetType={WidgetType.pinnedLecture} dataId={''+el.lecture_id} />
           <p>Exercise: {el.exercise_name}</p>
         </details>
       ))}

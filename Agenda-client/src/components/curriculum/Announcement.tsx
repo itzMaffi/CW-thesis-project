@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { Widget } from '../../utils/Widget';
+import WidgetHeader from './WidgetHeader';
 
-const Announcement: React.FC = () => {
+const Announcement: React.FC<{ widget: Widget }> = ({ widget }) => {
   const [slackMessages, setSlackMessages] = useState<string[]>([]);
 
   async function fetchSlackMessages() {
@@ -34,10 +36,13 @@ const Announcement: React.FC = () => {
 
   return (
     <div className="relative">
-      <h1 className="text-lg text-white bg-cw-orange font-bold text-center w-full sticky top-0 p-2">Announcements</h1>
-      <ul className='px-2 py-4'>
+      <WidgetHeader widget={widget}>Announcements</WidgetHeader>
+      <ul className="px-2 py-4">
         {slackMessages.map((message: string, index: number) => (
-          <li key={index} className="text-lg mb-2 bg-cw-light-orange rounded-lg px-4 py-2 text-gray-700">
+          <li
+            key={index}
+            className="text-lg mb-2 bg-cw-light-orange rounded-lg px-4 py-2 text-gray-700"
+          >
             {message}
           </li>
         ))}

@@ -1,11 +1,13 @@
 export class Widget {
-  i: string;
+  id: string;
   type: WidgetType;
+  dataId?: string;
 
-  constructor(type: WidgetType) {
+  constructor(type: WidgetType, dataId?: string) {
     const layoutId: string = crypto.randomUUID();
-    this.i = layoutId;
+    this.id = layoutId;
     this.type = type;
+    this.dataId = dataId;
   }
 }
 

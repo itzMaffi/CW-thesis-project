@@ -2,8 +2,10 @@ import { useEffect, useState } from 'react';
 import { getTodayEvents, Event } from './calendarService';
 import clsx from 'clsx';
 import { DateTime } from 'luxon';
+import WidgetHeader from '../curriculum/WidgetHeader';
+import { Widget } from '../../utils/Widget';
 
-export default function Calendar() {
+export default function Calendar({ widget }: { widget: Widget }) {
   const [events, setEvents] = useState<Event[]>();
   const [error, setError] = useState<string>('');
 
@@ -20,9 +22,7 @@ export default function Calendar() {
 
   return (
     <>
-      <div className="bg-cw-orange w-full text-center p-2 text-lg font-bold text-white ">
-        Schedule
-      </div>
+      <WidgetHeader widget={widget}>Schedule</WidgetHeader>
       {events &&
         !error &&
         events.map((event: Event) => (
