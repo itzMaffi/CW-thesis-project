@@ -5,7 +5,7 @@ import processToken from '../../services/TokenService';
 import { useEffect } from 'react';
 import googleButton from '../../assets/google_signin_assets/Web/svg/light/web_light_rd_SI.svg';
 
-const BACKEND_URL = process.env.VITE_BACKEND_URL ?? 'http://localhost:3000';
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL ?? 'http://localhost:3000';
 
 export const LogIn: FC = () => {
   const navigate = useNavigate();
