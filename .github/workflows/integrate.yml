@@ -12,11 +12,20 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
+
       - name: Use Node.js 18.x
         uses: actions/setup-node@v1
         with:
           node-version: 18.x
-      - name: Install dependencies
-        run: npm install
-      - name: Run tests
-        run: npm test
+
+      - name: Install server dependencies
+        run: cd server && npm i
+
+      - name: Run server tests
+        run: cd server && npm test
+
+      - name: Install client dependencies
+        run: cd Agenda-client && npm i
+
+      - name: Run client tests
+        run: cd Agenda-client && npm test
