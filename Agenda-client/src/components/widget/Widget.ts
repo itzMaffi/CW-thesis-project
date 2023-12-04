@@ -12,13 +12,13 @@ export class Widget {
 }
 
 export enum WidgetType {
-  userProfile,
-  helpRequest,
-  lectureOfTheDay,
-  pinnedLecture,
-  announcement,
-  quiz,
-  calendar,
-  cirriculumProgress,
-  stackOverflow,
+  userProfile = "userProfile",
+  helpRequest = "helpRequest",
+  lectureOfTheDay = 'lectureOfTheDay',
+  pinnedLecture = 'pinnedLecture',
+  announcement = 'announcement',
+  quiz = 'quiz',
+  calendar = 'calendar',
+  cirriculumProgress = 'cirriculumProgress',
+  stackOverflow = 'stackOverflow',
 }
