@@ -25,8 +25,6 @@ RUN npm run build
 
 # Final Stage - Nginx to serve the client
 FROM nginx:alpine
-# Env variables
-ENV VITE_BACKEND_URL=https://cw-thesis-project-production.up.railway.app
 COPY --from=build /app/Agenda-client/dist /usr/share/nginx/html
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
