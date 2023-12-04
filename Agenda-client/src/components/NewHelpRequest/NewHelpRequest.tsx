@@ -86,6 +86,8 @@ const NewHelpRequest: React.FC<{ widget: Widget }> = ({
   const deleteSelectedStudent = () => {
     setShowList(false);
   };
+
+  ////handle the global events like enter button or esc button to empty the input elements
   useEffect(() => {
     const handleGlobalClick = (event: any) => {
       if (!isSelected && !event.target.closest('.input-area')) {
