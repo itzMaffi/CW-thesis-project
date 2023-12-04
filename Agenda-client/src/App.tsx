@@ -1,29 +1,64 @@
 import Dashboard from './components/Dashboard/Dashboard';
 import LectureComponent from './components/LecturePage/LectureComponent';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import SyllabusPage from './components/curriculum/SyllabusPage';
 import { Navbar } from './components/Navbar/Navbar';
 import { LogIn } from './components/LoginPage/LogIn';
 import Token from './components/Token/Token';
+import { ReactNode, useState } from 'react';
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
   return (
     <>
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/" element={<LogIn />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route
+            path="/"
+            element={<LogIn setIsAuthenticated={setIsAuthenticated} />}
+          />
           <Route path="/token/:token" element={<Token />} />
           <Route
-            path="/lecture/:lectureId"
-            element={<LectureComponent></LectureComponent>}
+            path="/dashboard"
+            element={
+              <ProtectedRoute isAuthenticated={isAuthenticated}>
+                <Dashboard />
+              </ProtectedRoute>
+            }
           />
-          <Route path="/syllabus" element={<SyllabusPage></SyllabusPage>} />
+          <Route
+            path="/lecture/:lectureId"
+            element={
+              <ProtectedRoute isAuthenticated={isAuthenticated}>
+                <LectureComponent />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/syllabus"
+            element={
+              <ProtectedRoute isAuthenticated={isAuthenticated}>
+                <SyllabusPage />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </>
   );
+}
+
+function ProtectedRoute({
+  isAuthenticated,
+  children,
+}: {
+  isAuthenticated: boolean;
+  children: ReactNode;
+}) {
+  if (!isAuthenticated) return <Navigate to="/" replace></Navigate>;
+  return children;
 }
 
 export default App;
