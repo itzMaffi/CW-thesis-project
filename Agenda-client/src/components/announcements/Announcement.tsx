@@ -8,9 +8,12 @@ import slackLogo from '../../assets/slack-logo.svg';
 const Announcement: React.FC<{ widget: Widget }> = ({ widget }) => {
   const [slackMessages, setSlackMessages] = useState<string[]>([]);
 
+  const backendURL =
+    import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
+
   async function fetchSlackMessages() {
     try {
-      const response = await fetch('http://localhost:3000/slack-messages');
+      const response = await fetch(`${backendURL}/slack-messages`);
 
       if (response.ok) {
         const data = await response.json();
@@ -76,7 +79,7 @@ const Announcement: React.FC<{ widget: Widget }> = ({ widget }) => {
           onClick={openSlackChannel}
           className="p-2 bg-gray-200 rounded-full hover:bg-gray-300 focus:outline-none focus:ring focus:ring-gray-400 mb-8"
         >
-          <p className='text-sm'>Open in</p>{' '}
+          <p className="text-sm">Open in</p>{' '}
           <img src={slackLogo} className="h-3 w-30" alt="Slack logo" />
         </button>
       </div>
