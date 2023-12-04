@@ -3,6 +3,7 @@ import { Widget } from '../widget/Widget';
 import WidgetHeader from '../widgetHeader/WidgetHeader';
 import parse from 'html-react-parser';
 import emoji from 'emoji-dictionary';
+import slackLogo from '../../assets/slack-logo.svg';
 
 const Announcement: React.FC<{ widget: Widget }> = ({ widget }) => {
   const [slackMessages, setSlackMessages] = useState<string[]>([]);
@@ -52,6 +53,11 @@ const Announcement: React.FC<{ widget: Widget }> = ({ widget }) => {
     return parse(formattedMessage);
   }
 
+  const openSlackChannel = () => {
+    const slackUrl = `slack://channel?team=${import.meta.env.VITE_SLACK_TEAM_ID}&id=${import.meta.env.VITE_SLACK_CHANNEL_ID}`;
+    window.open(slackUrl, '_blank');
+  };
+
   return (
     <div className="relative">
       <WidgetHeader widget={widget}>Announcements</WidgetHeader>
@@ -65,6 +71,15 @@ const Announcement: React.FC<{ widget: Widget }> = ({ widget }) => {
           </li>
         ))}
       </ul>
+      <div className="flex justify-center items-center">
+        <button
+          onClick={openSlackChannel}
+          className="p-2 bg-gray-200 rounded-full hover:bg-gray-300 focus:outline-none focus:ring focus:ring-gray-400 mb-8"
+        >
+          <p className='text-sm'>Open in</p>{' '}
+          <img src={slackLogo} className="h-3 w-30" alt="Slack logo" />
+        </button>
+      </div>
     </div>
   );
 };
