@@ -1,18 +1,22 @@
-import Dashboard from './components/Dashboard/Dashboard';
+import Dashboard, { DashboardState } from './components/Dashboard/Dashboard';
 import LectureComponent from './components/LecturePage/LectureComponent';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import SyllabusPage from './components/curriculum/SyllabusPage';
 import { Navbar } from './components/Navbar/Navbar';
 import { LogIn } from './components/LoginPage/LogIn';
 import Token from './components/Token/Token';
-import { ReactNode, useState } from 'react';
+import { createContext, useState, ReactNode } from 'react';
+
+export const DashboardContext = createContext<any>(null)
 import { LectureProvider } from './context/LectureContext';
 
 function App() {
+  const [dashboardState, setDashboardState] = useState<DashboardState>();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   return (
     <>
+    <DashboardContext.Provider value={{dashboardState, setDashboardState}}>
       <BrowserRouter>
         <Navbar />
         <LectureProvider>
@@ -49,6 +53,7 @@ function App() {
           </Routes>
         </LectureProvider>
       </BrowserRouter>
+      </DashboardContext.Provider>
     </>
   );
 }
