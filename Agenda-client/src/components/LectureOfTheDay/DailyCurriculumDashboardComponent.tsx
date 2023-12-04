@@ -57,7 +57,7 @@ export default function DailyCurriculum({ widget }: { widget: Widget }) {
             )}
             <h2 className="text-gray-400">Lecture:</h2>
             <p className="flex">
-              <Link to={'Lecture/' + dailyCurriculum.lecture_id}>
+              <Link to={'/Lecture/' + dailyCurriculum.lecture_id}>
                 {dailyCurriculum.lecture_name}
               </Link>
               <GenericPin

@@ -31,7 +31,7 @@ export default function PinnedLectureDashboardComponent({
         <p className="text-cp-dark-blue">{lecture.summary}</p>
         <Link
           className="absolute bottom-1 right-1"
-          to={'Lecture/' + lecture.id}
+          to={'/Lecture/' + lecture.id}
         >
           <p className="bg-cp-blue hover:bg-cp-middle-blue shadow-md px-2 py-1 rounded  text-white font-semibold">
             Go to lecture
