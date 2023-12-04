@@ -1,9 +1,20 @@
 import { FC, useState } from 'react';
 import axios from 'axios';
+import { Widget } from '../../utils/Widget';
+import WidgetHeader from '../curriculum/WidgetHeader';
+import stackoverflow from '../../assets/Stack_Overflow.png';
+interface Answer {
+  title: string;
+  question_id: string;
+}
 
-export const StackOverflow: FC = () => {
+export const StackOverflow: FC<{ widget: Widget }> = ({
+  widget,
+}: {
+  widget: Widget;
+}) => {
   const [query, setQuery] = useState('');
-  const [answers, setAnswers] = useState([]);
+  const [answers, setAnswers] = useState<Answer[]>([]);
 
   const fetchAnswers = async () => {
     try {
@@ -11,25 +22,54 @@ export const StackOverflow: FC = () => {
         `https://api.stackexchange.com/2.3/search/advanced?order=desc&sort=activity&q=${query}&site=stackoverflow`
       );
       setAnswers(response.data.items);
+      setQuery('');
     } catch (error) {
       console.error('Error fetching data: ', error);
     }
   };
+
   return (
     <div>
-      <div>find a answer on Stack Overflow</div>
+      <WidgetHeader widget={widget}>
+        <div className="pt-2"> Find similar questions on Stack Overflow</div>
+      </WidgetHeader>
 
       <div>
-        <input
-          className="bg-orange-200"
-          type="text"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-        <button onClick={fetchAnswers}>Search</button>
-        <ul>
+        <div className="flex justify-center items-center gap-3 m-3">
+          <input
+            placeholder={'Type in your question here'}
+            className="p-2 shadow-sm w-full placeholder-gray-400 rounded-md border border-slate-200 "
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            onKeyDown={(e) => e.key === 'Enter' && fetchAnswers()}
+          />
+          <button
+            className="w-24 bg-cw-orange font-bold font-sans text-white p-1 rounded-md  mt-1  hover:bg-cw-orange active:scale-90 shadow-lg active:shadow-inner"
+            onClick={fetchAnswers}
+          >
+            Search
+          </button>
+        </div>
+
+        <ul className="flex flex-col justify-center items-start pl-2">
+          {answers.length === 0 ? (
+            <div>
+              <img
+                className="w-19 opacity-10"
+                src={stackoverflow}
+                alt="stack overflow logo"
+              />
+            </div>
+          ) : (
+            <></>
+          )}
+
           {answers.map((answer, index) => (
-            <li key={index}>
+            <li
+              key={index}
+              className="text-gray-700  hover:bg-gray-100 cursor-pointer p-2"
+            >
               <a
                 href={`https://stackoverflow.com/questions/${answer.question_id}`}
                 target="_blank"
