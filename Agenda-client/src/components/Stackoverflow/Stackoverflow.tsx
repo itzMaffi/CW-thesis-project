@@ -62,7 +62,7 @@ export const StackOverflow: FC<{ widget: Widget }> = ({
         <ul className="flex flex-col justify-center items-start pl-2">
           <div>
             <img
-              className="w-19 opacity-10 fixed -z-20"
+              className="w-[95%] opacity-10 fixed -z-20"
               src={stackoverflow}
               alt="stack overflow logo"
             />
