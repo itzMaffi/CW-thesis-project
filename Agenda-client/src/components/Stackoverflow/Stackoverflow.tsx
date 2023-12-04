@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import axios from 'axios';
-import { Widget } from '../../utils/Widget';
-import WidgetHeader from '../curriculum/WidgetHeader';
+import { Widget } from '../widget/Widget';
+import WidgetHeader from '../widgetHeader/WidgetHeader';
 import stackoverflow from '../../assets/Stack_Overflow.png';
 interface Answer {
   title: string;
