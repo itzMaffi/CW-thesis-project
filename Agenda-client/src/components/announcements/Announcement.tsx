@@ -54,7 +54,7 @@ const Announcement: React.FC<{ widget: Widget }> = ({ widget }) => {
   }
 
   const openSlackChannel = () => {
-    const slackUrl = `slack://channel?team=${import.meta.env.VITE_SLACK_TEAM_ID}&id=${import.meta.env.VITE_SLACK_CHANNEL_ID}`;
+    const slackUrl = 'slack://channel?team=T0676K8HS79&id=C067J7TJGRK';
     window.open(slackUrl, '_blank');
   };
 
