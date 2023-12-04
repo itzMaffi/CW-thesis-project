@@ -53,17 +53,13 @@ export const StackOverflow: FC<{ widget: Widget }> = ({
         </div>
 
         <ul className="flex flex-col justify-center items-start pl-2">
-          {answers.length === 0 ? (
-            <div>
-              <img
-                className="w-19 opacity-10"
-                src={stackoverflow}
-                alt="stack overflow logo"
-              />
-            </div>
-          ) : (
-            <></>
-          )}
+          <div>
+            <img
+              className="w-[95%] opacity-10 fixed -z-20"
+              src={stackoverflow}
+              alt="stack overflow logo"
+            />
+          </div>
 
           {answers.map((answer, index) => (
             <li
