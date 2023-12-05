@@ -16,7 +16,15 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 18.x
-      - name: Install dependencies
-        run: npm install
-      - name: Run tests
-        run: npm test
+
+      - name: Install server dependencies
+        run: cd server && npm ci
+
+      - name: Run server tests
+        run: cd server && npm test
+
+      - name: Install client dependencies
+        run: cd Agenda-client && npm ci
+
+      - name: Run client tests
+        run: cd Agenda-client && npm test
