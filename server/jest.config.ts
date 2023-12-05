@@ -5,5 +5,4 @@ export default {
   verbose: true,
   collectCoverage: true,
   coverageReporters: ['json', 'lcov', 'text', 'clover'],
-  // setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
 };

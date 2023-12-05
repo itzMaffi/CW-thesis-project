@@ -10,7 +10,7 @@ const HOST = 'http://localhost';
 
 getTodayEventsJob.start();
 
-connectDB();
+// connectDB();
 
 app.listen(PORT, () => {
   console.log(`Proxy server is running on ${HOST} ✅`);
