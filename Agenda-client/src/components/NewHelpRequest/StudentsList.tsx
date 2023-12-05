@@ -15,7 +15,7 @@ const StudentsList: React.FC<StudentsListProps> = ({
       {students.map((student, index) => (
         <div
           key={index}
-          className="p-1 border-b  border-white text-gray-700 hover:bg-gray-100 cursor-pointer"
+          className="p-1 border-b  border-white text-cp-blue hover:bg-cp-light-blue cursor-pointer"
           onClick={() => onSelectStudent(student)}
         >
           {student}

@@ -37,7 +37,7 @@ export const StackOverflow: FC<{ widget: Widget }> = ({
   return (
     <div>
       <WidgetHeader widget={widget}>
-        <div className="pt-2"> Find similar questions on Stack Overflow</div>
+        <div> Find similar questions on Stack Overflow</div>
       </WidgetHeader>
 
       <div>
@@ -52,7 +52,7 @@ export const StackOverflow: FC<{ widget: Widget }> = ({
             onClick={clearPreviousQuestionsHandler}
           />
           <button
-            className="w-24 bg-cw-orange font-bold font-sans text-white p-1 rounded-md  mt-1  hover:bg-cw-orange active:scale-90 shadow-lg active:shadow-inner"
+            className="w-24 bg-cp-blue hover:bg-cp-middle-blue font-bold font-sans text-white p-1 rounded-md  mt-1   active:scale-90 shadow-md active:shadow-inner"
             onClick={fetchAnswers}
           >
             Search
@@ -71,7 +71,7 @@ export const StackOverflow: FC<{ widget: Widget }> = ({
           {answers.map((answer, index) => (
             <li
               key={index}
-              className="text-gray-700  w-full hover:bg-cw-light-orange hover:bg-opacity-30 cursor-pointer p-2"
+              className="text-gray-700  w-full hover:bg-cp-light-blue  cursor-pointer p-2"
             >
               <a
                 href={`https://stackoverflow.com/questions/${answer.question_id}`}

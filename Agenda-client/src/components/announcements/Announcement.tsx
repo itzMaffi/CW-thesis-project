@@ -68,7 +68,7 @@ const Announcement: React.FC<{ widget: Widget }> = ({ widget }) => {
         {slackMessages.map((message: string, index: number) => (
           <li
             key={index}
-            className="text-lg mb-2 bg-cw-light-orange rounded-lg px-4 py-2 text-gray-700"
+            className="text-lg mb-2 bg-cp-light-blue rounded-lg px-4 py-2 text-gray-700"
           >
             {formatSlackMessage(message)}
           </li>
@@ -77,9 +77,10 @@ const Announcement: React.FC<{ widget: Widget }> = ({ widget }) => {
       <div className="flex justify-center items-center">
         <button
           onClick={openSlackChannel}
-          className="p-2 bg-gray-200 rounded-full hover:bg-gray-300 focus:outline-none focus:ring focus:ring-gray-400 mb-8"
+          className="w-36 bg-cp-blue hover:bg-cp-middle-blue font-bold font-sans text-white p-2 rounded-md  mt-1  active:scale-90 shadow-md active:shadow-inner
+          flex justify-center items-center gap-2 mb-4"
         >
-          <p className="text-sm">Open in</p>{' '}
+          <div className="text-sm">Open in</div>
           <img src={slackLogo} className="h-3 w-30" alt="Slack logo" />
         </button>
       </div>

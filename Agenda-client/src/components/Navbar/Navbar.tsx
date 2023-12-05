@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
+import logo from '../../assets/LOGO.png';
 
 export const Navbar: FC = () => {
   return (
@@ -8,8 +9,8 @@ export const Navbar: FC = () => {
         <Link to={'/'}>
           <img
             className="h-10 "
-            src="https://mliv6plxtvjb.i.optimole.com/w:auto/h:auto/q:mauto/ig:avif/f:best/https://codeworks.me/wp-content/uploads/2019/07/logo-horizontal-orange.svg"
-            alt="Codeworks"
+            src={logo}
+            alt="code play logo"
             decoding="async"
             data-lazy-src="https://mliv6plxtvjb.i.optimole.com/w:auto/h:auto/q:mauto/ig:avif/f:best/https://codeworks.me/wp-content/uploads/2019/07/logo-horizontal-orange.svg"
             data-ll-status="loaded"
