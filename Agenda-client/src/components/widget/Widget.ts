@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { randomUUID } from 'crypto';
+import { randomUUID } from '../../utils/MyCrypto';
 
 export abstract class Widget {
   x: number = 0;
