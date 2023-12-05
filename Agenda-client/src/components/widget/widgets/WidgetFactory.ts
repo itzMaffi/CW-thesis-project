@@ -1,9 +1,18 @@
-import { WidgetType } from "../Widget";
-import { AnnouncementWidget, CalendarWidget, CurriculumProgressWidget, HelpRequestWidget, LectureOfTheDayWidget, PinnedLectureWidget, QuizWidget, StackOverFlowWidget, UserProfileWidget } from "./Widgets";
+import { WidgetType } from '../Widget';
+import {
+  AnnouncementWidget,
+  CalendarWidget,
+  CurriculumProgressWidget,
+  HelpRequestWidget,
+  LectureOfTheDayWidget,
+  PinnedLectureWidget,
+  QuizWidget,
+  StackOverFlowWidget,
+  UserProfileWidget,
+} from './Widgets';
 
-export default function createWidget(type: WidgetType, dataId?: string){
-
-  switch(type){
+export default function createWidget(type: WidgetType, dataId?: string) {
+  switch (type) {
     case WidgetType.pinnedLecture:
       return new PinnedLectureWidget(dataId!);
     case WidgetType.curriculumProgress:

@@ -2,7 +2,7 @@ import { useContext, useEffect } from 'react';
 import { Widget } from '../widget/Widget';
 import { Layout, Layouts, Responsive, WidthProvider } from 'react-grid-layout';
 import 'react-grid-layout/css/styles.css';
-import 'react-resizable/css/styles.css'
+import 'react-resizable/css/styles.css';
 import dbInstance from '../../utils/layoutsDB';
 import { DashboardContext } from '../../App';
 
@@ -14,9 +14,9 @@ export type DashboardState = {
 };
 
 function Dashboard() {
-  const {dashboardState, setDashboardState} = useContext(DashboardContext)
+  const { dashboardState, setDashboardState } = useContext(DashboardContext);
 
-  useEffect(()=> UpdateDashboardState, [])
+  useEffect(() => UpdateDashboardState, []);
 
   function UpdateDashboardState() {
     (async () => {

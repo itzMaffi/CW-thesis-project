@@ -1,19 +1,20 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
+import { randomUUID } from 'crypto';
 
 export abstract class Widget {
-  x:number = 0;
-  y:number = 0;
-  width:number = 1;
-  height:number = 1;
+  x: number = 0;
+  y: number = 0;
+  width: number = 1;
+  height: number = 1;
 
   id: string;
   type: WidgetType;
   dataId?: string;
 
-  protected _component:ReactNode;
+  protected _component: ReactNode;
 
   constructor(type: WidgetType, dataId?: string) {
-    const layoutId: string = crypto.randomUUID();
+    const layoutId: string = randomUUID();
     this.id = layoutId;
     this.type = type;
     this.dataId = dataId;
@@ -31,13 +32,13 @@ export abstract class Widget {
       h: this.height,
       w: this.width,
       isResizable: false,
-    }
+    };
   }
 }
 
 export enum WidgetType {
-  userProfile = "userProfile",
-  helpRequest = "helpRequest",
+  userProfile = 'userProfile',
+  helpRequest = 'helpRequest',
   lectureOfTheDay = 'lectureOfTheDay',
   pinnedLecture = 'pinnedLecture',
   announcement = 'announcement',

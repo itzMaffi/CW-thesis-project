@@ -1,6 +1,15 @@
 import { Layouts } from 'react-grid-layout';
 import { Widget } from '../components/widget/Widget';
-import { AnnouncementWidget, CalendarWidget, CurriculumProgressWidget, HelpRequestWidget, LectureOfTheDayWidget, QuizWidget, StackOverFlowWidget, UserProfileWidget } from '../components/widget/widgets/Widgets';
+import {
+  AnnouncementWidget,
+  CalendarWidget,
+  CurriculumProgressWidget,
+  HelpRequestWidget,
+  LectureOfTheDayWidget,
+  QuizWidget,
+  StackOverFlowWidget,
+  UserProfileWidget,
+} from '../components/widget/widgets/Widgets';
 
 const defaultWidgets: Widget[] = [
   new UserProfileWidget(),
@@ -17,7 +26,7 @@ class db {
   private static instance?: db;
 
   private constructor() {
-    this._layouts = {lg: defaultWidgets.map(widget => widget.layout)};
+    this._layouts = { lg: defaultWidgets.map((widget) => widget.layout) };
     this._widgets = defaultWidgets;
   }
 
@@ -53,8 +62,10 @@ class db {
   }
 
   removeWidgetByID(id: string) {
-    this._widgets = this._widgets.filter(el => el.id !== id);
-    Object.values(this._layouts).forEach(layout => (layout = layout.filter(el => el.i !== id)));
+    this._widgets = this._widgets.filter((el) => el.id !== id);
+    Object.values(this._layouts).forEach(
+      (layout) => (layout = layout.filter((el) => el.i !== id))
+    );
     this.updateDashboard && this.updateDashboard();
     return Promise.resolve();
   }
@@ -64,11 +75,11 @@ class db {
   }
 
   getWidget(id: string): Promise<Widget> {
-    return Promise.resolve(this._widgets.find(el => el.id === id)!!);
+    return Promise.resolve(this._widgets.find((el) => el.id === id)!!);
   }
 
   async getWidgetByDataId(dataId: string) {
-    return this._widgets.find(widget => widget.dataId === dataId);
+    return this._widgets.find((widget) => widget.dataId === dataId);
   }
 
   removeWidget(widget: Widget): Promise<void> {
