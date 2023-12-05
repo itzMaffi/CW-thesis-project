@@ -1,35 +1,32 @@
 import { Layouts } from 'react-grid-layout';
-import { Widget, WidgetType } from '../components/widget/Widget';
-
-const defaultLayouts: Layouts = {
-  lg: [
-    { i: '1', x: 3, y: 0, h: 1, w: 1, isResizable: false },
-    { i: '2', x: 0, y: 0, h: 2, w: 1, isResizable: false },
-    { i: '3', x: 1, y: 0, h: 2, w: 2, isResizable: false },
-    { i: '4', x: 0, y: 2, h: 2, w: 1, isResizable: false },
-    { i: '5', x: 1, y: 2, h: 2, w: 2, isResizable: false },
-    { i: '6', x: 3, y: 1, h: 4, w: 1, isResizable: false },
-    { i: '7', x: 0, y: 1, h: 1, w: 1, isResizable: false },
-    { i: '8', x: 1, y: 1, h: 2, w: 2, isResizable: false },
-  ],
-};
+import { Widget } from '../components/widget/Widget';
+import {
+  AnnouncementWidget,
+  CalendarWidget,
+  CurriculumProgressWidget,
+  HelpRequestWidget,
+  LectureOfTheDayWidget,
+  QuizWidget,
+  StackOverFlowWidget,
+  UserProfileWidget,
+} from '../components/widget/widgets/Widgets';
 
 const defaultWidgets: Widget[] = [
-  { id: '1', type: WidgetType.userProfile },
-  { id: '2', type: WidgetType.helpRequest },
-  { id: '3', type: WidgetType.lectureOfTheDay },
-  { id: '4', type: WidgetType.announcement },
-  { id: '5', type: WidgetType.quiz },
-  { id: '6', type: WidgetType.calendar },
-  { id: '7', type: WidgetType.cirriculumProgress },
-  { id: '8', type: WidgetType.stackOverflow },
+  new UserProfileWidget(),
+  new HelpRequestWidget(),
+  new LectureOfTheDayWidget(),
+  new AnnouncementWidget(),
+  new QuizWidget(),
+  new CalendarWidget(),
+  new CurriculumProgressWidget(),
+  new StackOverFlowWidget(),
 ];
 
 class db {
   private static instance?: db;
 
   private constructor() {
-    this._layouts = defaultLayouts;
+    this._layouts = { lg: defaultWidgets.map((widget) => widget.layout) };
     this._widgets = defaultWidgets;
   }
 
@@ -58,22 +55,17 @@ class db {
 
   saveWidget(widget: Widget): Promise<void> {
     this._widgets.push(widget);
-    this._layouts.lg.push({
-      i: widget.id,
-      x: 0,
-      y: Infinity,
-      h: 1,
-      w: 1,
-      isResizable: false,
-    });
+    this._layouts.lg.push(widget.layout);
 
     this.updateDashboard && this.updateDashboard();
     return Promise.resolve();
   }
 
   removeWidgetByID(id: string) {
-    this._widgets = this._widgets.filter(el => el.id !== id);
-    Object.values(this._layouts).forEach(layout => (layout = layout.filter(el => el.i !== id)));
+    this._widgets = this._widgets.filter((el) => el.id !== id);
+    Object.values(this._layouts).forEach(
+      (layout) => (layout = layout.filter((el) => el.i !== id))
+    );
     this.updateDashboard && this.updateDashboard();
     return Promise.resolve();
   }
@@ -83,11 +75,11 @@ class db {
   }
 
   getWidget(id: string): Promise<Widget> {
-    return Promise.resolve(this._widgets.find(el => el.id === id)!!);
+    return Promise.resolve(this._widgets.find((el) => el.id === id)!!);
   }
 
   async getWidgetByDataId(dataId: string) {
-    return this._widgets.find(widget => widget.dataId === dataId);
+    return this._widgets.find((widget) => widget.dataId === dataId);
   }
 
   removeWidget(widget: Widget): Promise<void> {

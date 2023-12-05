@@ -1,0 +1,68 @@
+{
+  "quizTitle": "Agile Development or Agile Practices Quiz",
+  "quizSynopsis": "This quiz tests your knowledge of Agile development principles and practices.",
+  "nrOfQuestions": "4",
+  "questions": [
+    {
+      "question": "What is Agile development?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "A software development methodology that emphasizes adaptability and collaboration",
+        "A programming language used for web development",
+        "A project management tool"
+      ],
+      "correctAnswer": "1",
+      "messageForCorrectAnswer": "Correct answer! Agile development is a methodology that emphasizes adaptability and collaboration.",
+      "messageForIncorrectAnswer": "Incorrect answer. Please try again.",
+      "explanation": "Agile development is an approach to software development that prioritizes customer feedback, flexibility, and collaboration among team members.",
+      "point": "15"
+    },
+    {
+      "question": "Which of the following are Agile practices?",
+      "questionType": "text",
+      "answerSelectionType": "multiple",
+      "answers": [
+        "Daily stand-up meetings",
+        "Waterfall project management",
+        "Test-driven development (TDD)",
+        "Sprint planning"
+      ],
+      "correctAnswer": [1, 3, 4],
+      "messageForCorrectAnswer": "Correct answer! Daily stand-up meetings, Test-driven development (TDD), and Sprint planning are Agile practices.",
+      "messageForIncorrectAnswer": "Incorrect answer. Please try again.",
+      "explanation": "Agile practices include daily stand-up meetings, TDD, sprint planning, and more, all aimed at improving collaboration and adaptability.",
+      "point": "10"
+    },
+    {
+      "question": "What is the Agile Manifesto?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "A document that outlines the principles of Agile development",
+        "A set of programming guidelines",
+        "A code of ethics for software developers"
+      ],
+      "correctAnswer": "1",
+      "messageForCorrectAnswer": "Correct answer! The Agile Manifesto is a document that outlines the principles of Agile development.",
+      "messageForIncorrectAnswer": "Incorrect answer. Please try again.",
+      "explanation": "The Agile Manifesto is a foundational document that expresses the core values and principles of Agile development.",
+      "point": "20"
+    },
+    {
+      "question": "What is the primary goal of Agile development?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Deliver a fully defined product at the end of the project",
+        "Respond to changing customer needs and deliver valuable software incrementally",
+        "Complete all project tasks on time and within budget"
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "Correct answer! The primary goal of Agile development is to respond to changing customer needs and deliver valuable software incrementally.",
+      "messageForIncorrectAnswer": "Incorrect answer. Please try again.",
+      "explanation": "Agile development prioritizes delivering working software frequently and adapting to customer feedback throughout the project.",
+      "point": "10"
+    }
+  ]
+}

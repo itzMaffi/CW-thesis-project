@@ -7,6 +7,8 @@ interface IBearerToken {
   token_type: string;
 }
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL ?? 'http://localhost:3000';
+
 const processToken = async (): Promise<boolean> => {
   //FIXME: returning undefined as a string from localStorage needs to be checked
   const tokenString = localStorage.getItem('token');
@@ -33,7 +35,7 @@ const processToken = async (): Promise<boolean> => {
 
 async function verifyIDToken(idToken: string): Promise<boolean> {
   try {
-    const data = await fetch('http://localhost:3000/oauth/verify', {
+    const data = await fetch(`${BACKEND_URL}/oauth/verify`, {
       headers: {
         Authorization: `Bearer ${idToken}`,
       },
@@ -41,11 +43,12 @@ async function verifyIDToken(idToken: string): Promise<boolean> {
     const response = await data.json();
     if (data.ok) return true;
     else {
-      alert(response.message);
+      alert(response.message + '\nClear your cache and try again');
       return false;
     }
   } catch (error) {
-    if (error instanceof Error) alert(`An error occured while validating your token: ${error.message}`);
+    if (error instanceof Error)
+      alert(`An error occured while validating your token: ${error.message}`);
     return false;
   }
 }

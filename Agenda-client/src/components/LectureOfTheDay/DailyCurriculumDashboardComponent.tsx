@@ -6,17 +6,20 @@ import logo from '../../assets/advancedjs1.png';
 import GenericPin from '../widget/GenericPin';
 import { Widget, WidgetType } from '../widget/Widget';
 import WidgetHeader from '../widgetHeader/WidgetHeader';
+import { useLectureContext } from '../../context/LectureContext';
 
 export default function DailyCurriculum({ widget }: { widget: Widget }) {
   const [day, setDay] = useState(6);
   const [dailyCurriculum, setDailyCurriculum] = useState<ICurriculum>();
+  const { setLectureName } = useLectureContext();
 
   useEffect(() => {
     (async () => {
-      const dailyCurriculum = await curriculumDb.getCurriculumOfTheDay(day);
-      setDailyCurriculum(dailyCurriculum);
+      const curriculum = await curriculumDb.getCurriculumOfTheDay(day);
+      setDailyCurriculum(curriculum);
+      setLectureName(curriculum.lecture_name); // Update the lecture name in the context
     })();
-  }, [day]);
+  }, [day, setLectureName]);
 
   function onNextDay() {
     setDay(day + 1);
@@ -32,13 +35,13 @@ export default function DailyCurriculum({ widget }: { widget: Widget }) {
         <WidgetHeader widget={widget}>
           <div className="flex justify-center">
             {day !== 0 && (
-              <button className="" onClick={onPreviousDay}>
+              <button className="text-cp-blue" onClick={onPreviousDay}>
                 {'<'}
               </button>
             )}
             <div className="ml-4 mr-4 text-center">Lecture of the day</div>
             {day < 6 && (
-              <button className="" onClick={onNextDay}>
+              <button className="text-cp-blue" onClick={onNextDay}>
                 {'>'}
               </button>
             )}
@@ -54,7 +57,7 @@ export default function DailyCurriculum({ widget }: { widget: Widget }) {
             )}
             <h2 className="text-gray-400">Lecture:</h2>
             <p className="flex">
-              <Link to={'Lecture/' + dailyCurriculum.lecture_id}>
+              <Link to={'/Lecture/' + dailyCurriculum.lecture_id}>
                 {dailyCurriculum.lecture_name}
               </Link>
               <GenericPin

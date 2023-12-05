@@ -134,8 +134,8 @@ const NewHelpRequest: React.FC<{ widget: Widget }> = ({
     >
       <WidgetHeader widget={widget}>New help request</WidgetHeader>
       <div className=" flex flex-col gap-2 min-w-full max-w-full">
-        <div className="flex flex-col justify-center items-center gap-2 min-w-full p-2 mt-1">
-          <div className="text-sm text-gray-500 cursor-default">
+        <div className="flex flex-col justify-center items-start gap-2 min-w-full p-2 mt-1">
+          <div className="text-sm text-cp-blue cursor-default">
             Are you coding with other students?
           </div>
 
@@ -171,7 +171,7 @@ const NewHelpRequest: React.FC<{ widget: Widget }> = ({
             )}
 
             {showError ? (
-              <div className="no-match text-cw-orange w-[281px] h-12 overflow-y-auto absolute z-50 shadow text-center pt-3  bg-cw-light-orange ">
+              <div className="no-match text-cp-blue w-[281px] h-12 overflow-y-auto absolute z-50 shadow text-center pt-3  bg-cp-light-blue ">
                 No matched students
               </div>
             ) : (
@@ -180,7 +180,7 @@ const NewHelpRequest: React.FC<{ widget: Widget }> = ({
           </div>
         </div>
         <div className="flex flex-col justify-center items-center  gap-2 p-2">
-          <div className="text-sm text-gray-500 cursor-default">
+          <div className="text-sm  cursor-default self-start text-cp-blue">
             Anything else you want us to know?
           </div>
           <textarea
@@ -195,7 +195,7 @@ const NewHelpRequest: React.FC<{ widget: Widget }> = ({
             placeholder="Optional (max 50 char)"
           ></textarea>
           <button
-            className="w-24 bg-cw-orange font-bold font-sans text-white p-1 rounded-md  mt-1  hover:bg-cw-orange active:scale-90 shadow-lg active:shadow-inner"
+            className="w-24 bg-cp-blue font-bold font-sans text-white p-1 rounded-md  mt-1  hover:bg-cp-middle-blue active:scale-90 shadow-md active:shadow-inner"
             type="submit"
           >
             Send

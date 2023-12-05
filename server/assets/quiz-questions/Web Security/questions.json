@@ -1,0 +1,67 @@
+{
+  "quizTitle": "Web Security Quiz",
+  "quizSynopsis": "This quiz tests your knowledge of web security concepts and best practices.",
+  "nrOfQuestions": "4",
+  "questions": [
+    {
+      "question": "What is the purpose of Cross-Site Scripting (XSS) attacks?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "To gain unauthorized access to a web server",
+        "To steal sensitive user information by injecting malicious scripts into web pages",
+        "To improve website performance"
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "Correct answer! XSS attacks aim to steal sensitive user information by injecting malicious scripts into web pages.",
+      "messageForIncorrectAnswer": "Incorrect answer. Please try again.",
+      "explanation": "XSS attacks can lead to the execution of malicious scripts in a user's browser, potentially compromising their data.",
+      "point": "20"
+    },
+    {
+      "question": "What is the purpose of a Content Security Policy (CSP) in web security?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "To hide sensitive content from users",
+        "To restrict the sources from which a web page can load resources",
+        "To speed up web page loading times"
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "Correct answer! A Content Security Policy (CSP) restricts the sources from which a web page can load resources.",
+      "messageForIncorrectAnswer": "Incorrect answer. Please try again.",
+      "explanation": "CSP helps prevent XSS attacks by specifying which origins are allowed to load resources on a web page.",
+      "point": "10"
+    },
+    {
+      "question": "What is SQL Injection and how does it work?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "SQL Injection is a method to speed up database queries",
+        "SQL Injection is a security vulnerability that allows an attacker to manipulate a database by injecting malicious SQL code into input fields",
+        "SQL Injection is a way to encrypt sensitive data in a database"
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "Correct answer! SQL Injection is a security vulnerability that allows attackers to manipulate a database by injecting malicious SQL code into input fields.",
+      "messageForIncorrectAnswer": "Incorrect answer. Please try again.",
+      "explanation": "SQL Injection occurs when untrusted data is inserted into database queries, potentially leading to unauthorized data access or manipulation.",
+      "point": "10"
+    },
+    {
+      "question": "Which security mechanism helps protect user data during transmission over the internet?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "HTTPS (Hypertext Transfer Protocol Secure)",
+        "HTTP (Hypertext Transfer Protocol)",
+        "FTP (File Transfer Protocol)"
+      ],
+      "correctAnswer": "1",
+      "messageForCorrectAnswer": "Correct answer! HTTPS (Hypertext Transfer Protocol Secure) helps protect user data during transmission over the internet.",
+      "messageForIncorrectAnswer": "Incorrect answer. Please try again.",
+      "explanation": "HTTPS encrypts data exchanged between a user's browser and a web server, enhancing security and privacy.",
+      "point": "15"
+    }
+  ]
+}

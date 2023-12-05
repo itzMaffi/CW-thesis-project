@@ -16,8 +16,8 @@ div h2 {
 
 .react-quiz-container {
   margin: 20px;
-  max-width: 500px;
-  border: 2px solid #fe7b10;
+  /* max-width: 500px;
+  border: 2px solid #fe7b10; */
   border-radius: 20px;
   text-align: center;
 }
@@ -41,7 +41,7 @@ div h2 {
   white-space: nowrap;
 }
 .react-quiz-container .questionWrapper .btn {
-  border: 1px solid #fe7b10;
+  border: 1px solid #3e4784;
   border-radius: 20px;
   display: block;
   font-size: 15px;
@@ -82,12 +82,16 @@ div h2 {
   color: black;
 }
 .react-quiz-container .startQuizWrapper .startQuizBtn {
-  background-color: #fe7b10;
-  border: 2px solid #d9d9d9;
+  background-color: #3e4784;
+  /* border: 2px solid #d9d9d9; */
   border-radius: 20px;
   color: white;
   font-size: 15px;
   line-height: 1.35135;
+}
+
+.react-quiz-container .startQuizWrapper .startQuizBtn:hover {
+  background-color: #9ea5d1;
 }
 .react-quiz-container .result-answer-wrapper {
   /* border: 2px solid #fe7b10; */
@@ -117,7 +121,7 @@ div h2 {
 }
 .react-quiz-container .quiz-synopsis {
   margin: 15px 0;
-  color: #fe7b10;
+  color: #3e4784;
   font-weight: bold;
 }
 .react-quiz-container .tag-container {
@@ -142,7 +146,7 @@ div h2 {
   margin-left: 29%;
 }
 .react-quiz-container .selection-tag.multiple {
-  background: #ff9800;
+  background: #3e4784;
   margin-left: 29%;
 }
 .react-quiz-container .selection-tag.segment {
@@ -155,7 +159,12 @@ div h2 {
   justify-content: center;
 }
 .react-quiz-container .questionBtnContainer button {
-  background-color: #ff9800;
+  background-color: #3e4784;
+  color: white;
+}
+
+.react-quiz-container .questionBtnContainer button:hover {
+  background-color: #9ea5d1;
 }
 .react-quiz-container .quiz-result-filter {
   bottom: 15px;

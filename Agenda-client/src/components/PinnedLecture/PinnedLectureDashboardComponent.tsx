@@ -22,18 +22,18 @@ export default function PinnedLectureDashboardComponent({
   return (
     lecture && (
       <div className="h-full w-full p-2">
-        <div className="float-right text-cw-orange font-bold text-xl mb-2">
+        <div className="float-right text-cp-blue font-bold text-xl mb-2">
           <GenericPin widget={widget}></GenericPin>
         </div>
-        <h3 className=" text-cw-orange font-bold text-xl mb-2">
+        <h3 className=" text-cp-dark-blue font-bold text-xl mb-2">
           {lecture.name}
         </h3>
-        <p className="text-gray-700">{lecture.summary}</p>
+        <p className="text-cp-dark-blue">{lecture.summary}</p>
         <Link
-          className="absolute bottom-0 right-0"
-          to={'Lecture/' + lecture.id}
+          className="absolute bottom-1 right-1"
+          to={'/Lecture/' + lecture.id}
         >
-          <p className="bg-cw-orange px-2 py-1 rounded-tl-xl text-white font-semibold">
+          <p className="bg-cp-blue hover:bg-cp-middle-blue shadow-md px-2 py-1 rounded  text-white font-semibold">
             Go to lecture
           </p>
         </Link>

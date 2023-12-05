@@ -1,0 +1,67 @@
+{
+  "quizTitle": "Design Patterns 1 Quiz",
+  "quizSynopsis": "This quiz tests your knowledge of fundamental design patterns in software development.",
+  "nrOfQuestions": "4",
+  "questions": [
+    {
+      "question": "What is a design pattern in software development?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "A blueprint for designing user interfaces",
+        "A reusable solution to a common problem in software design",
+        "A step-by-step guide for debugging code"
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "Correct answer! A design pattern is a reusable solution to a common problem in software design.",
+      "messageForIncorrectAnswer": "Incorrect answer. Please try again.",
+      "explanation": "Design patterns provide proven solutions to recurring design problems in software development.",
+      "point": "20"
+    },
+    {
+      "question": "Which design pattern is used for creating objects without specifying the exact class of object that will be created?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Singleton Pattern",
+        "Factory Method Pattern",
+        "Observer Pattern"
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "Correct answer! The Factory Method Pattern is used for creating objects without specifying their exact class.",
+      "messageForIncorrectAnswer": "Incorrect answer. Please try again.",
+      "explanation": "The Factory Method Pattern defines an interface for creating objects, but lets subclasses decide which class to instantiate.",
+      "point": "10"
+    },
+    {
+      "question": "What is the main purpose of the Singleton Pattern?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "To ensure a class has only one instance and provide a global point of access to it",
+        "To create multiple instances of a class",
+        "To manage the creation of complex objects"
+      ],
+      "correctAnswer": "1",
+      "messageForCorrectAnswer": "Correct answer! The Singleton Pattern ensures a class has only one instance and provides a global point of access to it.",
+      "messageForIncorrectAnswer": "Incorrect answer. Please try again.",
+      "explanation": "The Singleton Pattern is used to restrict the instantiation of a class to a single instance and provide a way to access that instance globally.",
+      "point": "10"
+    },
+    {
+      "question": "Which design pattern is used for defining a one-to-many dependency between objects so that when one object changes state, all its dependents are notified and updated automatically?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Decorator Pattern",
+        "Observer Pattern",
+        "Strategy Pattern"
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "Correct answer! The Observer Pattern is used for defining a one-to-many dependency between objects and notifying dependents of state changes.",
+      "messageForIncorrectAnswer": "Incorrect answer. Please try again.",
+      "explanation": "The Observer Pattern is commonly used for implementing distributed event handling systems.",
+      "point": "10"
+    }
+  ]
+}

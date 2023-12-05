@@ -1,0 +1,70 @@
+{
+  "quizTitle": "Database 2 Quiz",
+  "quizSynopsis": "This is a small test to test your knowledge of databases.",
+  "nrOfQuestions": "3",
+  "questions": [
+    {
+      "question": "What is SQL?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Structured Query Language",
+        "Simple Query Language",
+        "System Query Language"
+      ],
+      "correctAnswer": "1",
+      "messageForCorrectAnswer": "Correct answer! SQL stands for Structured Query Language.",
+      "messageForIncorrectAnswer": "Incorrect answer. Please try again.",
+      "explanation": "SQL is a domain-specific language used for managing and querying relational databases.",
+      "point": "10"
+    },
+    {
+      "question": "What are the advantages of NoSQL databases like MongoDB?",
+      "questionType": "text",
+      "answerSelectionType": "multiple",
+      "answers": [
+        "Flexible schema",
+        "High scalability",
+        "Strong data consistency",
+        "Support for complex queries"
+      ],
+      "correctAnswer": [1, 2],
+      "messageForCorrectAnswer": "Correct answer! NoSQL databases like MongoDB offer a flexible schema and high scalability.",
+      "messageForIncorrectAnswer": "Incorrect answer. Please try again.",
+      "explanation": "NoSQL databases are known for their flexibility and ability to scale horizontally.",
+      "point": "20"
+    },
+    {
+      "question": "What does ORM stand for in the context of databases?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Object-Relational Mapping",
+        "Object-Resource Model",
+        "Object-Record Mapping"
+      ],
+      "correctAnswer": "1",
+      "messageForCorrectAnswer": "Correct answer! ORM stands for Object-Relational Mapping.",
+      "messageForIncorrectAnswer": "Incorrect answer. Please try again.",
+      "explanation": "ORM is a technique for mapping objects from a programming language to relational database entities.",
+      "point": "10"
+    },
+    {
+      "question": "Which type of database is known for its tabular structure and use of SQL?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "NoSQL database",
+        "Relational database",
+        "Key-value store",
+        "Document database"
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "Correct answer! Relational databases use a tabular structure and SQL.",
+      "messageForIncorrectAnswer": "Incorrect answer. Please try again.",
+      "explanation": "Relational databases are characterized by their use of tables with rows and columns and the use of SQL for querying and manipulation.",
+      "point": "10"
+    }
+    
+  ]
+}
