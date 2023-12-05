@@ -53,7 +53,7 @@ export const UserProfile: FC = () => {
       <div className="flex flex-end grow-0 shrink-0">
         <button
           data-testid="logoutButton"
-          className="text-white p-2 h-fit rounded-[0.5rem] bg-cw-orange hover:bg-[#eb954f] active:scale-90 shadow-lg active:shadow-inner"
+          className="text-white pt-2 pl-4 pr-4 pb-2 h-fit rounded-[0.5rem] bg-cp-blue hover:bg-cp-middle-blue active:scale-90 shadow-md active:shadow-inner"
           onClick={handleLogout}
         >
           <img src={logoutIcon} width={16} height={16} />

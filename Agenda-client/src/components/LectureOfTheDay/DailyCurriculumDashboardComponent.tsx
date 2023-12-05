@@ -35,13 +35,13 @@ export default function DailyCurriculum({ widget }: { widget: Widget }) {
         <WidgetHeader widget={widget}>
           <div className="flex justify-center">
             {day !== 0 && (
-              <button className="" onClick={onPreviousDay}>
+              <button className="text-cp-blue" onClick={onPreviousDay}>
                 {'<'}
               </button>
             )}
             <div className="ml-4 mr-4 text-center">Lecture of the day</div>
             {day < 6 && (
-              <button className="" onClick={onNextDay}>
+              <button className="text-cp-blue" onClick={onNextDay}>
                 {'>'}
               </button>
             )}
