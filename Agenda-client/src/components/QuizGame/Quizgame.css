@@ -89,6 +89,10 @@ div h2 {
   font-size: 15px;
   line-height: 1.35135;
 }
+
+.react-quiz-container .startQuizWrapper .startQuizBtn:hover {
+  background-color: #9ea5d1;
+}
 .react-quiz-container .result-answer-wrapper {
   /* border: 2px solid #fe7b10; */
   border-bottom-left-radius: 5px;
@@ -156,6 +160,11 @@ div h2 {
 }
 .react-quiz-container .questionBtnContainer button {
   background-color: #3e4784;
+  color: white;
+}
+
+.react-quiz-container .questionBtnContainer button:hover {
+  background-color: #9ea5d1;
 }
 .react-quiz-container .quiz-result-filter {
   bottom: 15px;
