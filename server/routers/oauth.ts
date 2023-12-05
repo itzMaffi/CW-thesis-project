@@ -8,7 +8,7 @@ import { GetTokenResponse } from 'google-auth-library/build/src/auth/oauth2clien
 const FRONTEND_URL = process.env.FRONTEND_URL ?? 'http://localhost:5173';
 const BACKEND_URL = process.env.BACKEND_URL ?? 'http://127.0.0.1:3000';
 
-// TODO delete after move
+// TODO - get user data from google
 async function getUserData(access_token: string) {
   const res = await fetch(
     `https://www.googleapis.com/oauth2/v3/userinfo?access_token${access_token}`
@@ -21,7 +21,6 @@ router.get('/', async (req, res, next) => {
   const code = req.query.code;
 
   try {
-    // TODO if you change this here, you must also change it in the Google Console too
     const redirectUrl = `${BACKEND_URL}/oauth`;
     const oAuth2Client = new OAuth2Client(
       process.env.GOOGLE_CLIENT_ID,
