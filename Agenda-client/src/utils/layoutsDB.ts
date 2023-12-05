@@ -1,5 +1,6 @@
 import { Layouts } from 'react-grid-layout';
 import { Widget, WidgetType } from '../components/widget/Widget';
+// import { Announcement, Calendar, CurriculumProgress, HelpRequest, LectureOfTheDay, Quiz, StackOverFlow, UserProfile } from '../components/widget/widgits/UserProfileWidget';
 
 const defaultLayouts: Layouts = {
   lg: [
@@ -15,14 +16,22 @@ const defaultLayouts: Layouts = {
 };
 
 const defaultWidgets: Widget[] = [
-  { id: '1', type: WidgetType.userProfile },
-  { id: '2', type: WidgetType.helpRequest },
-  { id: '3', type: WidgetType.lectureOfTheDay },
-  { id: '4', type: WidgetType.announcement },
-  { id: '5', type: WidgetType.quiz },
-  { id: '6', type: WidgetType.calendar },
-  { id: '7', type: WidgetType.cirriculumProgress },
-  { id: '8', type: WidgetType.stackOverflow },
+  // new UserProfile(),
+  // new HelpRequest(),
+  // new LectureOfTheDay(),
+  // new Announcement(),
+  // new Quiz(),
+  // new Calendar(),
+  // new CurriculumProgress(),
+  // new StackOverFlow(),
+  { height:1, width: 1, x:0, y:0, id: '1', type: WidgetType.userProfile },
+  { height:1, width: 1, x:0, y:0, id: '2', type: WidgetType.helpRequest },
+  { height:1, width: 1, x:0, y:0, id: '3', type: WidgetType.lectureOfTheDay },
+  { height:1, width: 1, x:0, y:0, id: '4', type: WidgetType.announcement },
+  { height:1, width: 1, x:0, y:0, id: '5', type: WidgetType.quiz },
+  { height:1, width: 1, x:0, y:0, id: '6', type: WidgetType.calendar },
+  { height:1, width: 1, x:0, y:0, id: '7', type: WidgetType.curriculumProgress },
+  { height:1, width: 1, x:0, y:0, id: '8', type: WidgetType.stackOverflow },
 ];
 
 class db {
@@ -60,10 +69,10 @@ class db {
     this._widgets.push(widget);
     this._layouts.lg.push({
       i: widget.id,
-      x: 0,
-      y: Infinity,
-      h: 1,
-      w: 1,
+      x: widget.x,
+      y: widget.y,
+      h: widget.height,
+      w: widget.width,
       isResizable: false,
     });
 
