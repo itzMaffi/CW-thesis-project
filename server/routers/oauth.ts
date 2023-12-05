@@ -36,9 +36,10 @@ router.get('/', async (req, res, next) => {
     const user = oAuth2Client.credentials;
 
     if (user) {
-      const encoded = Buffer.from(JSON.stringify(user), 'binary').toString(
-        'base64'
-      );
+      const encoded = Buffer.from(
+        JSON.stringify(user),
+        'binary'
+      ).toString('base64');
       res.redirect(303, `http://localhost:5173/token/${encoded}`);
     } else {
       console.error('Access token is not available');
