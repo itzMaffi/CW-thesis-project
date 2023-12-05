@@ -21,12 +21,10 @@ export const LogIn: FC<{
     })();
   }, [navigate, setIsAuthenticated]);
 
-  // TODO: OAuth - remove
   function navi(url: string) {
     window.location.href = url;
   }
 
-  // TODO change this to BE url
   async function auth() {
     const response = await fetch(`${BACKEND_URL}/request`, {
       method: 'post',

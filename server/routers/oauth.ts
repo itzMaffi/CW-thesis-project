@@ -21,7 +21,6 @@ router.get('/', async (req, res, next) => {
   const code = req.query.code;
 
   try {
-    // TODO if you change this here, you must also change it in the Google Console too
     const redirectUrl = `${BACKEND_URL}/oauth`;
     const oAuth2Client = new OAuth2Client(
       process.env.GOOGLE_CLIENT_ID,

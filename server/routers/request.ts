@@ -12,7 +12,6 @@ router.post('/', async (req, res, next) => {
   res.header('Access-Control-Allow-Origin', `${FRONTEND_URL}`);
   res.header('Referrer-Policy', 'no-referrer-when-downgrade');
 
-  // TODO if you change this here, you must also change it in the Google Console too
   const redirectUrl = `${BACKEND_URL}/oauth`;
 
   const oAuth2Client = new OAuth2Client(
