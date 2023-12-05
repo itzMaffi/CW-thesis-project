@@ -32,26 +32,52 @@ router.get('/', async (req, res, next) => {
     if (typeof code === 'string') {
       const res = (await oAuth2Client.getToken(code)) as GetTokenResponse;
       await oAuth2Client.setCredentials(res.tokens);
-      console.log('Tokens acquired');
     } else {
       console.error('Code is not a string');
     }
-    console.log('Tokens acquired');
 
     const user = oAuth2Client.credentials;
-    console.log('Credentials:', user);
 
-    if (user.access_token) {
-      const encoded = Buffer.from(
-        JSON.stringify(user.access_token),
-        'binary'
-      ).toString('base64');
+    if (user) {
+      const encoded = Buffer.from(JSON.stringify(user), 'binary').toString(
+        'base64'
+      );
       res.redirect(303, `${FRONTEND_URL}/token/${encoded}`);
     } else {
       console.error('Access token is not available');
     }
   } catch (err) {
     console.error('Error logging in with OAuth2 user', err);
+  }
+});
+
+router.get('/verify', async (req, res) => {
+  const authClient = new OAuth2Client();
+  try {
+    if (!req.headers.authorization)
+      throw new Error('No authorization token provided');
+
+    const token = req.headers.authorization.split(' ')[1];
+    const ticket = await authClient.verifyIdToken({
+      idToken: token,
+      audience: process.env.GOOGLE_CLIENT_ID,
+    });
+    res.send(ticket.getPayload());
+  } catch (error: unknown) {
+    if (
+      error instanceof Error &&
+      error.message === 'No authorization token provided'
+    )
+      res.status(400).send({
+        message: 'Something went wrong while validating your token',
+        error: error.message,
+      });
+    console.log(error);
+    if (error instanceof Error)
+      res.status(500).send({
+        message: 'We could not validate your token',
+        error: error.message,
+      });
   }
 });
 

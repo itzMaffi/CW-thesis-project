@@ -1,19 +1,25 @@
 import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-import processToken from '../../services/TokenService';
 import { useEffect } from 'react';
+import processToken from '../../services/TokenService';
 import googleButton from '../../assets/google_signin_assets/Web/svg/light/web_light_rd_SI.svg';
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL ?? 'http://localhost:3000';
 
-export const LogIn: FC = () => {
+export const LogIn: FC<{
+  setIsAuthenticated: (authState: boolean) => void;
+}> = ({ setIsAuthenticated }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const isTokenValid = processToken();
-    if (isTokenValid) navigate('/dashboard');
-  }, []);
+    (async () => {
+      const authState = await processToken();
+      if (authState) {
+        setIsAuthenticated(authState);
+        navigate('/dashboard');
+      }
+    })();
+  }, [navigate, setIsAuthenticated]);
 
   // TODO: OAuth - remove
   function navi(url: string) {

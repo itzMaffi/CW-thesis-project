@@ -7,7 +7,7 @@ interface IBearerToken {
   token_type: string;
 }
 
-const processToken = (): boolean => {
+const processToken = async (): Promise<boolean> => {
   //FIXME: returning undefined as a string from localStorage needs to be checked
   const tokenString = localStorage.getItem('token');
   if (tokenString === 'undefined' || tokenString === null) return false;
@@ -28,7 +28,26 @@ const processToken = (): boolean => {
     return false;
   }
 
-  return true;
+  return await verifyIDToken(token.id_token);
 };
+
+async function verifyIDToken(idToken: string): Promise<boolean> {
+  try {
+    const data = await fetch('http://localhost:3000/oauth/verify', {
+      headers: {
+        Authorization: `Bearer ${idToken}`,
+      },
+    });
+    const response = await data.json();
+    if (data.ok) return true;
+    else {
+      alert(response.message);
+      return false;
+    }
+  } catch (error) {
+    if (error instanceof Error) alert(`An error occured while validating your token: ${error.message}`);
+    return false;
+  }
+}
 
 export default processToken;

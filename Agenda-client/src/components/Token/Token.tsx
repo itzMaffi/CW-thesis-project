@@ -11,11 +11,9 @@ export default function Token() {
     (async () => {
       if (token !== undefined) {
         const tokenDecoded = atob(token);
-
         localStorage.setItem('token', tokenDecoded);
+        navigate('/');
       }
-
-      navigate('/dashboard');
     })();
   }, [token, navigate]);
   return <div></div>;
