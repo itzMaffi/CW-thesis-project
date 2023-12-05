@@ -18,14 +18,20 @@ export const StackOverflow: FC<{ widget: Widget }> = ({
 
   const fetchAnswers = async () => {
     try {
-      const response = await axios.get(
-        `https://api.stackexchange.com/2.3/search/advanced?order=desc&sort=activity&q=${query}&site=stackoverflow`
-      );
-      setAnswers(response.data.items);
-      setQuery('');
+      if (query) {
+        const response = await axios.get(
+          `https://api.stackexchange.com/2.3/search/advanced?order=desc&sort=activity&q=${query}&site=stackoverflow`
+        );
+        setAnswers(response.data.items);
+        setQuery('');
+      }
     } catch (error) {
       console.error('Error fetching data: ', error);
     }
+  };
+
+  const clearPreviousQuestionsHandler = () => {
+    setAnswers([]);
   };
 
   return (
@@ -43,6 +49,7 @@ export const StackOverflow: FC<{ widget: Widget }> = ({
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && fetchAnswers()}
+            onClick={clearPreviousQuestionsHandler}
           />
           <button
             className="w-24 bg-cw-orange font-bold font-sans text-white p-1 rounded-md  mt-1  hover:bg-cw-orange active:scale-90 shadow-lg active:shadow-inner"
@@ -53,22 +60,18 @@ export const StackOverflow: FC<{ widget: Widget }> = ({
         </div>
 
         <ul className="flex flex-col justify-center items-start pl-2">
-          {answers.length === 0 ? (
-            <div>
-              <img
-                className="w-19 opacity-10"
-                src={stackoverflow}
-                alt="stack overflow logo"
-              />
-            </div>
-          ) : (
-            <></>
-          )}
+          <div>
+            <img
+              className="w-[95%] opacity-10 fixed -z-20"
+              src={stackoverflow}
+              alt="stack overflow logo"
+            />
+          </div>
 
           {answers.map((answer, index) => (
             <li
               key={index}
-              className="text-gray-700  hover:bg-gray-100 cursor-pointer p-2"
+              className="text-gray-700  w-full hover:bg-cw-light-orange hover:bg-opacity-30 cursor-pointer p-2"
             >
               <a
                 href={`https://stackoverflow.com/questions/${answer.question_id}`}

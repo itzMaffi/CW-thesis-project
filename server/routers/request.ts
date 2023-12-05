@@ -4,15 +4,22 @@ import dotenv from 'dotenv';
 dotenv.config();
 import { OAuth2Client } from 'google-auth-library';
 
+const FRONTEND_URL = process.env.FRONTEND_URL ?? 'http://localhost:5173';
+const BACKEND_URL = process.env.BACKEND_URL ?? 'http://127.0.0.1:3000';
+
 /* OAuth */
 router.post('/', async (req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:5173');
+  res.header('Access-Control-Allow-Origin', `${FRONTEND_URL}`);
   res.header('Referrer-Policy', 'no-referrer-when-downgrade');
 
   // TODO if you change this here, you must also change it in the Google Console too
-  const redirectUrl = 'http://127.0.0.1:3000/oauth';
+  const redirectUrl = `${BACKEND_URL}/oauth`;
 
-  const oAuth2Client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID, process.env.GOOGLE_CLIENT_SECRET, redirectUrl);
+  const oAuth2Client = new OAuth2Client(
+    process.env.GOOGLE_CLIENT_ID,
+    process.env.GOOGLE_CLIENT_SECRET,
+    redirectUrl
+  );
 
   const authorizeUrl = oAuth2Client.generateAuthUrl({
     // TODO change this from 'offline' for prod later

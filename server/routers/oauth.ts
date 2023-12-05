@@ -5,6 +5,9 @@ dotenv.config();
 import { OAuth2Client } from 'google-auth-library';
 import { GetTokenResponse } from 'google-auth-library/build/src/auth/oauth2client';
 
+const FRONTEND_URL = process.env.FRONTEND_URL ?? 'http://localhost:5173';
+const BACKEND_URL = process.env.BACKEND_URL ?? 'http://127.0.0.1:3000';
+
 // TODO delete after move
 async function getUserData(access_token: string) {
   const res = await fetch(
@@ -19,7 +22,7 @@ router.get('/', async (req, res, next) => {
 
   try {
     // TODO if you change this here, you must also change it in the Google Console too
-    const redirectUrl = 'http://127.0.0.1:3000/oauth';
+    const redirectUrl = `${BACKEND_URL}/oauth`;
     const oAuth2Client = new OAuth2Client(
       process.env.GOOGLE_CLIENT_ID,
       process.env.GOOGLE_CLIENT_SECRET,
@@ -39,7 +42,7 @@ router.get('/', async (req, res, next) => {
       const encoded = Buffer.from(JSON.stringify(user), 'binary').toString(
         'base64'
       );
-      res.redirect(303, `http://localhost:5173/token/${encoded}`);
+      res.redirect(303, `${FRONTEND_URL}/token/${encoded}`);
     } else {
       console.error('Access token is not available');
     }
