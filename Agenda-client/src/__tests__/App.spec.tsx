@@ -3,10 +3,14 @@ import { render } from '@testing-library/react';
 import App from '../App';
 import { jest } from '@jest/globals';
 
-let id = 0;
-jest.mock('../utils/MyCrypto',()=>({
-  randomUUID: jest.fn().mockReturnValue(''+id++),
-}));
+jest.mock('../utils/MyCrypto',()=> {
+  let id = 0;
+  return (
+  {
+    randomUUID: jest.fn().mockReturnValue(''+id++)
+  })
+}
+);
 
 
 test('demo', () => {
