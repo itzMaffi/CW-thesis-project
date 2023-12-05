@@ -1,5 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
-import resolveComponent from '../../utils/componentResolver';
+import { useContext, useEffect } from 'react';
 import { Widget } from '../widget/Widget';
 import { Layout, Layouts, Responsive, WidthProvider } from 'react-grid-layout';
 import 'react-grid-layout/css/styles.css';
@@ -39,9 +38,6 @@ function Dashboard() {
   });
 
   async function handleLayoutChange(_: Layout[], allLayouts: Layouts) {
-    // Object.values(allLayouts)
-    //   .flatMap((value) => value)
-    //   .forEach((value) => (value.isResizable = false));
     await dbInstance.saveLayouts(allLayouts);
   }
 
@@ -63,7 +59,7 @@ function Dashboard() {
                 key={widget.id}
                 className="border-2 border-cp-blue rounded-lg bg-white overflow-auto"
               >
-                {resolveComponent(widget)}
+                {widget.component}
               </div>
             ))}
           </ResponsiveGridLayout>

@@ -1,44 +1,23 @@
 import { Layouts } from 'react-grid-layout';
-import { Widget, WidgetType } from '../components/widget/Widget';
-// import { Announcement, Calendar, CurriculumProgress, HelpRequest, LectureOfTheDay, Quiz, StackOverFlow, UserProfile } from '../components/widget/widgits/UserProfileWidget';
-
-const defaultLayouts: Layouts = {
-  lg: [
-    { i: '1', x: 3, y: 0, h: 1, w: 1, isResizable: false },
-    { i: '2', x: 0, y: 1, h: 2, w: 1, isResizable: false },
-    { i: '3', x: 1, y: 0, h: 2, w: 2, isResizable: false },
-    { i: '4', x: 0, y: 2, h: 2, w: 1, isResizable: false },
-    { i: '5', x: 1, y: 2, h: 2, w: 2, isResizable: false },
-    { i: '6', x: 3, y: 2, h: 4, w: 1, isResizable: false },
-    { i: '7', x: 0, y: 0, h: 1, w: 1, isResizable: false },
-    { i: '8', x: 1, y: 1, h: 2, w: 2, isResizable: false },
-  ],
-};
+import { Widget } from '../components/widget/Widget';
+import { AnnouncementWidget, CalendarWidget, CurriculumProgressWidget, HelpRequestWidget, LectureOfTheDayWidget, QuizWidget, StackOverFlowWidget, UserProfileWidget } from '../components/widget/widgets/Widgets';
 
 const defaultWidgets: Widget[] = [
-  // new UserProfile(),
-  // new HelpRequest(),
-  // new LectureOfTheDay(),
-  // new Announcement(),
-  // new Quiz(),
-  // new Calendar(),
-  // new CurriculumProgress(),
-  // new StackOverFlow(),
-  { height:1, width: 1, x:0, y:0, id: '1', type: WidgetType.userProfile },
-  { height:1, width: 1, x:0, y:0, id: '2', type: WidgetType.helpRequest },
-  { height:1, width: 1, x:0, y:0, id: '3', type: WidgetType.lectureOfTheDay },
-  { height:1, width: 1, x:0, y:0, id: '4', type: WidgetType.announcement },
-  { height:1, width: 1, x:0, y:0, id: '5', type: WidgetType.quiz },
-  { height:1, width: 1, x:0, y:0, id: '6', type: WidgetType.calendar },
-  { height:1, width: 1, x:0, y:0, id: '7', type: WidgetType.curriculumProgress },
-  { height:1, width: 1, x:0, y:0, id: '8', type: WidgetType.stackOverflow },
+  new UserProfileWidget(),
+  new HelpRequestWidget(),
+  new LectureOfTheDayWidget(),
+  new AnnouncementWidget(),
+  new QuizWidget(),
+  new CalendarWidget(),
+  new CurriculumProgressWidget(),
+  new StackOverFlowWidget(),
 ];
 
 class db {
   private static instance?: db;
 
   private constructor() {
-    this._layouts = defaultLayouts;
+    this._layouts = {lg: defaultWidgets.map(widget => widget.layout)};
     this._widgets = defaultWidgets;
   }
 
@@ -67,14 +46,7 @@ class db {
 
   saveWidget(widget: Widget): Promise<void> {
     this._widgets.push(widget);
-    this._layouts.lg.push({
-      i: widget.id,
-      x: widget.x,
-      y: widget.y,
-      h: widget.height,
-      w: widget.width,
-      isResizable: false,
-    });
+    this._layouts.lg.push(widget.layout);
 
     this.updateDashboard && this.updateDashboard();
     return Promise.resolve();
