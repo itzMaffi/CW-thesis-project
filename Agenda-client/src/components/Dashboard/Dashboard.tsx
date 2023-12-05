@@ -55,7 +55,7 @@ function Dashboard() {
       {layouts && widgets ? (
         <div className="max-w-[1280px] mx-auto">
           <ResponsiveGridLayout
-            className="border-2 border-red-500"
+            className="border-2 border-cp-blue rounded"
             breakpoints={{ lg: 1024, md: 768, sm: 640 }}
             cols={{ lg: 4, md: 2, sm: 1 }}
             layouts={layouts}
@@ -64,7 +64,7 @@ function Dashboard() {
             {widgets.map((widget: Widget) => (
               <div
                 key={widget.id}
-                className="border-2 border-cw-orange rounded-lg bg-white overflow-auto"
+                className="border-2 border-cp-blue rounded-lg bg-white overflow-auto"
               >
                 {resolveComponent(widget)}
               </div>

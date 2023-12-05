@@ -29,7 +29,7 @@ export default function Calendar({ widget }: { widget: Widget }) {
           <CalendarEvent key={event.id} event={event} />
         ))}
       {!events && error && (
-        <div className="m-2 p-2 rounded-lg text-red-700 bg-red-200">
+        <div className="m-2 p-2 rounded-lg text-cp-blue bg-cp-light-blue">
           {error}
         </div>
       )}
@@ -43,8 +43,8 @@ function CalendarEvent({ event }: { event: Event }) {
       className={clsx(
         'm-2 p-2 rounded-lg',
         new Date(event.end) < new Date()
-          ? 'bg-gray-100 text-gray-500'
-          : 'bg-cw-light-orange text-cw-dark-orange'
+          ? 'bg-gray-100 text-cp-blue'
+          : 'bg-cp-light-blue text-cp-dark-blue'
       )}
     >
       <p className="text-sm">

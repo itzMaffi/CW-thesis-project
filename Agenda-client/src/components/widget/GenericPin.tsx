@@ -39,7 +39,7 @@ export default function GenericPin({
   }
   return (
     <Pin
-      className={className ?? 'text-cw-orange'}
+      className={className ?? 'text-cp-blue'}
       isPinned={!!widget}
       onTogglePin={onPin}
     ></Pin>

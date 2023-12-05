@@ -10,7 +10,7 @@ export default function WidgetHeader({
 }) {
   return (
     <>
-      <div className="bg-cw-orange min-w-full text-center p-2 text-lg font-bold font-sans text-white sticky top-0">
+      <div className="bg-cp-middle-blue min-w-full text-center p-2 text-lg font-bold font-sans text-white sticky top-0">
         <GenericPin
           widget={widget}
           className="text-white float-right"
