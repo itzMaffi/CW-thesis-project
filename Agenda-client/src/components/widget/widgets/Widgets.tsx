@@ -39,8 +39,8 @@ export class CurriculumProgressWidget extends Widget {
     this.height = 1;
     this.width = 1;
     this.x = 0;
-    this.y = 1;
-    this._component = <CurriculumProgress progress={userData.userDetails.cirriculumProgress}/>
+    this.y = 0;
+    this._component = <CurriculumProgress widget={this} progress={userData.userDetails.cirriculumProgress}/>
   }
 }
 
@@ -94,7 +94,7 @@ export class HelpRequestWidget extends Widget {
     this.height = 2;
     this.width = 1;
     this.x = 0;
-    this.y = 0;
+    this.y = 1;
     this._component = <NewHelpRequest widget={this}/>
   }
 }
@@ -105,7 +105,7 @@ export class CalendarWidget extends Widget {
     this.height = 4;
     this.width = 1;
     this.x = 3;
-    this.y = 1;
+    this.y = 2;
     this._component = <Calendar widget={this}/>
   }
 }
