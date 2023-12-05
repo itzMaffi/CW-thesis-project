@@ -13,17 +13,11 @@ export default function Menu() {
 
   const {dashboardState}:{dashboardState:DashboardState} = useContext(DashboardContext);
   const widgets = dashboardState.widgets;
-  // const [widgets, setWidgets] = useState<Widget[]>([]);
+
   const widgetTypes = Object.values(WidgetType);
   const filtered = widgetTypes.filter(
     (wt) => !widgets.some((wid) => wid.type === wt) && wt !== WidgetType.pinnedLecture
   );
-  // useEffect(() => {
-  //   (async () => {
-  //     const results = await layoutsDB.widgets;
-  //     setWidgets(results);
-  //   })();
-  // });
 
   return (
     <div className="flex flex-col absolute top-[56px] right-0 z-10 w-[200px] h-screen border-l border-cw-orange bg-white">
@@ -37,7 +31,7 @@ export default function Menu() {
       {filtered.map(
         (w) =>
           (w as WidgetType) && (
-            <div className="flex w-full justify-between">
+            <div key={w} className="flex w-full justify-between">
               <h3>{w}</h3>
               <GenericPin widgetType={w as WidgetType}></GenericPin>
             </div>
@@ -46,7 +40,7 @@ export default function Menu() {
       <h2 className="text-center border-b-2 border-cw-orange">Used Widgets</h2>
 
       {widgets.map((w) => (
-        <div className="flex w-full justify-between">
+        <div key={w.id} className="flex w-full justify-between">
           <h3>{w.type}</h3>
           <GenericPin widget={w}></GenericPin>
         </div>

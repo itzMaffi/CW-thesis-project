@@ -23,7 +23,7 @@ export default function resolveComponent(widget: Widget) {
     [WidgetType.announcement]: <Announcement widget={widget} />,
     [WidgetType.quiz]: <QuizGame widget={widget} />,
     [WidgetType.calendar]: <Calendar widget={widget} />,
-    [WidgetType.cirriculumProgress]: (
+    [WidgetType.curriculumProgress]: (
       <CurriculumProgress
         progress={userData.userDetails.cirriculumProgress}
         widget={widget}
