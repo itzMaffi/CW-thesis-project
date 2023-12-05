@@ -29,14 +29,11 @@ router.get('/', async (req, res, next) => {
     if (typeof code === 'string') {
       const res = (await oAuth2Client.getToken(code)) as GetTokenResponse;
       await oAuth2Client.setCredentials(res.tokens);
-      console.log('Tokens acquired');
     } else {
       console.error('Code is not a string');
     }
-    console.log('Tokens acquired');
 
     const user = oAuth2Client.credentials;
-    console.log('Credentials:', user);
 
     if (user) {
       const encoded = Buffer.from(JSON.stringify(user), 'binary').toString(
