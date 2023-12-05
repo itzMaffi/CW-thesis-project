@@ -1,17 +1,15 @@
-import mongoose, { Document } from 'mongoose';
+import { Schema, Document, model } from 'mongoose';
 
 interface IMessage extends Document {
   message: string;
 }
 
-const messageSchema = new mongoose.Schema({
-  message: String,
+const messageSchema = new Schema<IMessage>({
+  message: {
+    type: String,
+  },
 });
 
-const MessageModel = mongoose.model<IMessage>(
-  'Message',
-  messageSchema,
-  'newcollection'
-);
+const MessageModel = model<IMessage>('Message', messageSchema, 'newcollection');
 
 export default MessageModel;
