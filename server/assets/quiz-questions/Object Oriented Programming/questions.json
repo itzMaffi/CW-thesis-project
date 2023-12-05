@@ -1,0 +1,68 @@
+{
+  "quizTitle": "Object-Oriented Programming Quiz",
+  "quizSynopsis": "This quiz tests your knowledge of object-oriented programming concepts.",
+  "nrOfQuestions": "4",
+  "questions": [
+    {
+      "question": "What is the primary goal of object-oriented programming (OOP)?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "To write efficient code",
+        "To create modular and maintainable software",
+        "To optimize database queries"
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "Correct answer! The primary goal of OOP is to create modular and maintainable software.",
+      "messageForIncorrectAnswer": "Incorrect answer. Please try again.",
+      "explanation": "OOP emphasizes organizing code into reusable and understandable objects, leading to more maintainable software.",
+      "point": "10"
+    },
+    {
+      "question": "Which of the following are fundamental principles of OOP? (Select all that apply)",
+      "questionType": "text",
+      "answerSelectionType": "multiple",
+      "answers": [
+        "Inheritance",
+        "Encapsulation",
+        "Polymorphism",
+        "Recursion"
+      ],
+      "correctAnswer": [1, 2, 3],
+      "messageForCorrectAnswer": "Correct! Inheritance, Encapsulation, and Polymorphism are fundamental principles of OOP.",
+      "messageForIncorrectAnswer": "Incorrect answer. Please try again.",
+      "explanation": "Inheritance allows the creation of new classes based on existing ones, Encapsulation hides the internal details of objects, and Polymorphism enables objects to take on multiple forms.",
+      "point": "15"
+    },
+    {
+      "question": "What is the concept of inheritance in OOP?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "The ability to create objects from classes",
+        "The process of one class inheriting properties and behaviors from another",
+        "A method for combining data from multiple objects"
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "Correct answer! Inheritance is the process of one class inheriting properties and behaviors from another.",
+      "messageForIncorrectAnswer": "Incorrect answer. Please try again.",
+      "explanation": "Inheritance allows for code reuse and the creation of new classes based on existing ones.",
+      "point": "10"
+    },
+    {
+      "question": "What is polymorphism in OOP?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "The ability of an object to take on multiple forms",
+        "The process of hiding internal implementation details",
+        "The practice of combining objects into a single class"
+      ],
+      "correctAnswer": "1",
+      "messageForCorrectAnswer": "Correct answer! Polymorphism is the ability of an object to take on multiple forms.",
+      "messageForIncorrectAnswer": "Incorrect answer. Please try again.",
+      "explanation": "Polymorphism allows different objects to respond to the same method or message in a way that is specific to their individual class.",
+      "point": "10"
+    }
+  ]
+}

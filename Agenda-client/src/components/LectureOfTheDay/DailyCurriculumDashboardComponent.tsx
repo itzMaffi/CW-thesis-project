@@ -6,17 +6,20 @@ import logo from '../../assets/advancedjs1.png';
 import GenericPin from '../widget/GenericPin';
 import { Widget, WidgetType } from '../widget/Widget';
 import WidgetHeader from '../widgetHeader/WidgetHeader';
+import { useLectureContext } from '../../context/LectureContext';
 
 export default function DailyCurriculum({ widget }: { widget: Widget }) {
   const [day, setDay] = useState(6);
   const [dailyCurriculum, setDailyCurriculum] = useState<ICurriculum>();
+  const { setLectureName } = useLectureContext();
 
   useEffect(() => {
     (async () => {
-      const dailyCurriculum = await curriculumDb.getCurriculumOfTheDay(day);
-      setDailyCurriculum(dailyCurriculum);
+      const curriculum = await curriculumDb.getCurriculumOfTheDay(day);
+      setDailyCurriculum(curriculum);
+      setLectureName(curriculum.lecture_name); // Update the lecture name in the context
     })();
-  }, [day]);
+  }, [day, setLectureName]);
 
   function onNextDay() {
     setDay(day + 1);
