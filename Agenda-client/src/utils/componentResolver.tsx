@@ -24,7 +24,10 @@ export default function resolveComponent(widget: Widget) {
     [WidgetType.quiz]: <QuizGame widget={widget} />,
     [WidgetType.calendar]: <Calendar widget={widget} />,
     [WidgetType.cirriculumProgress]: (
-      <CurriculumProgress progress={userData.userDetails.cirriculumProgress} />
+      <CurriculumProgress
+        progress={userData.userDetails.cirriculumProgress}
+        widget={widget}
+      />
     ),
   };
   return components[widget.type] || null;
