@@ -41,11 +41,12 @@ async function verifyIDToken(idToken: string): Promise<boolean> {
     const response = await data.json();
     if (data.ok) return true;
     else {
-      alert(response.message);
+      alert(response.message + '\nClear your cache and try again');
       return false;
     }
   } catch (error) {
-    if (error instanceof Error) alert(`An error occured while validating your token: ${error.message}`);
+    if (error instanceof Error)
+      alert(`An error occured while validating your token: ${error.message}`);
     return false;
   }
 }
