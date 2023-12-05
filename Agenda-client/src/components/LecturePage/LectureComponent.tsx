@@ -27,27 +27,35 @@ export default function LectureComponent() {
                 {lecture.name}
               </h2>
               <span className="text-3xl">
-                <GenericPin widgetType={WidgetType.pinnedLecture} dataId={''+lecture.id}></GenericPin>
+                <GenericPin
+                  widgetType={WidgetType.pinnedLecture}
+                  dataId={'' + lecture.id}
+                ></GenericPin>
               </span>
             </div>
             <div className="flex flex-col items-center w-full">
-              {lecture.videos && lecture.videos.map((video, index) => (
-                <div className='mb-8' key={index}>
-                  <iframe
-                    className="rounded-md"
-                    width="640"
-                    height="360"
-                    src={video.url}
-                  ></iframe>
-                  <h3 className="text-center mt-8  mb-2 text-2xl">
-                    Check your knowledge
-                  </h3>
-                  <ul className="w-[640px] list-disc">
-                    {video.questions.map((question, index)=> <li key={index}>{question}</li>)}
-                  </ul>
-                  {index !== lecture.videos.length-1 && <hr className='mt-4 ml-40 mr-40'></hr>}
-                </div>
-              ))}
+              {lecture.videos &&
+                lecture.videos.map((video, index) => (
+                  <div className="mb-8" key={index}>
+                    <iframe
+                      className="rounded-md"
+                      width="640"
+                      height="360"
+                      src={video.url}
+                    ></iframe>
+                    <h3 className="text-center mt-8  mb-2 text-2xl">
+                      Check your knowledge
+                    </h3>
+                    <ul className="w-[640px] list-disc">
+                      {video.questions.map((question, index) => (
+                        <li key={index}>{question}</li>
+                      ))}
+                    </ul>
+                    {index !== lecture.videos.length - 1 && (
+                      <hr className="mt-4 ml-40 mr-40"></hr>
+                    )}
+                  </div>
+                ))}
             </div>
             <h3 className="text-2xl mt-8">Summary:</h3>
             <hr></hr>
@@ -55,8 +63,12 @@ export default function LectureComponent() {
             <ul>{lecture.summary}</ul>
             <h3 className="text-2xl mt-8">Code examples:</h3>
             <hr></hr>
-            <div className='mt-8 text-xs'> 
-              <CodeBlock text={lecture.codeExamples} language='javascript' theme={github}/>
+            <div className="mt-8 text-xs">
+              <CodeBlock
+                text={lecture.codeExamples}
+                language="javascript"
+                theme={github}
+              />
             </div>
             <h3 className="text-2xl mt-8">Extra Resources:</h3>
             <hr></hr>
