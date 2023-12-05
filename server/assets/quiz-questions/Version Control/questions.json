@@ -1,0 +1,69 @@
+{
+  "quizTitle": "Version Control Quiz",
+  "quizSynopsis": "This quiz tests your knowledge of version control systems, including Git.",
+  "nrOfQuestions": "4",
+  "questions": [
+    {
+      "question": "What is version control in software development?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "A system for managing different versions of software",
+        "A tool for optimizing database queries",
+        "A programming language for web development"
+      ],
+      "correctAnswer": "1",
+      "messageForCorrectAnswer": "Correct answer! Version control is a system for managing different versions of software.",
+      "messageForIncorrectAnswer": "Incorrect answer. Please try again.",
+      "explanation": "Version control helps track changes to code, collaborate with others, and manage project history.",
+      "point": "20"
+    },
+    {
+      "question": "Which version control system is widely used in software development and includes Git as one of its implementations?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Subversion",
+        "Mercurial",
+        "Apache CVS",
+        "GitHub"
+      ],
+      "correctAnswer": "1",
+      "messageForCorrectAnswer": "Correct answer! Subversion is a widely used version control system that includes Git as one of its implementations.",
+      "messageForIncorrectAnswer": "Incorrect answer. Please try again.",
+      "explanation": "Subversion (SVN) is a centralized version control system, and Git can be used as a client for SVN repositories.",
+      "point": "30"
+    },
+    {
+      "question": "What is the purpose of Git's 'commit' command?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "To create a new branch",
+        "To push changes to a remote repository",
+        "To record changes in the local repository"
+      ],
+      "correctAnswer": "3",
+      "messageForCorrectAnswer": "Correct answer! Git's 'commit' command is used to record changes in the local repository.",
+      "messageForIncorrectAnswer": "Incorrect answer. Please try again.",
+      "explanation": "The 'commit' command in Git captures a snapshot of the changes made to the code and saves it in the local repository.",
+      "point": "10"
+    },
+    {
+      "question": "Which Git command is used to create a new branch in a repository?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "git commit",
+        "git checkout",
+        "git branch",
+        "git merge"
+      ],
+      "correctAnswer": "3",
+      "messageForCorrectAnswer": "Correct answer! The 'git branch' command is used to create a new branch in a Git repository.",
+      "messageForIncorrectAnswer": "Incorrect answer. Please try again.",
+      "explanation": "The 'git branch' command allows you to create and list branches in a Git repository.",
+      "point": "10"
+    }
+  ]
+}

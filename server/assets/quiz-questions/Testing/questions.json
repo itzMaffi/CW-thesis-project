@@ -1,0 +1,67 @@
+{
+  "quizTitle": "Testing Quiz",
+  "quizSynopsis": "This is a small test to test your knowledge",
+  "nrOfQuestions": "4",
+  "questions": [
+    {
+      "question": "What is the purpose of software testing?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "To create software",
+        "To find and fix bugs",
+        "To design user interfaces"
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "Correct answer! Software testing helps find and fix bugs in software.",
+      "messageForIncorrectAnswer": "Incorrect answer. Please try again.",
+      "explanation": "Software testing is the process of evaluating a software application to identify and fix any defects or issues.",
+      "point": "10"
+    },
+    {
+      "question": "What is a unit test?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "A test performed by the end-users",
+        "A test that checks a small part of code in isolation",
+        "A test that checks the entire software system"
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "Correct answer! A unit test checks a small part of code in isolation.",
+      "messageForIncorrectAnswer": "Incorrect answer. Please try again.",
+      "explanation": "A unit test is a type of testing that focuses on individual units or components of a software application.",
+      "point": "15"
+    },
+    {
+      "question": "What is regression testing?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Testing new features of a software",
+        "Testing to ensure that existing functionality is not affected by changes",
+        "Testing for spelling errors in the code"
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "Correct answer! Regression testing ensures that existing functionality is not affected by changes.",
+      "messageForIncorrectAnswer": "Incorrect answer. Please try again.",
+      "explanation": "Regression testing is performed to verify that new code changes have not introduced new defects or broken existing functionality.",
+      "point": "10"
+    },
+    {
+      "question": "What is the purpose of a test case?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "To create software documentation",
+        "To describe a specific test scenario and its expected outcome",
+        "To design user interfaces"
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "Correct answer! A test case describes a specific test scenario and its expected outcome.",
+      "messageForIncorrectAnswer": "Incorrect answer. Please try again.",
+      "explanation": "A test case provides detailed information on how a particular test should be executed and what results are expected.",
+      "point": "10"
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "quizTitle": "Database 3 Quiz",
+  "quizSynopsis": "This quiz tests your knowledge of advanced database concepts.",
+  "nrOfQuestions": "4",
+  "questions": [
+    {
+      "question": "What is ACID in the context of databases?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "A data encoding format",
+        "A database query language",
+        "A set of properties that guarantee reliable database transactions"
+      ],
+      "correctAnswer": "3",
+      "messageForCorrectAnswer": "Correct answer! ACID stands for a set of properties that guarantee reliable database transactions.",
+      "messageForIncorrectAnswer": "Incorrect answer. Please try again.",
+      "explanation": "ACID (Atomicity, Consistency, Isolation, Durability) is a set of properties that ensure database transactions are reliable even in the face of system failures.",
+      "point": "15"
+    },
+    {
+      "question": "What is a database index, and why is it important?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "A data structure used for organizing tables",
+        "A unique identifier for database records",
+        "A mechanism for improving database query performance"
+      ],
+      "correctAnswer": "3",
+      "messageForCorrectAnswer": "Correct answer! A database index is a mechanism for improving database query performance.",
+      "messageForIncorrectAnswer": "Incorrect answer. Please try again.",
+      "explanation": "Database indexes are used to speed up data retrieval operations by providing quick access to specific rows in a table.",
+      "point": "10"
+    },
+    {
+      "question": "What is the CAP theorem in the context of distributed databases?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "A theory about database security",
+        "A theorem about data consistency in distributed databases",
+        "A theorem stating that a distributed database can have at most two out of three of the following properties: Consistency, Availability, and Partition tolerance"
+      ],
+      "correctAnswer": "3",
+      "messageForCorrectAnswer": "Correct answer! The CAP theorem states that a distributed database can have at most two out of three of the properties: Consistency, Availability, and Partition tolerance.",
+      "messageForIncorrectAnswer": "Incorrect answer. Please try again.",
+      "explanation": "The CAP theorem is a fundamental concept in distributed database design, which helps in making trade-offs between consistency, availability, and tolerance to network partitions.",
+      "point": "15"
+    },
+    {
+      "question": "What is a NoSQL database, and when might you choose it over a relational database?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "A database that doesn't use SQL for queries",
+        "A database that supports only numeric data types",
+        "A database that stores unstructured or semi-structured data and is chosen for scalability and flexibility"
+      ],
+      "correctAnswer": "3",
+      "messageForCorrectAnswer": "Correct answer! NoSQL databases are chosen for scalability and flexibility, especially when dealing with unstructured or semi-structured data.",
+      "messageForIncorrectAnswer": "Incorrect answer. Please try again.",
+      "explanation": "NoSQL databases are often used when traditional relational databases are not suitable due to the need for high scalability or the flexibility to handle different types of data.",
+      "point": "20"
+    }
+  ]
+}
