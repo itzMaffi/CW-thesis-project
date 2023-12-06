@@ -1,6 +1,5 @@
 import { Widget } from '../widget/Widget';
 import GenericPin from '../widget/GenericPin';
-import React from 'react';
 
 export default function WidgetHeader({
   children,

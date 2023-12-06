@@ -2,7 +2,6 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { StackOverflow } from './Stackoverflow';
 import { Widget, WidgetType } from '../widget/Widget';
-import React from 'react';
 
 beforeAll(() => {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
