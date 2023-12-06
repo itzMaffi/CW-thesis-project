@@ -1,5 +1,5 @@
-import { UserProgressDB } from "../components/cirruculumProgress/data/userProgressDb";
-import layoutsDB from "../utils/layoutsDB";
+import { UserProgressDB } from '../components/cirruculumProgress/data/userProgressDb';
+import layoutsDB from '../utils/layoutsDB';
 
 interface IBearerToken {
   access_token: string;
