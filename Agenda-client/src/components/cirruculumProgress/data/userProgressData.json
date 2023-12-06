@@ -1,14 +1,14 @@
 [{
   "userId": "1",
-  "day": 1
+  "day": 0
 },
 {
   "userId": "2",
-  "day": 3
+  "day": 1
 },
 {
   "userId": "3",
-  "day": 4
+  "day": 3
 },
 {
   "userId": "4",
@@ -16,6 +16,6 @@
 },
 {
   "userId": "5",
-  "day": 7
+  "day": 6
 }
 ]
