@@ -16,7 +16,9 @@ export type DashboardState = {
 function Dashboard() {
   const { dashboardState, setDashboardState } = useContext(DashboardContext);
 
-  useEffect(() => UpdateDashboardState, []);
+  useEffect(() => {
+    UpdateDashboardState();
+  }, []);
 
   function UpdateDashboardState() {
     (async () => {
