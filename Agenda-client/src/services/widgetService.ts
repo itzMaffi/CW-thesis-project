@@ -1,8 +1,9 @@
 import { Layouts } from 'react-grid-layout';
 import { Widget } from '../components/widget/Widget';
 import layoutDb from '../utils/layoutsDB';
+import { DashboardState } from '../components/Dashboard/Dashboard';
 
-export async function pinWidget(widget: Widget, setDashboardState:any) {
+export async function pinWidget(widget: Widget, setDashboardState:(dashboardState:DashboardState)=>void) {
   const layouts = await layoutDb.layouts;
   calculateFreePosition(widget, layouts);
   console.log(widget);
@@ -14,7 +15,7 @@ export async function pinWidget(widget: Widget, setDashboardState:any) {
   return widget;
 }
 
-export async function unPinWidget(widget: Widget, setDashboardState:any) {
+export async function unPinWidget(widget: Widget, setDashboardState:(dashboardState:DashboardState)=>void) {
   await layoutDb.removeWidget(widget);
   
   const dashboardState = await layoutDb.getDashboardState();
