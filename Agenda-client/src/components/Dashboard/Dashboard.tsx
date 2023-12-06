@@ -5,6 +5,7 @@ import 'react-grid-layout/css/styles.css';
 import 'react-resizable/css/styles.css';
 import dbInstance from '../../utils/layoutsDB';
 import { DashboardContext } from '../../App';
+import React from 'react';
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
