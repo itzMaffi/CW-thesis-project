@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { IoIosMenu, IoIosClose } from 'react-icons/io';
 import Menu from '../Menu/Menu';
 import logo from '../../assets/LOGO.png';
+// import { Animate, initTE } from 'tw-elements';
 
 export const Navbar: FC<{ isAuthenticated: boolean }> = ({
   isAuthenticated,
@@ -18,7 +19,18 @@ export const Navbar: FC<{ isAuthenticated: boolean }> = ({
       const element = event.target as HTMLElement;
       if (element === null || undefined) return;
 
-      if (showMenu && !element.closest('.sidebar-menu')) {
+      const clickedOutsideSidebarMenu = !element.closest('.sidebar-menu');
+      const clickedOutsidePinElement = !element.closest('.pin-component');
+      const clickedOutsideFoldingButton = !element.closest('.folding-button');
+      const clickedOutsideArrowButton = !element.closest('.arrow-button');
+
+      if (
+        showMenu &&
+        clickedOutsideSidebarMenu &&
+        clickedOutsidePinElement &&
+        clickedOutsideFoldingButton &&
+        clickedOutsideArrowButton
+      ) {
         setShowMenu(false);
       }
     };
@@ -38,6 +50,8 @@ export const Navbar: FC<{ isAuthenticated: boolean }> = ({
     };
   }, [showMenu]);
 
+  // initTE({ Animate });
+
   return (
     <div className="w-full bg-white h-14 pt-2  shadow-md sticky top-0 z-10 ">
       <div className="max-w-[1280px] mx-auto flex justify-between items-center">
@@ -55,13 +69,18 @@ export const Navbar: FC<{ isAuthenticated: boolean }> = ({
           <>
             <div
               onClick={handleMenuClick}
-              className="cursor-pointer w-[50px] h-full p-4 -mt-1 rounded-md text-cp-dark-blue bg-cp-light-blue hover:bg-cp-dark-blue hover:text-white flex justify-center"
+              className="folding-button cursor-pointer w-[50px] h-full p-4 -mt-1 rounded-md text-cp-dark-blue bg-cp-light-blue hover:bg-cp-dark-blue hover:text-white flex justify-center"
             >
               {showMenu ? <IoIosClose></IoIosClose> : <IoIosMenu></IoIosMenu>}
             </div>
-            {showMenu && <Menu></Menu>}
-            {/*    TODO: if there will be  a sidebar, this will be a button to open the sidebar
-          <div>open the sidebar to set widgets</div> */}
+
+            {showMenu && (
+              <Menu
+                data-te-animation-init
+                data-te-animation-reset="true"
+                data-te-animation="[fade-in_1s_ease-in-out]"
+              ></Menu>
+            )}
           </>
         )}
       </div>

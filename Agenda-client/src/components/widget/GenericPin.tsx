@@ -28,7 +28,7 @@ export default function GenericPin({
   }
   return (
     <Pin
-      className={'text-2xl text-cp-blue ' + className}
+      className={'pin-component text-2xl text-cp-blue ' + className}
       isPinned={isInLayout}
       onTogglePin={onPin}
     ></Pin>
