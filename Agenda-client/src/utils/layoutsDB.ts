@@ -61,6 +61,10 @@ class db {
     return Promise.resolve();
   }
 
+  saveToStorage(){
+    // localStorage.setItem({dashboard')
+  }
+
   removeWidgetByID(id: string) {
     this._widgets = this._widgets.filter((el) => el.id !== id);
     Object.values(this._layouts).forEach(
