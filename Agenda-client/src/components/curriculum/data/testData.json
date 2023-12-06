@@ -2,51 +2,57 @@
   "curriculum": [
     {
       "id":1,
-      "toy_problem_name": "Yarra",
+      "toy_problem_name": "Reversify",
       "lecture_name": "Object Oriented Programming",
       "lecture_id": 1,
-      "exercise_name": "Build an Object"
+      "exercise_name": "Build an Object",
+      "url":"/src/assets/advancedjs1.png"
     },
     {
       "id":2,
       "lecture_name": "Agile Practices",
       "lecture_id": 2,
-      "exercise_name": "Plan a Sprint"
+      "exercise_name": "Plan a Sprint",
+      "url":"/src/assets/advancedjs1.png"
     },
     {
       "id":3,
-      "toy_problem_name": "Yarra",
+      "toy_problem_name": "The Lottery",
       "lecture_name": "Database 3",
       "lecture_id": 3,
-      "exercise_name": "Data Treatment"
+      "exercise_name": "Data Treatment",
+      "url":"/src/assets/advancedjs1.png"
     },
     {
       "id":4,
-      "toy_problem_name": "Yarra",
       "lecture_name": "Design Patterns 1",
       "lecture_id": 4,
-      "exercise_name": "Refactor for design"
+      "exercise_name": "Refactor for design",
+      "url":"/src/assets/advancedjs.png"
     },
     {
       "id":5,
-      "toy_problem_name": "Yarra",
+      "toy_problem_name": "Christmas Tree",
       "lecture_name": "Version Control",
       "lecture_id": 5,
-      "exercise_name": "GIT good!"
+      "exercise_name": "GIT good!",
+      "url":"/src/assets/versionControlLogo.png"
     },
     {
       "id":6,
-      "toy_problem_name": "Yarra",
+      "toy_problem_name": "Sort and Resort",
       "lecture_name": "Testing",
       "lecture_id": 6,
-      "exercise_name": "Refactor for tests"
+      "exercise_name": "Refactor for tests",
+      "url":"/src/assets/testingLogo.png"
     },
     {
       "id":7,
-      "toy_problem_name": "Yarra",
+      "toy_problem_name": "Count Down",
       "lecture_name": "Web Security",
       "lecture_id": 7,
-      "exercise_name": "Break in"
+      "exercise_name": "Break in",
+      "url":"/src/assets/cyberSecurity.png"
     }
   ],
   "lectures": [
