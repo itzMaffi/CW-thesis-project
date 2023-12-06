@@ -33,7 +33,9 @@ describe('Calendar component', () => {
   it('should render today events if call resolves', async () => {
     (getTodayEvents as jest.Mock).mockResolvedValueOnce(mockResponse.resolve);
 
-    const { findByText } = render(<Calendar widget={{ id: '1', type: 6 }} />);
+    const { findByText } = render(
+      <Calendar widget={{ id: '1', type: 'calendar' }} />
+    );
 
     expect(
       await findByText(mockResponse.resolve[0].summary)
@@ -53,7 +55,9 @@ describe('Calendar component', () => {
   it('should render error if call rejects', async () => {
     (getTodayEvents as jest.Mock).mockRejectedValue(mockResponse.reject);
 
-    const { findByText } = render(<Calendar widget={{ id: '1', type: 6 }} />);
+    const { findByText } = render(
+      <Calendar widget={{ id: '1', type: 'calendar' }} />
+    );
 
     expect(
       await findByText(`There was an error getting today's events`)
