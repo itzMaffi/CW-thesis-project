@@ -1,7 +1,8 @@
-import IUser from '../utils/types';
+import { IUser } from '../utils/types';
 
 export const createInitialsAvatar = (user: IUser) => {
-  if (!user.firstName || !user.lastName) throw new Error('User must have a first and last name');
+  if (!user.firstName || !user.lastName)
+    throw new Error('User must have a first and last name');
 
   const initials = user.firstName[0] + user.lastName[0];
   const canvas = document.createElement('canvas');

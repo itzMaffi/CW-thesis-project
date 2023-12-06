@@ -1,6 +1,5 @@
 import { FC, useEffect, useState } from 'react';
-import IUser from '../../utils/types';
-import userData from './data/userData.json';
+import { IUser } from '../../utils/types';
 import { createInitialsAvatar } from '../../utils/createInitialsAvatar';
 import LogoutButton from './LogoutButton';
 
@@ -8,20 +7,34 @@ export const UserProfile: FC = () => {
   const [user, setUser] = useState<IUser>();
   const [avatar, setAvatar] = useState<string>('');
 
+  async function getUserInfo(accessToken: string) {
+    try {
+      const data = await fetch(
+        `https://www.googleapis.com/oauth2/v3/userinfo?access_token=${accessToken}`
+      );
+      const { given_name, family_name, picture } = await data.json();
+
+      console.log(given_name, family_name, picture);
+      const user: IUser = {
+        firstName: given_name,
+        lastName: family_name,
+        avatar: picture,
+      };
+
+      setUser(user);
+
+      if (!user.avatar) setAvatar(createInitialsAvatar(user));
+      else setAvatar(user.avatar);
+    } catch (error) {
+      alert(error);
+    }
+  }
 
   useEffect(() => {
-    const user: IUser = {
-      id: userData.userDetails.id,
-      firstName: userData.userDetails.firstName,
-      lastName: userData.userDetails.lastName,
-      email: userData.userDetails.email,
-      avatar: userData.userDetails.avatar,
-      cirriculumProgress: userData.userDetails.cirriculumProgress,
-    };
-    setUser(user);
-
-    if (!user.avatar) setAvatar(createInitialsAvatar(user));
-    else setAvatar(user.avatar);
+    if (localStorage.getItem('token')) {
+      const token = JSON.parse(localStorage.getItem('token')!);
+      getUserInfo(token.access_token);
+    }
   }, []);
 
   return user ? (
@@ -36,11 +49,9 @@ export const UserProfile: FC = () => {
             alt="Profile"
           />
         </div>
-        <div className="userInfo text-sm flex flex-col justify-center grow">
-          <h2>
-            {user.firstName} {user.lastName}
-          </h2>
-          <p>{user.email}</p>
+        <div className="userInfo text-lg font-bold flex flex-col grow text-cp-blue">
+          <h2>{user.firstName}</h2>
+          <h2>{user.lastName}</h2>
         </div>
       </div>
       <div className="flex flex-end grow-0 shrink-0">
