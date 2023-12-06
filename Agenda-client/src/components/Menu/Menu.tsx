@@ -24,10 +24,11 @@ export default function Menu() {
     .map((el) => createWidget(el));
 
   return (
-    <div className="flex flex-col absolute top-[56px] pb-[56px] right-0 z-10 w-[300px] h-screen border-l border-cp-blue bg-cp-light-blue pl-5 pr-10">
-      <div className="h-[50px] border-2 border-cp-blue rounded-lg">logout</div>
-      <Link to={'/dashboard'} className="h-[50px] border-2 border-cp-blue rounded-lg">Dashboard</Link>
-      <Link to={'/syllabus'} className="h-[50px] border-2 border-cp-blue rounded-lg">Syllabus</Link>
+    <div className="flex flex-col absolute top-[56px] pt-3 pb-[56px] right-0 z-10 w-[300px] h-screen shadow-md  backdrop-blur-[10px] bg-white/15 pl-5 pr-10">
+      
+      <Button to='/logout' title='Logout'></Button>
+      <Button to='/dashboard' title='Dashboard'></Button>
+      <Button to='/syllabus' title='Syllabus'></Button>
 
       {isDashboard && (
         <div className='flex flex-col overflow-scroll'>
@@ -49,7 +50,7 @@ export default function Menu() {
 
 function WidgetItem({ children }: { children: ReactNode }) {
   return (
-    <div className="flex w-full p-3 mb-3 justify-between rounded-md bg-cp-middle-blue text-white">
+    <div className="flex w-full p-3 mb-3 justify-between rounded-md bg-cp-middle-blue text-white cursor-default">
       {children}
     </div>
   );
@@ -72,4 +73,14 @@ function WidgetList({ title, widgets }: { title: string; widgets: Widget[] }) {
       )}
     </>
   );
+}
+
+function Button ({title, to}:{title:string, to:string}){
+  return (
+       <Link to={to} className="h-[50px] text-center flex justify-center p-3 mb-3 shrink-0 bg-cp-dark-blue text-white rounded-lg hover:bg-cp-middle-blue">
+          <div className=''>
+            {title}
+          </div>
+       </Link>
+    )
 }
