@@ -7,14 +7,26 @@ import WidgetHeader from '../widgetHeader/WidgetHeader';
 import { useLectureContext } from '../../context/LectureContext';
 import TypePin from '../widget/TypePin';
 import { ImArrowLeft, ImArrowRight } from "react-icons/im";
+import { USER_ID, UserProgressDB } from '../cirruculumProgress/data/userProgressDb';
 
 export default function DailyCurriculum({ widget }: { widget: Widget }) {
-  const [day, setDay] = useState(6);
+  const [day, setDay] = useState(0);
+  const [maxDay, setMaxDay] = useState(0)
+
   const [dailyCurriculum, setDailyCurriculum] = useState<ICurriculum>();
   const { setLectureName } = useLectureContext();
 
+  useEffect(()=> {
+    (async ()=> {
+      const currentUserDay = await UserProgressDB.GetInstance().getUserCurrentDay(USER_ID);
+      setDay(currentUserDay);
+      setMaxDay(currentUserDay);
+    })()
+  },[])
+
   useEffect(() => {
     (async () => {
+      
       const curriculum = await curriculumDb.getCurriculumOfTheDay(day);
       setDailyCurriculum(curriculum);
       setLectureName(curriculum.lecture_name); // Update the lecture name in the context
@@ -40,7 +52,7 @@ export default function DailyCurriculum({ widget }: { widget: Widget }) {
               </button>
             )}
             <div className="ml-4 mr-4 text-center">Lecture of the day</div>
-            {day < 6 && (
+            {day < maxDay && (
               <button className="text-cp-light-blue" onClick={onNextDay}>
                 <ImArrowRight></ImArrowRight>
               </button>
