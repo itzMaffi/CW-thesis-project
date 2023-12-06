@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import WidgetHeader from '../widgetHeader/WidgetHeader';
 import { Widget } from '../widget/Widget';
+import { useEffect, useState } from 'react';
 
 interface ICurriculumProgressProps {
   progress: number;
@@ -8,9 +9,15 @@ interface ICurriculumProgressProps {
 }
 
 export const CurriculumProgress: FC<ICurriculumProgressProps> = ({
-  progress = 0,
   widget,
 }) => {
+
+  const [progress, setProgress] = useState(0);
+
+  useEffect(()=>{
+    (async ()=> )()
+  })
+
   return (
     <div className="progressBar flex flex-col justify-between ">
       <WidgetHeader widget={widget}>Course progress</WidgetHeader>
