@@ -1,64 +1,28 @@
 import { Request, Response } from 'express';
 import 'dotenv/config';
-
-interface ISlackApiResponse {
-  ok: boolean;
-  messages: {
-    text: string;
-  }[];
-}
-
-const SLACK_CHANNEL = process.env.SLACK_CHANNEL;
-const SLACK_TOKEN = process.env.SLACK_TOKEN;
-
-let cachedMessages: string[] = [];
+import { fetchSlackMessages } from '../utils/slack';
 
 const CACHE_TTL = 5 * 60 * 1000;
+let cachedData: string[] | undefined = [];
 
-export function setCachedMessages(messages: string[]) {
-  cachedMessages = messages;
+export async function initializeMessageFetching() {
+  // Call immediately and set interval
+  await fetchAndUpdate();
+  setInterval(fetchAndUpdate, CACHE_TTL);
 }
 
-async function fetchSlackMessages() {
+async function fetchAndUpdate() {
   try {
-    const channelId = SLACK_CHANNEL;
-    const token = SLACK_TOKEN;
-    const limit = 2; // limits to the last 2 slack messages aka only show last 2 messages in dashboard later
-
-    const response = await fetch(
-      `https://slack.com/api/conversations.history?channel=${channelId}&limit=${limit}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-
-    if (response.ok) {
-      const data = (await response.json()) as ISlackApiResponse;
-
-      if (data.ok) {
-        const texts = data.messages.map((message) => message.text);
-        setCachedMessages(texts);
-      } else {
-        console.error('Slack API responded with an error');
-      }
-    } else {
-      console.error('Failed to fetch Slack messages');
-    }
+    cachedData = await fetchSlackMessages();
   } catch (error) {
-    console.error(error);
+    console.error('Error fetching Slack messages:', error);
   }
 }
 
-// initial fetch when server starts
-fetchSlackMessages();
-
-// update every 5mins
-setInterval(fetchSlackMessages, CACHE_TTL);
-
-function getSlackMessages(req: Request, res: Response) {
-  res.json(cachedMessages);
+export async function getSlackMessages(req: Request, res: Response) {
+  if (cachedData) {
+    res.status(200).json(cachedData);
+  } else {
+    res.status(503).send('Data is currently unavailable.');
+  }
 }
-
-export { getSlackMessages };
