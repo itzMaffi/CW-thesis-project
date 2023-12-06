@@ -33,5 +33,5 @@ export default {
     '\\.(gif|ttf|eot|svg|png)$': '<rootDir>/src/__mocks__/fileMock.ts',
     '\\.(css)$': '<rootDir>/src/__mocks__/styleMock.ts',
   },
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
+  setupFilesAfterEnv: ['<rootDir>/jest-setup.ts'],
 };
