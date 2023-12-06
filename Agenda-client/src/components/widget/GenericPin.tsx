@@ -1,46 +1,35 @@
 import Pin from './Pin';
 import { pinWidget, unPinWidget } from '../../services/widgetService';
-import { Widget, WidgetType } from './Widget';
+import { Widget } from './Widget';
 import { useEffect, useState } from 'react';
 import layoutsDB from '../../utils/layoutsDB';
 
 export default function GenericPin({
-  widget: incomingWidget,
-  widgetType,
-  dataId,
+  widget,
   className,
 }: {
-  widget?: Widget;
-  widgetId?: string;
-  widgetType?: WidgetType;
-  dataId?: string;
+  widget: Widget;
   className?: string;
 }) {
-  const [widget, setWidget] = useState(incomingWidget);
+  const [isInLayout, setIsInLayout] = useState(false);
 
   useEffect(() => {
-    if (!incomingWidget && dataId) {
-      (async () => {
-        const widget = await layoutsDB.getWidgetByDataId(dataId);
-        setWidget(widget);
-      })();
-    }
+    (async () => setIsInLayout(await layoutsDB.widgetExists(widget)))();
   });
-
   async function onPin() {
-    if (widget) {
-      await unPinWidget(widget!);
-      setWidget(undefined);
+    if (isInLayout) {
+      await unPinWidget(widget);
+      setIsInLayout(false);
       return;
     }
 
-    const result = await pinWidget(widgetType!, dataId);
-    setWidget(result);
+    await pinWidget(widget);
+    setIsInLayout(true);
   }
   return (
     <Pin
       className={className ?? 'text-cp-blue'}
-      isPinned={!!widget}
+      isPinned={isInLayout}
       onTogglePin={onPin}
     ></Pin>
   );

@@ -3,10 +3,10 @@ import curriculumDb from '../curriculum/data/curriculumDb';
 import { Link } from 'react-router-dom';
 import ICurriculum from '../curriculum/interfaces/Curriculum';
 import logo from '../../assets/advancedjs1.png';
-import GenericPin from '../widget/GenericPin';
 import { Widget, WidgetType } from '../widget/Widget';
 import WidgetHeader from '../widgetHeader/WidgetHeader';
 import { useLectureContext } from '../../context/LectureContext';
+import TypePin from '../widget/TypePin';
 
 export default function DailyCurriculum({ widget }: { widget: Widget }) {
   const [day, setDay] = useState(6);
@@ -60,10 +60,10 @@ export default function DailyCurriculum({ widget }: { widget: Widget }) {
               <Link to={'/Lecture/' + dailyCurriculum.lecture_id}>
                 {dailyCurriculum.lecture_name}
               </Link>
-              <GenericPin
+              <TypePin
                 widgetType={WidgetType.pinnedLecture}
                 dataId={'' + dailyCurriculum.lecture_id}
-              ></GenericPin>
+              ></TypePin>
             </p>
             <h2 className="text-gray-400">Exercise</h2>
             <p>{dailyCurriculum.exercise_name}</p>

@@ -1,16 +1,14 @@
 import { FC, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { IoIosMenu } from "react-icons/io";
+import { IoIosMenu, IoIosClose } from 'react-icons/io';
 import Menu from '../Menu/Menu';
 import logo from '../../assets/LOGO.png';
 
 export const Navbar: FC = () => {
-
   const [showMenu, setShowMenu] = useState(false);
-  
-  function handleMenuClick()
-  {
-    setShowMenu(!showMenu)
+
+  function handleMenuClick() {
+    setShowMenu(!showMenu);
   }
 
   return (
@@ -26,8 +24,11 @@ export const Navbar: FC = () => {
             data-ll-status="loaded"
           ></img>
         </Link>
-        <div onClick={handleMenuClick} className='cursor-pointer w-[50px] h-full hover:bg-black hover:text-white flex justify-center'>
-          <IoIosMenu></IoIosMenu>
+        <div
+          onClick={handleMenuClick}
+          className="cursor-pointer w-[50px] h-full hover:bg-black hover:text-white flex justify-center"
+        >
+          {showMenu ? <IoIosClose></IoIosClose> : <IoIosMenu></IoIosMenu>}
         </div>
         {showMenu && <Menu></Menu>}
         {/*    TODO: if there will be  a sidebar, this will be a button to open the sidebar
