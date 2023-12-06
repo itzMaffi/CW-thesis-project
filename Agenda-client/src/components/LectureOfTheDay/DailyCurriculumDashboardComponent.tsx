@@ -58,7 +58,7 @@ export default function DailyCurriculum({ widget }: { widget: Widget }) {
               </button>
             )}
             <div className="ml-4 mr-4 text-center">Lecture of the day</div>
-            {day < 6 && (
+            {day < maxDay && (
               <button
                 className="text-cp-light-blue arrow-button"
                 onClick={onNextDay}
