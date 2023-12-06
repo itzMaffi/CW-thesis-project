@@ -2,7 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "module": "commonjs",
-    "types": ["jest", "vite/client"],
+    "types": ["jest", "vite/client", "@types/jest"],
     "moduleResolution": "node"
   },
   "include": [
@@ -10,5 +10,5 @@
     "src/__tests__/*.spec.tsx",
     "src/components/announcements/emoji-dictionary.d.ts",
     "src/components/QuizGame/react-quiz-component.d.ts"
-  ] //I hate this but it's the only way to make it work, custom types declaration could be put in a types folder
+  ] //I hate this but it's the only way to make it work, custom types declaration could be put in a types folder 
 }
