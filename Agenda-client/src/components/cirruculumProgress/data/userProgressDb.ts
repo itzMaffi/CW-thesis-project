@@ -6,22 +6,30 @@ export const USER_ID = '4';
 export class UserProgressDB {
   private static instance?: UserProgressDB;
   private constructor() {}
-  private _id!: string;
+  private _id?: string;
 
-  async getUserProgress(userId:string){
-    return Math.floor((UserProgressData.find(el=>el.userId == userId)?.day ?? 0)*100 / TotalDays);
+  async getUserProgress(userId: string) {
+    return Math.floor(
+      ((UserProgressData.find((el) => el.userId == userId)?.day ?? 0) * 100) /
+        TotalDays
+    );
   }
 
-  async getUserCurrentDay(userId:string){
-    return UserProgressData.find(el=>el.userId == userId)?.day ?? 0;
+  async getUserCurrentDay(userId: string) {
+    return UserProgressData.find((el) => el.userId == userId)?.day ?? 0;
   }
 
   public static GetInstance(): UserProgressDB {
-    if (!UserProgressDB.instance) UserProgressDB.instance = new UserProgressDB();
+    if (!UserProgressDB.instance)
+      UserProgressDB.instance = new UserProgressDB();
 
     return UserProgressDB.instance;
   }
   set id(id: string) {
     this._id = id;
+  }
+
+  get id() {
+    return this._id || '';
   }
 }
