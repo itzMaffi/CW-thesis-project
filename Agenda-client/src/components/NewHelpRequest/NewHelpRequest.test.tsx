@@ -4,24 +4,38 @@ import '@testing-library/jest-dom';
 import NewHelpRequest from './NewHelpRequest';
 import { Widget, WidgetType } from '../widget/Widget';
 
-beforeAll(() => {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const crypto = require('crypto');
-  Object.defineProperty(globalThis, 'crypto', {
-    value: {
-      randomUUID: () => crypto.randomUUID(),
-    },
-  });
+import { jest } from '@jest/globals';
+
+jest.mock('../../utils/MyCrypto', () => {
+  let id = 0;
+  return {
+    randomUUID: jest.fn().mockReturnValue('' + id++),
+  };
 });
 
+class TestWidget extends Widget {
+  constructor(type: WidgetType, dataId?: string) {
+    super(type, dataId);
+  }
+}
+// beforeAll(() => {
+//   // eslint-disable-next-line @typescript-eslint/no-var-requires
+//   const crypto = require('crypto');
+//   Object.defineProperty(globalThis, 'crypto', {
+//     value: {
+//       randomUUID: () => crypto.randomUUID(),
+//     },
+//   });
+// });
+
 test('renders NewHelpRequest component', () => {
-  const widget = new Widget(WidgetType.helpRequest, 'someDataId');
+  const widget = new TestWidget(WidgetType.helpRequest, 'someDataId');
   render(<NewHelpRequest widget={widget} />);
   expect(screen.getByText(/Ask for a help/i)).toBeInTheDocument();
 });
 
 test('toggles student list on click', () => {
-  const widget = new Widget(WidgetType.helpRequest, 'someDataId');
+  const widget = new TestWidget(WidgetType.helpRequest, 'someDataId');
   render(<NewHelpRequest widget={widget} />);
   const inputArea = screen.getByPlaceholderText(/add students here/i);
   fireEvent.click(inputArea);
@@ -31,7 +45,7 @@ test('toggles student list on click', () => {
 });
 
 test('filters students based on input', () => {
-  const widget = new Widget(WidgetType.helpRequest, 'someDataId');
+  const widget = new TestWidget(WidgetType.helpRequest, 'someDataId');
   render(<NewHelpRequest widget={widget} />);
   const input = screen.getByPlaceholderText(/add students here/i);
   fireEvent.change(input, { target: { value: 'Isaiah' } });
