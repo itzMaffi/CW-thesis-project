@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import 'dotenv/config'
+import 'dotenv/config';
 
 interface ISlackApiResponse {
   ok: boolean;
@@ -14,6 +14,10 @@ const SLACK_TOKEN = process.env.SLACK_TOKEN;
 let cachedMessages: string[] = [];
 
 const CACHE_TTL = 5 * 60 * 1000;
+
+export function setCachedMessages(messages: string[]) {
+  cachedMessages = messages;
+}
 
 async function fetchSlackMessages() {
   try {
@@ -35,7 +39,7 @@ async function fetchSlackMessages() {
 
       if (data.ok) {
         const texts = data.messages.map((message) => message.text);
-        cachedMessages = texts;
+        setCachedMessages(texts);
       } else {
         console.error('Slack API responded with an error');
       }
