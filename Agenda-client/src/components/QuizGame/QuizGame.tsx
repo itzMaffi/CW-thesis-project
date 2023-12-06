@@ -4,6 +4,7 @@ import './Quizgame.css';
 import { Widget } from '../widget/Widget';
 import WidgetHeader from '../widgetHeader/WidgetHeader';
 import { useLectureContext } from '../../context/LectureContext';
+import React from 'react';
 
 function QuizGame({ widget }: { widget: Widget }) {
   const { lectureName } = useLectureContext();

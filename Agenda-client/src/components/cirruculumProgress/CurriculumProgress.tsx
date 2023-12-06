@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import WidgetHeader from '../widgetHeader/WidgetHeader';
 import { Widget } from '../widget/Widget';
+
 interface ICurriculumProgressProps {
   progress: number;
   widget: Widget;
