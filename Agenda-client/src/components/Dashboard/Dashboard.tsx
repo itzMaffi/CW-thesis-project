@@ -16,7 +16,9 @@ export type DashboardState = {
 function Dashboard() {
   const { dashboardState, setDashboardState } = useContext(DashboardContext);
 
-  useEffect(() => UpdateDashboardState, []);
+  useEffect(() => {
+    UpdateDashboardState();
+  }, []);
 
   function UpdateDashboardState() {
     (async () => {
@@ -48,7 +50,7 @@ function Dashboard() {
       {layouts && widgets ? (
         <div className="max-w-[1280px] mx-auto">
           <ResponsiveGridLayout
-            className="border-2 border-cp-blue rounded-lg bg-cp-light-blue bg-opacity-20"
+            className="border-2 border-transparent rounded-lg bg-cp-light-blue bg-opacity-20"
             breakpoints={{ lg: 1024, md: 768, sm: 640 }}
             cols={{ lg: 4, md: 2, sm: 1 }}
             layouts={layouts}

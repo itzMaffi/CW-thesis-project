@@ -9,6 +9,7 @@ const StudentsList: React.FC<StudentsListProps> = ({
 }) => {
   return (
     <div
+      data-testid="student-list"
       className="bg-white w-[283px] h-[157px]
      overflow-y-auto absolute z-50 rounded-md shadow"
     >

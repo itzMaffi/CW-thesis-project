@@ -8,8 +8,11 @@ export abstract class Widget {
   height: number = 1;
 
   id: string;
+  name: string;
   type: WidgetType;
   dataId?: string;
+
+  canBeUnpinned: boolean = true;
 
   protected _component: ReactNode;
 
@@ -18,6 +21,7 @@ export abstract class Widget {
     this.id = layoutId;
     this.type = type;
     this.dataId = dataId;
+    this.name = 'default name';
   }
 
   get component() {

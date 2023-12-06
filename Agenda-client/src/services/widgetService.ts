@@ -1,10 +1,8 @@
 import { Layouts } from 'react-grid-layout';
-import { Widget, WidgetType } from '../components/widget/Widget';
+import { Widget } from '../components/widget/Widget';
 import layoutDb from '../utils/layoutsDB';
-import createWidget from '../components/widget/widgets/WidgetFactory';
 
-export async function pinWidget(widgetType: WidgetType, dataId?: string) {
-  const widget = createWidget(widgetType, dataId);
+export async function pinWidget(widget: Widget) {
   const layouts = await layoutDb.layouts;
   calculateFreePosition(widget, layouts);
   console.log(widget);
