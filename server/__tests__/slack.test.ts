@@ -7,6 +7,7 @@ jest.mock('../controllers/slackController', () => ({
 import request from 'supertest';
 import { createServer } from '../server';
 import { getSlackMessages } from '../controllers/slackController';
+import { fetchSlackMessages } from '../utils/slack';
 
 const app = createServer();
 
