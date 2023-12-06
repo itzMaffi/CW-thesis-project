@@ -5,6 +5,7 @@ import { DashboardContext } from '../../App';
 import { DashboardState } from '../Dashboard/Dashboard';
 import { Link, useLocation } from 'react-router-dom';
 import createWidget from '../widget/widgets/WidgetFactory';
+import LogoutButton from '../userProfile/LogoutButton';
 
 export default function Menu() {
   const location = useLocation();
@@ -26,7 +27,9 @@ export default function Menu() {
   return (
     <div className="flex flex-col absolute top-[56px] pt-3 pb-[56px] right-0 z-10 w-[300px] h-screen shadow-md  backdrop-blur-[10px] bg-white/15 pl-5 pr-10">
       
-      <Button to='/logout' title='Logout'></Button>
+      <div className='mb-3 flex justify-end'>
+        <LogoutButton/>
+      </div>
       <Button to='/dashboard' title='Dashboard'></Button>
       <Button to='/syllabus' title='Syllabus'></Button>
 
@@ -77,7 +80,7 @@ function WidgetList({ title, widgets }: { title: string; widgets: Widget[] }) {
 
 function Button ({title, to}:{title:string, to:string}){
   return (
-       <Link to={to} className="h-[50px] text-center flex justify-center p-3 mb-3 shrink-0 bg-cp-dark-blue text-white rounded-lg hover:bg-cp-middle-blue">
+       <Link to={to} className="h-[50px] text-center flex justify-center p-3 mb-3 shrink-0 bg-cp-blue font-bold font-sans text-white rounded-lg hover:bg-cp-middle-blue">
           <div className=''>
             {title}
           </div>
