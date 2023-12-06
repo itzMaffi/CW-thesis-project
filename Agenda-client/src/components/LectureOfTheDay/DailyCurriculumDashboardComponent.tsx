@@ -63,6 +63,7 @@ export default function DailyCurriculum({ widget }: { widget: Widget }) {
               <TypePin
                 widgetType={WidgetType.pinnedLecture}
                 dataId={'' + dailyCurriculum.lecture_id}
+                className='ml-4'
               ></TypePin>
             </p>
             <h2 className="text-gray-400">Exercise</h2>
