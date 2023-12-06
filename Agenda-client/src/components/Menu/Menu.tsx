@@ -25,16 +25,15 @@ export default function Menu() {
     .map((el) => createWidget(el));
 
   return (
-    <div className="flex flex-col absolute top-[56px] pt-3 pb-[56px] right-0 z-10 w-[300px] h-screen shadow-md  backdrop-blur-[10px] bg-white/15 pl-5 pr-10">
-      
-      <div className='mb-3 flex justify-end'>
-        <LogoutButton/>
+    <div className="sidebar-menu flex flex-col absolute top-[56px] pt-3 pb-[56px] right-0 z-10 w-[300px] h-screen shadow-md  backdrop-blur-[10px] bg-white/15 pl-5 pr-10">
+      <div className="mb-3 flex justify-end">
+        <LogoutButton />
       </div>
-      <Button to='/dashboard' title='Dashboard'></Button>
-      <Button to='/syllabus' title='Syllabus'></Button>
+      <Button to="/dashboard" title="Dashboard"></Button>
+      <Button to="/syllabus" title="Syllabus"></Button>
 
       {isDashboard && (
-        <div className='flex flex-col overflow-scroll'>
+        <div className="flex flex-col overflow-scroll">
           <WidgetList
             key={'unused'}
             title="Unused Widgets"
@@ -78,12 +77,13 @@ function WidgetList({ title, widgets }: { title: string; widgets: Widget[] }) {
   );
 }
 
-function Button ({title, to}:{title:string, to:string}){
+function Button({ title, to }: { title: string; to: string }) {
   return (
-       <Link to={to} className="h-[50px] text-center flex justify-center p-3 mb-3 shrink-0 bg-cp-blue font-bold font-sans text-white rounded-lg hover:bg-cp-middle-blue">
-          <div className=''>
-            {title}
-          </div>
-       </Link>
-    )
+    <Link
+      to={to}
+      className="h-[50px] text-center flex justify-center p-3 mb-3 shrink-0 bg-cp-blue font-bold font-sans text-white rounded-lg hover:bg-cp-middle-blue"
+    >
+      <div className="">{title}</div>
+    </Link>
+  );
 }

@@ -59,7 +59,7 @@ function Dashboard() {
             {widgets.map((widget: Widget) => (
               <div
                 key={widget.id}
-                className="border-2 border-cp-blue rounded-lg bg-white overflow-auto"
+                className="border-2 border-cp-blue rounded-lg bg-white overflow-auto scrollbar-hide"
               >
                 {widget.component}
               </div>

@@ -133,7 +133,7 @@ const NewHelpRequest: React.FC<{ widget: Widget }> = ({
   return (
     <form
       onSubmit={onFormSubmit}
-      className="flex flex-col justify-center items-center min-w-full"
+      className="flex flex-col justify-center items-center min-w-full "
     >
       <WidgetHeader widget={widget}>Ask for a help</WidgetHeader>
       <div className=" flex flex-col gap-2 min-w-full max-w-full">

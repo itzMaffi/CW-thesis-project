@@ -43,7 +43,7 @@ function QuizGame({ widget }: { widget: Widget }) {
       {!quizData && !isLoading && (
         <button
           onClick={loadQuiz}
-          className="bg-cp-blue mt-20 text-white font-bold py-2 px-4 rounded-full hover:bg-cp-middle-blue focus:outline-none focus:shadow-outline text-center mx-auto block"
+          className="bg-cp-blue mt-20 text-white font-bold py-2 px-4 rounded-md hover:bg-cp-middle-blue focus:outline-none focus:shadow-outline text-center mx-auto block"
         >
           Load Quiz
         </button>
