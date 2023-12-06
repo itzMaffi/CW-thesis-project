@@ -12,11 +12,17 @@ export type ComponentsMapper = {
   [type: string]: JSX.Element;
 };
 
-export default interface IUser {
-  id: string;
+export interface IUser {
   firstName: string;
   lastName: string;
-  email: string;
   avatar?: string;
-  cirriculumProgress: number;
 }
+
+export type Token = {
+  access_token: string;
+  refresh_token: string;
+  scope: string;
+  token_type: string;
+  id_token: string;
+  expiry_date: number;
+};
