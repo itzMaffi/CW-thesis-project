@@ -52,11 +52,11 @@ export default function DailyCurriculum({ widget }: { widget: Widget }) {
             {dailyCurriculum.toy_problem_name && (
               <div>
                 <div className="text-gray-400">Code Play Challenge:</div>
-                <p>{dailyCurriculum.toy_problem_name}</p>
+                <p className='text-bold text-2xl text-cp-dark-blue'>{dailyCurriculum.toy_problem_name}</p>
               </div>
             )}
             <div className="text-gray-400">Lecture:</div>
-            <p className="flex">
+            <p className="flex text-bold text-2xl text-cp-dark-blue">
               <Link to={'/Lecture/' + dailyCurriculum.lecture_id}>
                 {dailyCurriculum.lecture_name}
               </Link>
@@ -67,7 +67,7 @@ export default function DailyCurriculum({ widget }: { widget: Widget }) {
               ></TypePin>
             </p>
             <div className="text-gray-400">Exercise</div>
-            <p>{dailyCurriculum.exercise_name}</p>
+            <p className='text-bold text-2xl text-cp-dark-blue'>{dailyCurriculum.exercise_name}</p>
           </div>
           <div className="grow w-1/2 flex justify-center items-center bg-gradient-to-r from-white to-cp-middle-blue">
             <div className="h-40 w-40">
