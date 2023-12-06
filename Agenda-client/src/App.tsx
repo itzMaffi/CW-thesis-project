@@ -8,11 +8,21 @@ import Token from './components/Token/Token';
 import { createContext, useState, ReactNode } from 'react';
 import { LectureProvider } from './context/LectureContext';
 
-export const DashboardContext = createContext<any>(null);
-export const AuthContext = createContext<any>(null);
+interface DashboardContextType {
+  dashboardState: DashboardState;
+  setDashboardState: (dashboardState: DashboardState) => void;
+}
+
+interface AuthContextType {
+  isAuthenticated: boolean;
+  setIsAuthenticated: (isAuthenticated: boolean) => void;
+}
+
+export const DashboardContext = createContext<DashboardContextType>({dashboardState:{layouts:{},widgets:[]}, setDashboardState: ()=> void 0});
+export const AuthContext = createContext<AuthContextType>({isAuthenticated:false, setIsAuthenticated:()=> void 0});
 
 function App() {
-  const [dashboardState, setDashboardState] = useState<DashboardState>();
+  const [dashboardState, setDashboardState] = useState<DashboardState>({layouts:{},widgets:[]});
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   return (
