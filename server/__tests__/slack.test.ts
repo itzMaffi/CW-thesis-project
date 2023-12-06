@@ -1,13 +1,6 @@
-// Global module mock (outside of any function, at the top of the file)
-jest.mock('../controllers/slackController', () => ({
-  initializeMessageFetching: jest.fn(),
-  getSlackMessages: jest.fn(),
-}));
-
 import request from 'supertest';
 import { createServer } from '../server';
 import { getSlackMessages } from '../controllers/slackController';
-import { fetchSlackMessages } from '../utils/slack';
 
 const app = createServer();
 
