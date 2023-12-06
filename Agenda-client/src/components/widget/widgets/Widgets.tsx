@@ -2,7 +2,6 @@ import PinnedLectureDashboardComponent from '../../PinnedLecture/PinnedLectureDa
 import { CurriculumProgress } from '../../cirruculumProgress/CurriculumProgress';
 import { UserProfile } from '../../userProfile/UserProfile';
 import { Widget, WidgetType } from '../Widget';
-import userData from '../../userProfile/data/userData.json';
 import DailyCurriculum from '../../LectureOfTheDay/DailyCurriculumDashboardComponent';
 import QuizGame from '../../QuizGame/QuizGame';
 import { StackOverflow } from '../../Stackoverflow/Stackoverflow';
