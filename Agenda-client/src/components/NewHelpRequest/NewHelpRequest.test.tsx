@@ -3,7 +3,6 @@ import '@testing-library/jest-dom';
 
 import NewHelpRequest from './NewHelpRequest';
 import { Widget, WidgetType } from '../widget/Widget';
-import React from 'react';
 
 beforeAll(() => {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
