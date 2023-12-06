@@ -1,7 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import { getTodayEvents } from '../components/Calendar/calendarService';
 import Calendar from '../components/Calendar/Calendar';
+import { CalendarWidget } from '../components/widget/widgets/Widgets';
 
+jest.mock('../utils/MyCrypto');
 jest.mock('../components/Calendar/calendarService');
 
 const mockResponse = {
@@ -29,13 +31,13 @@ const mockResponse = {
   reject: 'error',
 };
 
+const mockWidget = new CalendarWidget();
+
 describe('Calendar component', () => {
   it('should render today events if call resolves', async () => {
     (getTodayEvents as jest.Mock).mockResolvedValueOnce(mockResponse.resolve);
 
-    const { findByText } = render(
-      <Calendar widget={{ id: '1', type: 'calendar' }} />
-    );
+    const { findByText } = render(<Calendar widget={mockWidget} />);
 
     expect(
       await findByText(mockResponse.resolve[0].summary)
@@ -55,9 +57,7 @@ describe('Calendar component', () => {
   it('should render error if call rejects', async () => {
     (getTodayEvents as jest.Mock).mockRejectedValue(mockResponse.reject);
 
-    const { findByText } = render(
-      <Calendar widget={{ id: '1', type: 'calendar' }} />
-    );
+    const { findByText } = render(<Calendar widget={mockWidget} />);
 
     expect(
       await findByText(`There was an error getting today's events`)
