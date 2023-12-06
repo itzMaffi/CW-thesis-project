@@ -2,6 +2,7 @@ import { FC, useEffect, useState } from 'react';
 import { IUser } from '../../utils/types';
 import { createInitialsAvatar } from '../../utils/createInitialsAvatar';
 import LogoutButton from './LogoutButton';
+import { UserProgressDB } from '../cirruculumProgress/data/userProgressDb';
 
 export const UserProfile: FC = () => {
   const [user, setUser] = useState<IUser>();
@@ -12,9 +13,11 @@ export const UserProfile: FC = () => {
       const data = await fetch(
         `https://www.googleapis.com/oauth2/v3/userinfo?access_token=${accessToken}`
       );
-      const { given_name, family_name, picture } = await data.json();
+      const { given_name, family_name, picture, sub } = await data.json();
 
-      console.log(given_name, family_name, picture);
+      const dbInstance = UserProgressDB.GetInstance();
+      dbInstance.id = sub;
+
       const user: IUser = {
         firstName: given_name,
         lastName: family_name,

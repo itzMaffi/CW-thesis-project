@@ -6,7 +6,7 @@ export const USER_ID = '4';
 export class UserProgressDB {
   private static instance?: UserProgressDB;
   private constructor() {}
-
+  private _id!: string;
 
   async getUserProgress(userId:string){
     return Math.floor((UserProgressData.find(el=>el.userId == userId)?.day ?? 0)*100 / TotalDays);
@@ -20,5 +20,8 @@ export class UserProgressDB {
     if (!UserProgressDB.instance) UserProgressDB.instance = new UserProgressDB();
 
     return UserProgressDB.instance;
+  }
+  set id(id: string) {
+    this._id = id;
   }
 }
