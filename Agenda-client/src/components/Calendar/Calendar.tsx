@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import { DateTime } from 'luxon';
 import WidgetHeader from '../widgetHeader/WidgetHeader';
 import { Widget } from '../widget/Widget';
+import React from 'react';
 
 export default function Calendar({ widget }: { widget: Widget }) {
   const [events, setEvents] = useState<Event[]>();
