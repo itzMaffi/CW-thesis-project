@@ -4,7 +4,7 @@ import ILecture from '../curriculum/interfaces/Lecture';
 import curriculumDb from '../curriculum/data/curriculumDb';
 import { CodeBlock, github } from 'react-code-blocks';
 import { WidgetType } from '../widget/Widget';
-import GenericPin from '../widget/GenericPin';
+import TypePin from '../widget/TypePin';
 
 export default function LectureComponent() {
   const { lectureId }: Readonly<Params<string>> = useParams();
@@ -27,10 +27,10 @@ export default function LectureComponent() {
                 {lecture.name}
               </h2>
               <span className="text-3xl">
-                <GenericPin
+                <TypePin
                   widgetType={WidgetType.pinnedLecture}
                   dataId={'' + lecture.id}
-                ></GenericPin>
+                ></TypePin>
               </span>
             </div>
             <div className="flex flex-col items-center w-full">

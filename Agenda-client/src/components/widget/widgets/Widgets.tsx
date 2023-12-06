@@ -17,6 +17,8 @@ export class UserProfileWidget extends Widget {
     this.width = 1;
     this.x = 3;
     this.y = 0;
+    this.canBeUnpinned = false;
+    this.name = 'User Profile';
     this._component = <UserProfile />;
   }
 }
@@ -28,6 +30,7 @@ export class PinnedLectureWidget extends Widget {
     this.width = 1;
     this.x = 0;
     this.y = 0;
+    this.name = 'Pinned Lecture';
     this._component = <PinnedLectureDashboardComponent widget={this} />;
   }
 }
@@ -39,6 +42,7 @@ export class CurriculumProgressWidget extends Widget {
     this.width = 1;
     this.x = 0;
     this.y = 0;
+    this.name = 'Curriculum Progress';
     this._component = (
       <CurriculumProgress
         widget={this}
@@ -55,6 +59,7 @@ export class LectureOfTheDayWidget extends Widget {
     this.width = 2;
     this.x = 1;
     this.y = 0;
+    this.name = 'Lecture of the day';
     this._component = <DailyCurriculum widget={this} />;
   }
 }
@@ -66,6 +71,7 @@ export class QuizWidget extends Widget {
     this.width = 2;
     this.x = 1;
     this.y = 2;
+    this.name = 'Quiz of the day';
     this._component = <QuizGame widget={this} />;
   }
 }
@@ -77,6 +83,7 @@ export class StackOverFlowWidget extends Widget {
     this.width = 2;
     this.x = 1;
     this.y = 1;
+    this.name = 'Stack Overflow';
     this._component = <StackOverflow widget={this} />;
   }
 }
@@ -88,6 +95,7 @@ export class AnnouncementWidget extends Widget {
     this.width = 1;
     this.x = 0;
     this.y = 2;
+    this.name = 'Annoucements';
     this._component = <Announcement widget={this} />;
   }
 }
@@ -99,6 +107,7 @@ export class HelpRequestWidget extends Widget {
     this.width = 1;
     this.x = 0;
     this.y = 1;
+    this.name = 'Help Request';
     this._component = <NewHelpRequest widget={this} />;
   }
 }
@@ -110,6 +119,7 @@ export class CalendarWidget extends Widget {
     this.width = 1;
     this.x = 3;
     this.y = 2;
+    this.name = 'Calendar';
     this._component = <Calendar widget={this} />;
   }
 }

@@ -78,6 +78,10 @@ class db {
     return Promise.resolve(this._widgets.find((el) => el.id === id)!!);
   }
 
+  async widgetExists(widget: Widget) {
+    return this._widgets.some((el) => el.id === widget.id);
+  }
+
   async getWidgetByDataId(dataId: string) {
     return this._widgets.find((widget) => widget.dataId === dataId);
   }
