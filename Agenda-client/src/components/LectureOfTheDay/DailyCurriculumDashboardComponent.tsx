@@ -7,10 +7,7 @@ import WidgetHeader from '../widgetHeader/WidgetHeader';
 import { useLectureContext } from '../../context/LectureContext';
 import TypePin from '../widget/TypePin';
 import { ImArrowLeft, ImArrowRight } from 'react-icons/im';
-import {
- 
-  UserProgressDB,
-} from '../cirruculumProgress/data/userProgressDb';
+import { UserProgressDB } from '../cirruculumProgress/data/userProgressDb';
 
 export default function DailyCurriculum({ widget }: { widget: Widget }) {
   const [day, setDay] = useState(0);

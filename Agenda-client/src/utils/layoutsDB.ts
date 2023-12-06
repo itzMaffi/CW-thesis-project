@@ -68,9 +68,7 @@ class db {
   }
 
   saveToStorage() {
-
-    if(!this.currentUser)
-      return;
+    if (!this.currentUser) return;
 
     localStorage.setItem(
       `dashboard-${this.currentUser}`,
@@ -79,19 +77,23 @@ class db {
         widgets: this._dashboardState.widgets.map((widget) => ({
           id: widget.id,
           dataId: widget.dataId,
-          type: widget.type
+          type: widget.type,
         })),
       })
     );
   }
 
-  loadFromStorage(){
+  loadFromStorage() {
     const result = localStorage.getItem(`dashboard-${this.currentUser}`);
-    if(!result)
-      return;
+    if (!result) return;
 
     const dashboardStateDTO = JSON.parse(result);
-    this._dashboardState = {layouts: dashboardStateDTO.layouts, widgets: dashboardStateDTO.widgets.map( (el:WidgetDTO) => createWidgetFromDto(el))}
+    this._dashboardState = {
+      layouts: dashboardStateDTO.layouts,
+      widgets: dashboardStateDTO.widgets.map((el: WidgetDTO) =>
+        createWidgetFromDto(el)
+      ),
+    };
   }
 
   removeWidgetByID(id: string) {
@@ -143,7 +145,7 @@ type WidgetDTO = {
   type: WidgetType;
 };
 
-function createWidgetFromDto(widgetDTO:WidgetDTO):Widget{
+function createWidgetFromDto(widgetDTO: WidgetDTO): Widget {
   const widget = createWidget(widgetDTO.type, widgetDTO.dataId);
   widget.id = widgetDTO.id;
   return widget;
