@@ -64,7 +64,7 @@ function WidgetList({ title, widgets }: { title: string; widgets: Widget[] }) {
           w.canBeUnpinned && (
             <WidgetItem key={w.id}>
               <h3>{w.name}</h3>
-              <GenericPin widget={w}></GenericPin>
+              <GenericPin widget={w} className="text-white float-right" />
             </WidgetItem>
           )
       )}
