@@ -89,21 +89,24 @@ const NewHelpRequest: React.FC<{ widget: Widget }> = ({
 
   ////handle the global events like enter button or esc button to empty the input elements
   useEffect(() => {
-    const handleGlobalClick = (event: any) => {
-      if (!isSelected && !event.target.closest('.input-area')) {
+    const handleGlobalClick = (event: KeyboardEvent | MouseEvent) => {
+      const element = event.target as HTMLElement;
+      if (element === null || undefined) return;
+
+      if (!isSelected && !element.closest('.input-area')) {
         setShowList(false);
       }
 
-      if (!event.target.closest('.question-area')) {
+      if (!element.closest('.question-area')) {
         setTextAreaValue('');
       }
-      if (showError && !event.target.closest('.input-area')) {
+      if (showError && !element.closest('.input-area')) {
         deleteSelectedStudent();
         setInputValue('');
         setShowError(false);
       }
 
-      if (showError && event.target.closest('.no-match')) {
+      if (showError && element.closest('.no-match')) {
         deleteSelectedStudent();
         setInputValue('');
         setShowError(false);
@@ -132,7 +135,7 @@ const NewHelpRequest: React.FC<{ widget: Widget }> = ({
       onSubmit={onFormSubmit}
       className="flex flex-col justify-center items-center min-w-full"
     >
-      <WidgetHeader widget={widget}>New help request</WidgetHeader>
+      <WidgetHeader widget={widget}>Ask for a help</WidgetHeader>
       <div className=" flex flex-col gap-2 min-w-full max-w-full">
         <div className="flex flex-col justify-center items-start gap-2 min-w-full p-2 mt-1">
           <div className="text-sm text-cp-blue cursor-default">
