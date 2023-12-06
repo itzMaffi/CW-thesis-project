@@ -8,21 +8,11 @@ export const UserProfile: FC = () => {
   const [user, setUser] = useState<IUser>();
   const [avatar, setAvatar] = useState<string>('');
 
-  async function getUserInfo(accessToken: string) {
+  async function getUserInfo() {
     try {
-      const data = await fetch(
-        `https://www.googleapis.com/oauth2/v3/userinfo?access_token=${accessToken}`
-      );
-      const { given_name, family_name, picture, sub } = await data.json();
-
-      const dbInstance = UserProgressDB.GetInstance();
-      dbInstance.id = sub;
-
-      const user: IUser = {
-        firstName: given_name,
-        lastName: family_name,
-        avatar: picture,
-      };
+      const user = UserProgressDB.GetInstance().user;
+      if(!user)
+        return;
 
       setUser(user);
 
@@ -34,10 +24,7 @@ export const UserProfile: FC = () => {
   }
 
   useEffect(() => {
-    if (localStorage.getItem('token')) {
-      const token = JSON.parse(localStorage.getItem('token')!);
-      getUserInfo(token.access_token);
-    }
+      getUserInfo();
   }, []);
 
   return user ? (

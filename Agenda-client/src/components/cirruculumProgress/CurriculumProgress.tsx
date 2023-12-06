@@ -2,7 +2,7 @@ import { FC } from 'react';
 import WidgetHeader from '../widgetHeader/WidgetHeader';
 import { Widget } from '../widget/Widget';
 import { useEffect, useState } from 'react';
-import { USER_ID, UserProgressDB } from './data/userProgressDb';
+import { UserProgressDB } from './data/userProgressDb';
 
 interface ICurriculumProgressProps {
   widget: Widget;
@@ -16,7 +16,7 @@ export const CurriculumProgress: FC<ICurriculumProgressProps> = ({
 
   useEffect(()=>{
     (async ()=> {
-      const userProgress = await UserProgressDB.GetInstance().getUserProgress(USER_ID);
+      const userProgress = await UserProgressDB.GetInstance().getUserProgress();
       setProgress(userProgress);
     })()
   })

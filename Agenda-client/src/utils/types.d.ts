@@ -13,6 +13,7 @@ export type ComponentsMapper = {
 };
 
 export interface IUser {
+  id: string;
   firstName: string;
   lastName: string;
   avatar?: string;
