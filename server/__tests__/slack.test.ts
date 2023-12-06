@@ -7,9 +7,12 @@ const app = createServer();
 
 describe('GET /slack-messages', () => {
   beforeEach(() => {
+    const token = 'mocked_slack_token'; // Mock token for testing
+
     nock('https://slack.com')
       .get('/api/conversations.history')
       .query({ channel: 'C067J7TJGRK', limit: 2 })
+      .matchHeader('Authorization', `Bearer ${token}`)
       .reply(200, {
         ok: true,
         messages: [{ text: 'Mocked message 1' }, { text: 'Mocked message 2' }],
@@ -20,6 +23,7 @@ describe('GET /slack-messages', () => {
   afterEach(() => {
     // reset cachedMessages after each test
     setCachedMessages([]);
+    nock.cleanAll();
   });
 
   it('should return slack messages', async () => {
