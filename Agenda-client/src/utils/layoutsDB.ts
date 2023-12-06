@@ -1,5 +1,5 @@
 import { Layouts } from 'react-grid-layout';
-import { Widget } from '../components/widget/Widget';
+import { Widget, WidgetType } from '../components/widget/Widget';
 import {
   AnnouncementWidget,
   CalendarWidget,
@@ -10,6 +10,7 @@ import {
   StackOverFlowWidget,
   UserProfileWidget,
 } from '../components/widget/widgets/Widgets';
+import createWidget from '../components/widget/widgets/WidgetFactory';
 import { DashboardState } from '../components/Dashboard/Dashboard';
 
 const defaultWidgets: Widget[] = [
@@ -27,8 +28,10 @@ class db {
   private static instance?: db;
 
   private constructor() {
-    this._layouts = { lg: defaultWidgets.map((widget) => widget.layout) };
-    this._widgets = defaultWidgets;
+    this._dashboardState = {
+      layouts: { lg: defaultWidgets.map((widget) => widget.layout) },
+      widgets: defaultWidgets,
+    };
   }
 
   public static GetInstance() {
@@ -37,52 +40,85 @@ class db {
     return db.instance;
   }
 
-  private _layouts: Layouts;
-  private _widgets: Widget[];
-  private currentUser: string = '';
+  private _dashboardState: DashboardState;
+
+  private currentUser?: string;
 
   get layouts(): Promise<Layouts> {
-    return Promise.resolve(this._layouts);
+    return Promise.resolve(this._dashboardState.layouts);
   }
 
   get widgets(): Promise<Widget[]> {
-    return Promise.resolve(this._widgets);
+    return Promise.resolve(this._dashboardState.widgets);
   }
 
   saveLayouts(newLayouts: Layouts): Promise<Layouts> {
-    this._layouts = newLayouts;
-    return Promise.resolve(this._layouts);
+    this._dashboardState.layouts = newLayouts;
+    this.saveToStorage();
+
+    return Promise.resolve(this._dashboardState.layouts);
   }
 
   saveWidget(widget: Widget): Promise<void> {
-    this._widgets.push(widget);
-    this._layouts.lg.push(widget.layout);
+    this._dashboardState.widgets.push(widget);
+    this._dashboardState.layouts.lg.push(widget.layout);
 
+    this.saveToStorage();
     return Promise.resolve();
   }
 
-  saveToStorage(){
-    // localStorage.setItem({dashboard')
+  saveToStorage() {
+
+    if(!this.currentUser)
+      return;
+
+    localStorage.setItem(
+      `dashboard-${this.currentUser}`,
+      JSON.stringify({
+        layouts: this._dashboardState.layouts,
+        widgets: this._dashboardState.widgets.map((widget) => ({
+          id: widget.id,
+          dataId: widget.dataId,
+          type: widget.type
+        })),
+      })
+    );
+  }
+
+  loadFromStorage(){
+    const result = localStorage.getItem(`dashboard-${this.currentUser}`);
+    if(!result)
+      return;
+
+    const dashboardStateDTO = JSON.parse(result);
+    this._dashboardState = {layouts: dashboardStateDTO.layouts, widgets: dashboardStateDTO.widgets.map( (el:WidgetDTO) => createWidgetFromDto(el))}
   }
 
   removeWidgetByID(id: string) {
-    this._widgets = this._widgets.filter((el) => el.id !== id);
-    Object.values(this._layouts).forEach(
+    this._dashboardState.widgets = this._dashboardState.widgets.filter(
+      (el) => el.id !== id
+    );
+    Object.values(this._dashboardState.layouts).forEach(
       (layout) => (layout = layout.filter((el) => el.i !== id))
     );
+    this.saveToStorage();
     return Promise.resolve();
   }
 
   getWidget(id: string): Promise<Widget> {
-    return Promise.resolve(this._widgets.find((el) => el.id === id)!!);
+    return Promise.resolve(
+      this._dashboardState.widgets.find((el) => el.id === id)!!
+    );
   }
 
   async widgetExists(widget: Widget) {
-    return this._widgets.some((el) => el.id === widget.id);
+    return this._dashboardState.widgets.some((el) => el.id === widget.id);
   }
 
   async getWidgetByDataId(dataId: string) {
-    return this._widgets.find((widget) => widget.dataId === dataId);
+    return this._dashboardState.widgets.find(
+      (widget) => widget.dataId === dataId
+    );
   }
 
   removeWidget(widget: Widget): Promise<void> {
@@ -91,12 +127,24 @@ class db {
 
   setUser(userId: string) {
     this.currentUser = userId;
+    this.loadFromStorage();
   }
 
   async getDashboardState(): Promise<DashboardState> {
-    
-    return { layouts: this._layouts, widgets: this._widgets };
+    return { ...this._dashboardState };
   }
 }
 
 export default db.GetInstance();
+
+type WidgetDTO = {
+  id: string;
+  dataId?: string;
+  type: WidgetType;
+};
+
+function createWidgetFromDto(widgetDTO:WidgetDTO):Widget{
+  const widget = createWidget(widgetDTO.type, widgetDTO.dataId);
+  widget.id = widgetDTO.id;
+  return widget;
+}

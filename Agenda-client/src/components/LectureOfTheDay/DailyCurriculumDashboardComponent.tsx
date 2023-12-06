@@ -8,7 +8,7 @@ import { useLectureContext } from '../../context/LectureContext';
 import TypePin from '../widget/TypePin';
 import { ImArrowLeft, ImArrowRight } from 'react-icons/im';
 import {
-  USER_ID,
+ 
   UserProgressDB,
 } from '../cirruculumProgress/data/userProgressDb';
 
@@ -22,7 +22,7 @@ export default function DailyCurriculum({ widget }: { widget: Widget }) {
   useEffect(() => {
     (async () => {
       const currentUserDay =
-        await UserProgressDB.GetInstance().getUserCurrentDay(USER_ID);
+        await UserProgressDB.GetInstance().getUserCurrentDay();
       setDay(currentUserDay);
       setMaxDay(currentUserDay);
     })();

@@ -1,22 +1,23 @@
+import { IUser } from '../../../utils/types';
 import UserProgressData from './userProgressData.json';
 
 const TotalDays = 6;
-export const USER_ID = '4';
 
 export class UserProgressDB {
   private static instance?: UserProgressDB;
   private constructor() {}
-  private _id?: string;
+  private _user?: IUser;
 
-  async getUserProgress(userId: string) {
+  async getUserProgress() {
+
     return Math.floor(
-      ((UserProgressData.find((el) => el.userId == userId)?.day ?? 0) * 100) /
+      ((UserProgressData.find((el) => el.userId == this._user?.id)?.day ?? 0) * 100) /
         TotalDays
     );
   }
 
-  async getUserCurrentDay(userId: string) {
-    return UserProgressData.find((el) => el.userId == userId)?.day ?? 0;
+  async getUserCurrentDay() {
+    return UserProgressData.find((el) => el.userId == this._user?.id)?.day ?? 0;
   }
 
   public static GetInstance(): UserProgressDB {
@@ -25,11 +26,15 @@ export class UserProgressDB {
 
     return UserProgressDB.instance;
   }
-  set id(id: string) {
-    this._id = id;
+  set user(user: IUser) {
+    this._user = user;
   }
 
   get id() {
-    return this._id || '';
+    return this._user?.id ?? '';
+  }
+
+  get user() : IUser {
+    return this._user!!;
   }
 }
