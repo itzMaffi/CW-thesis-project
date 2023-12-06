@@ -1,5 +1,5 @@
 import PinnedLectureDashboardComponent from '../../PinnedLecture/PinnedLectureDashboardComponent';
-import { CurriculumProgress } from '../../cirruculumProgress/CurriculumProgress';
+import { CurriculumProgress } from '../../curriculumProgress/CurriculumProgress';
 import { UserProfile } from '../../userProfile/UserProfile';
 import { Widget, WidgetType } from '../Widget';
 import DailyCurriculum from '../../LectureOfTheDay/DailyCurriculumDashboardComponent';

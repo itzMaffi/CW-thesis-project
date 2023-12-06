@@ -1,6 +1,5 @@
 import { FC, useEffect, useState } from 'react';
-import { IUser, Token } from '../../utils/types';
-import userData from './data/userData.json';
+import { IUser } from '../../utils/types';
 import { createInitialsAvatar } from '../../utils/createInitialsAvatar';
 import LogoutButton from './LogoutButton';
 
