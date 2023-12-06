@@ -9,6 +9,7 @@ const config: Config.InitialOptions = {
   verbose: true,
   collectCoverage: true,
   coverageReporters: ['json', 'lcov', 'text', 'clover'],
+  setupFiles: ['./__mocks__/globalMocks.ts'],
 };
 
 export default config;
