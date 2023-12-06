@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react';
 import curriculumDb from '../curriculum/data/curriculumDb';
 import { Link } from 'react-router-dom';
 import ICurriculum from '../curriculum/interfaces/Curriculum';
-import logo from '../../assets/advancedjs1.png';
 import { Widget, WidgetType } from '../widget/Widget';
 import WidgetHeader from '../widgetHeader/WidgetHeader';
 import { useLectureContext } from '../../context/LectureContext';
 import TypePin from '../widget/TypePin';
+import { ImArrowLeft, ImArrowRight } from "react-icons/im";
 
 export default function DailyCurriculum({ widget }: { widget: Widget }) {
   const [day, setDay] = useState(6);
@@ -35,27 +35,27 @@ export default function DailyCurriculum({ widget }: { widget: Widget }) {
         <WidgetHeader widget={widget}>
           <div className="flex justify-center">
             {day !== 0 && (
-              <button className="text-cp-blue" onClick={onPreviousDay}>
-                {'<'}
+              <button className="text-cp-light-blue" onClick={onPreviousDay}>
+                <ImArrowLeft></ImArrowLeft>
               </button>
             )}
             <div className="ml-4 mr-4 text-center">Lecture of the day</div>
             {day < 6 && (
-              <button className="text-cp-blue" onClick={onNextDay}>
-                {'>'}
+              <button className="text-cp-light-blue" onClick={onNextDay}>
+                <ImArrowRight></ImArrowRight>
               </button>
             )}
           </div>
         </WidgetHeader>
-        <div className="pl-6 pr-6 pt-2 pb-4 flex flex-1 w-full">
-          <div className="grow w-1/2">
+        <div className="flex flex-1 w-full">
+          <div className="grow pl-6 w-1/2 flex flex-col justify-center">
             {dailyCurriculum.toy_problem_name && (
               <div>
-                <h2 className="text-gray-400">Toy Problem:</h2>
+                <div className="text-gray-400">Code Play Challenge:</div>
                 <p>{dailyCurriculum.toy_problem_name}</p>
               </div>
             )}
-            <h2 className="text-gray-400">Lecture:</h2>
+            <div className="text-gray-400">Lecture:</div>
             <p className="flex">
               <Link to={'/Lecture/' + dailyCurriculum.lecture_id}>
                 {dailyCurriculum.lecture_name}
@@ -66,12 +66,12 @@ export default function DailyCurriculum({ widget }: { widget: Widget }) {
                 className='ml-4'
               ></TypePin>
             </p>
-            <h2 className="text-gray-400">Exercise</h2>
+            <div className="text-gray-400">Exercise</div>
             <p>{dailyCurriculum.exercise_name}</p>
           </div>
-          <div className="grow w-1/2 flex justify-center items-center">
+          <div className="grow w-1/2 flex justify-center items-center bg-gradient-to-r from-white to-cp-middle-blue">
             <div className="h-40 w-40">
-              <img className="rounded-lg object-contain " src={logo}></img>
+              <img className="rounded-lg object-contain " src={dailyCurriculum.url}></img>
             </div>
           </div>
         </div>
