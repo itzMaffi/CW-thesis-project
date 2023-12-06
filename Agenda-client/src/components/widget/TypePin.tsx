@@ -1,9 +1,10 @@
 import Pin from './Pin';
 import { pinWidget, unPinWidget } from '../../services/widgetService';
 import { Widget, WidgetType } from './Widget';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import layoutsDB from '../../utils/layoutsDB';
 import createWidget from './widgets/WidgetFactory';
+import { DashboardContext } from '../../App';
 
 export default function TypePin({
   widgetType,
@@ -15,6 +16,7 @@ export default function TypePin({
   className?: string;
 }) {
 
+  const {setDashboardState} = useContext(DashboardContext);
   const [widget, setWidget] = useState<Widget | undefined>();
 
   useEffect(()=> {
@@ -26,14 +28,15 @@ export default function TypePin({
  
   async function onPin() {
     if (widget) {
-      await unPinWidget(widget);
+      await unPinWidget(widget, setDashboardState);
       setWidget(undefined);
       return;
     }
 
     const newWidget = createWidget(widgetType, dataId);
-    await pinWidget(newWidget);
+    await pinWidget(newWidget, setDashboardState);
     setWidget(newWidget);
+
   }
   return (
     <Pin

@@ -10,6 +10,7 @@ import {
   StackOverFlowWidget,
   UserProfileWidget,
 } from '../components/widget/widgets/Widgets';
+import { DashboardState } from '../components/Dashboard/Dashboard';
 
 const defaultWidgets: Widget[] = [
   new UserProfileWidget(),
@@ -38,7 +39,7 @@ class db {
 
   private _layouts: Layouts;
   private _widgets: Widget[];
-  private updateDashboard?: () => void;
+  private currentUser: string = '';
 
   get layouts(): Promise<Layouts> {
     return Promise.resolve(this._layouts);
@@ -57,7 +58,6 @@ class db {
     this._widgets.push(widget);
     this._layouts.lg.push(widget.layout);
 
-    this.updateDashboard && this.updateDashboard();
     return Promise.resolve();
   }
 
@@ -66,12 +66,7 @@ class db {
     Object.values(this._layouts).forEach(
       (layout) => (layout = layout.filter((el) => el.i !== id))
     );
-    this.updateDashboard && this.updateDashboard();
     return Promise.resolve();
-  }
-
-  setWidgetCallback(updateDashboard: () => void) {
-    this.updateDashboard = updateDashboard;
   }
 
   getWidget(id: string): Promise<Widget> {
@@ -88,6 +83,15 @@ class db {
 
   removeWidget(widget: Widget): Promise<void> {
     return this.removeWidgetByID(widget.id);
+  }
+
+  setUser(userId: string) {
+    this.currentUser = userId;
+  }
+
+  async getDashboardState(): Promise<DashboardState> {
+    
+    return { layouts: this._layouts, widgets: this._widgets };
   }
 }
 
