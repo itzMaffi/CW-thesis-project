@@ -3,7 +3,7 @@ import GenericPin from '../widget/GenericPin';
 import { Widget, WidgetType } from '../widget/Widget';
 import { DashboardContext } from '../../App';
 import { DashboardState } from '../Dashboard/Dashboard';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import createWidget from '../widget/widgets/WidgetFactory';
 
 export default function Menu() {
@@ -25,10 +25,12 @@ export default function Menu() {
 
   return (
     <div className="flex flex-col absolute top-[56px] pb-[56px] right-0 z-10 w-[300px] h-screen border-l border-cp-blue bg-cp-light-blue pl-5 pr-10">
-      <div className="h-[100px] border-2 border-cp-blue rounded-lg">logout</div>
+      <div className="h-[50px] border-2 border-cp-blue rounded-lg">logout</div>
+      <Link to={'/dashboard'} className="h-[50px] border-2 border-cp-blue rounded-lg">Dashboard</Link>
+      <Link to={'/syllabus'} className="h-[50px] border-2 border-cp-blue rounded-lg">Syllabus</Link>
 
       {isDashboard && (
-        <>
+        <div className='flex flex-col overflow-scroll'>
           <WidgetList
             key={'unused'}
             title="Unused Widgets"
@@ -39,7 +41,7 @@ export default function Menu() {
             title="Used Widgets"
             widgets={widgets}
           ></WidgetList>
-        </>
+        </div>
       )}
     </div>
   );
@@ -47,7 +49,7 @@ export default function Menu() {
 
 function WidgetItem({ children }: { children: ReactNode }) {
   return (
-    <div className="flex w-full p-3 mb-3 justify-between rounded-md bg-cp-middle-blue text-white overflow-scroll">
+    <div className="flex w-full p-3 mb-3 justify-between rounded-md bg-cp-middle-blue text-white">
       {children}
     </div>
   );
