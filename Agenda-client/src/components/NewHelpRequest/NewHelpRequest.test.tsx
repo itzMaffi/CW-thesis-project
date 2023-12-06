@@ -18,15 +18,6 @@ class TestWidget extends Widget {
     super(type, dataId);
   }
 }
-// beforeAll(() => {
-//   // eslint-disable-next-line @typescript-eslint/no-var-requires
-//   const crypto = require('crypto');
-//   Object.defineProperty(globalThis, 'crypto', {
-//     value: {
-//       randomUUID: () => crypto.randomUUID(),
-//     },
-//   });
-// });
 
 test('renders NewHelpRequest component', () => {
   const widget = new TestWidget(WidgetType.helpRequest, 'someDataId');
