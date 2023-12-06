@@ -27,8 +27,6 @@ export async function fetchSlackMessages() {
     if (data.ok) {
       const texts = data.messages.map((message) => message.text);
       return texts;
-    } else {
-      console.error('Slack API responded with an error:', data);
     }
   } else {
     console.error('Failed to fetch Slack messages');
