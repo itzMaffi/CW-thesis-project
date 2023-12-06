@@ -1,6 +1,7 @@
 import UserProgressData from './userProgressData.json';
 
-const TotalDays = 0;
+const TotalDays = 6;
+export const USER_ID = '4';
 
 export class UserProgressDB {
   private static instance?: UserProgressDB;
@@ -8,7 +9,7 @@ export class UserProgressDB {
 
 
   async getUserProgress(userId:string){
-    return UserProgressData.find(el=>el.userId == userId)?.day ?? 0 / TotalDays;
+    return Math.floor((UserProgressData.find(el=>el.userId == userId)?.day ?? 0)*100 / TotalDays);
   }
 
   async getUserCurrentDay(userId:string){

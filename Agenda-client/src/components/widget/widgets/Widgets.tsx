@@ -46,7 +46,6 @@ export class CurriculumProgressWidget extends Widget {
     this._component = (
       <CurriculumProgress
         widget={this}
-        progress={userData.userDetails.cirriculumProgress}
       />
     );
   }
