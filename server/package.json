@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "test": "jest --watchAll",
+    "test": "jest",
     "start": "ts-node index.ts"
   },
   "keywords": [],
