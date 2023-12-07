@@ -1,7 +1,7 @@
 import { IUser } from '../../../utils/types';
 import UserProgressData from './userProgressData.json';
 
-const TotalDays = 6;
+const TotalDays = 7;
 
 export class UserProgressDB {
   private static instance?: UserProgressDB;
