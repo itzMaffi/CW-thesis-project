@@ -11,15 +11,14 @@ interface ICurriculumProgressProps {
 export const CurriculumProgress: FC<ICurriculumProgressProps> = ({
   widget,
 }) => {
-
   const [progress, setProgress] = useState(0);
 
-  useEffect(()=>{
-    (async ()=> {
+  useEffect(() => {
+    (async () => {
       const userProgress = await UserProgressDB.GetInstance().getUserProgress();
       setProgress(userProgress);
-    })()
-  })
+    })();
+  });
 
   return (
     <div className="progressBar flex flex-col justify-between ">
@@ -28,9 +27,9 @@ export const CurriculumProgress: FC<ICurriculumProgressProps> = ({
       <h2 className="text-cp-blue font-bold pl-2 pt-6 pb-3">
         {progress}% completed
       </h2>
-      <div className="progressBarContainer bg-cp-light-blue rounded">
+      <div className="progressBarContainer bg-cp-light-blue rounded-[20px] mx-1">
         <div
-          className={`progressBarFiller bg-cp-middle-blue  rounded h-[24px]`}
+          className={`progressBarFiller bg-cp-middle-blue  rounded-[20px] h-[24px]`}
           style={{ width: `${progress}%` }}
         />
       </div>
