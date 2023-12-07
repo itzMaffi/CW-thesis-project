@@ -16,7 +16,7 @@ describe('GET /dbread', () => {
     jest.useRealTimers();
   });
 
-  it.only('should return all messages', async () => {
+  it('should return all messages', async () => {
     const app = createServer();
     const response = await request(app).get('/dbread');
     expect(response.status).toBe(200);

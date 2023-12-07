@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { IoIosMenu, IoIosClose } from 'react-icons/io';
 import Menu from '../Menu/Menu';
 import logo from '../../assets/LOGO.png';
+import './Animation.css';
 
 export const Navbar: FC<{ isAuthenticated: boolean }> = ({
   isAuthenticated,
@@ -18,7 +19,18 @@ export const Navbar: FC<{ isAuthenticated: boolean }> = ({
       const element = event.target as HTMLElement;
       if (element === null || undefined) return;
 
-      if (showMenu && !element.closest('.sidebar-menu')) {
+      const clickedOutsideSidebarMenu = !element.closest('.sidebar-menu');
+      const clickedOutsidePinElement = !element.closest('.pin-component');
+      const clickedOutsideFoldingButton = !element.closest('.folding-button');
+      const clickedOutsideArrowButton = !element.closest('.arrow-button');
+
+      if (
+        showMenu &&
+        clickedOutsideSidebarMenu &&
+        clickedOutsidePinElement &&
+        clickedOutsideFoldingButton &&
+        clickedOutsideArrowButton
+      ) {
         setShowMenu(false);
       }
     };
@@ -51,19 +63,26 @@ export const Navbar: FC<{ isAuthenticated: boolean }> = ({
             data-ll-status="loaded"
           ></img>
         </Link>
-        {isAuthenticated && (
-          <>
-            <div
-              onClick={handleMenuClick}
-              className="cursor-pointer w-[50px] h-full p-4 -mt-1 rounded-md text-cp-dark-blue bg-cp-light-blue hover:bg-cp-dark-blue hover:text-white flex justify-center"
-            >
-              {showMenu ? <IoIosClose></IoIosClose> : <IoIosMenu></IoIosMenu>}
+
+        <div>
+          {isAuthenticated && (
+            <>
+              <div
+                onClick={handleMenuClick}
+                className=" folding-button cursor-pointer w-[50px] h-full p-4 -mt-1 rounded-md text-cp-dark-blue bg-cp-light-blue hover:bg-cp-dark-blue hover:text-white flex justify-center"
+              >
+                {showMenu ? <IoIosClose></IoIosClose> : <IoIosMenu></IoIosMenu>}
+              </div>
+            </>
+          )}
+          <div className="animation">
+            <div className={!showMenu ? 'menu enter' : 'menu exit'}>
+              <div className="menu">
+                <Menu></Menu>
+              </div>
             </div>
-            {showMenu && <Menu></Menu>}
-            {/*    TODO: if there will be  a sidebar, this will be a button to open the sidebar
-          <div>open the sidebar to set widgets</div> */}
-          </>
-        )}
+          </div>
+        </div>
       </div>
     </div>
   );

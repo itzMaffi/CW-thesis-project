@@ -1,3 +1,6 @@
+import { UserProgressDB } from '../components/cirruculumProgress/data/userProgressDb';
+import layoutsDB from '../utils/layoutsDB';
+
 interface IBearerToken {
   access_token: string;
   expiry_date: number;
@@ -30,7 +33,26 @@ const processToken = async (): Promise<boolean> => {
     return false;
   }
 
-  return await verifyIDToken(token.id_token);
+  const result = await verifyIDToken(token.id_token);
+
+  if (!result) return result;
+
+  const data = await fetch(
+    `https://www.googleapis.com/oauth2/v3/userinfo?access_token=${token.access_token}`
+  );
+
+  const { given_name, family_name, picture, sub } = await data.json();
+
+  const dbInstance = UserProgressDB.GetInstance();
+  dbInstance.user = {
+    firstName: given_name,
+    lastName: family_name,
+    avatar: picture,
+    id: sub,
+  };
+  layoutsDB.setUser(sub);
+
+  return result;
 };
 
 async function verifyIDToken(idToken: string): Promise<boolean> {

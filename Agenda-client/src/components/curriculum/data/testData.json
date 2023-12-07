@@ -6,14 +6,14 @@
       "lecture_name": "Object Oriented Programming",
       "lecture_id": 1,
       "exercise_name": "Build an Object",
-      "url":"/src/assets/advancedjs1.png"
+      "url":"/advancedjs1.png"
     },
     {
       "id":2,
       "lecture_name": "Agile Practices",
       "lecture_id": 2,
       "exercise_name": "Plan a Sprint",
-      "url":"/src/assets/advancedjs1.png"
+      "url":"/advancedjs1.png"
     },
     {
       "id":3,
@@ -21,14 +21,14 @@
       "lecture_name": "Database 3",
       "lecture_id": 3,
       "exercise_name": "Data Treatment",
-      "url":"/src/assets/advancedjs1.png"
+      "url":"/advancedjs1.png"
     },
     {
       "id":4,
       "lecture_name": "Design Patterns 1",
       "lecture_id": 4,
       "exercise_name": "Refactor for design",
-      "url":"/src/assets/advancedjs.png"
+      "url":"/advancedjs.png"
     },
     {
       "id":5,
@@ -36,7 +36,7 @@
       "lecture_name": "Version Control",
       "lecture_id": 5,
       "exercise_name": "GIT good!",
-      "url":"/src/assets/versionControlLogo.png"
+      "url":"/versionControlLogo.png"
     },
     {
       "id":6,
@@ -44,7 +44,7 @@
       "lecture_name": "Testing",
       "lecture_id": 6,
       "exercise_name": "Refactor for tests",
-      "url":"/src/assets/testingLogo.png"
+      "url":"/testingLogo.png"
     },
     {
       "id":7,
@@ -52,7 +52,7 @@
       "lecture_name": "Web Security",
       "lecture_id": 7,
       "exercise_name": "Break in",
-      "url":"/src/assets/cyberSecurity.png"
+      "url":"/cyberSecurity.png"
     }
   ],
   "lectures": [

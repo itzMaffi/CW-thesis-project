@@ -12,11 +12,9 @@ export type ComponentsMapper = {
   [type: string]: JSX.Element;
 };
 
-export default interface IUser {
+export interface IUser {
   id: string;
   firstName: string;
   lastName: string;
-  email: string;
   avatar?: string;
-  cirriculumProgress: number;
 }

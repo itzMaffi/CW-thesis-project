@@ -1,27 +1,30 @@
 import { FC, useEffect, useState } from 'react';
-import IUser from '../../utils/types';
-import userData from './data/userData.json';
+import { IUser } from '../../utils/types';
 import { createInitialsAvatar } from '../../utils/createInitialsAvatar';
 import LogoutButton from './LogoutButton';
+import { UserProgressDB } from '../cirruculumProgress/data/userProgressDb';
 
 export const UserProfile: FC = () => {
   const [user, setUser] = useState<IUser>();
   const [avatar, setAvatar] = useState<string>('');
 
+  async function getUserInfo() {
+    try {
+      const user = UserProgressDB.GetInstance().user;
+      if(!user)
+        return;
+
+      setUser(user);
+
+      if (!user.avatar) setAvatar(createInitialsAvatar(user));
+      else setAvatar(user.avatar);
+    } catch (error) {
+      alert(error);
+    }
+  }
 
   useEffect(() => {
-    const user: IUser = {
-      id: userData.userDetails.id,
-      firstName: userData.userDetails.firstName,
-      lastName: userData.userDetails.lastName,
-      email: userData.userDetails.email,
-      avatar: userData.userDetails.avatar,
-      cirriculumProgress: userData.userDetails.cirriculumProgress,
-    };
-    setUser(user);
-
-    if (!user.avatar) setAvatar(createInitialsAvatar(user));
-    else setAvatar(user.avatar);
+      getUserInfo();
   }, []);
 
   return user ? (
@@ -36,11 +39,9 @@ export const UserProfile: FC = () => {
             alt="Profile"
           />
         </div>
-        <div className="userInfo text-sm flex flex-col justify-center grow">
-          <h2>
-            {user.firstName} {user.lastName}
-          </h2>
-          <p>{user.email}</p>
+        <div className="userInfo text-lg font-bold flex flex-col grow text-cp-blue">
+          <h2>{user.firstName}</h2>
+          <h2>{user.lastName}</h2>
         </div>
       </div>
       <div className="flex flex-end grow-0 shrink-0">

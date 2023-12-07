@@ -35,10 +35,6 @@ function Dashboard() {
     })();
   }
 
-  dbInstance.setWidgetCallback(() => {
-    UpdateDashboardState();
-  });
-
   async function handleLayoutChange(_: Layout[], allLayouts: Layouts) {
     await dbInstance.saveLayouts(allLayouts);
   }

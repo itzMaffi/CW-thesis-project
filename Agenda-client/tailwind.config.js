@@ -16,9 +16,6 @@ export default {
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
       },
-      animation: {
-        slideUpFadeIn: 'slideUpFadeIn 1s ease-out',
-      },
     },
 
     backdropBlur: {
@@ -26,5 +23,8 @@ export default {
     },
   },
   // eslint-disable-next-line no-undef
-  plugins: [require('tailwind-scrollbar-hide')],
+  plugins: [
+    // eslint-disable-next-line no-undef
+    require('tailwind-scrollbar-hide'),
+  ],
 };
