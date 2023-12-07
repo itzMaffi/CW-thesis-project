@@ -70,7 +70,7 @@ const NewHelpRequest: React.FC<{ widget: Widget }> = ({
       setInputValue('');
       setIsSelected(false);
       setTextAreaValue('');
-      ////// await logic to send the question to the backend
+      // await logic to send the question to the backend
     } catch (err) {
       if (err instanceof Error) {
         console.log(err);
@@ -87,7 +87,7 @@ const NewHelpRequest: React.FC<{ widget: Widget }> = ({
     setShowList(false);
   };
 
-  ////handle the global events like enter button or esc button to empty the input elements
+  //handle the global events like enter button or esc button to empty the input elements
   useEffect(() => {
     const handleGlobalClick = (event: KeyboardEvent | MouseEvent) => {
       const element = event.target as HTMLElement;
