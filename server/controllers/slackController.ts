@@ -8,7 +8,7 @@ let cachedData: string[] | undefined = [];
 export async function initializeMessageFetching() {
   // Call immediately and set interval
   await fetchAndUpdate();
-  setInterval(fetchAndUpdate, CACHE_TTL);
+  const intervalId = setInterval(fetchAndUpdate, CACHE_TTL);
 }
 
 async function fetchAndUpdate() {
