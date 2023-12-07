@@ -17,7 +17,7 @@ export class UserProgressDB {
   }
 
   async getUserCurrentDay() {
-    return UserProgressData.find((el) => el.userId == this._user?.id)?.day ?? 0;
+    return UserProgressData.find((el) => el.userId == this._user?.id)?.day ?? 6;
   }
 
   public static GetInstance(): UserProgressDB {
