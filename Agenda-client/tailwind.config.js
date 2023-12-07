@@ -16,25 +16,15 @@ export default {
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
       },
-      animation: {
-        slideUpFadeIn: 'slideUpFadeIn 1s ease-out',
-      },
     },
 
     backdropBlur: {
       25: '25px',
     },
-
-    safelist: [
-      'animate-[fade-in_1s_ease-in-out]',
-      'animate-[fade-in-down_1s_ease-in-out]',
-    ],
   },
   // eslint-disable-next-line no-undef
   plugins: [
     // eslint-disable-next-line no-undef
     require('tailwind-scrollbar-hide'),
-    // eslint-disable-next-line no-undef
-    require('tw-elements/dist/plugin.cjs'),
   ],
 };

@@ -1,0 +1,16 @@
+.menu.enter {
+  transform: translateX(0);
+}
+
+.menu.exit {
+  transform: translateX(-100%);
+}
+
+.menu {
+  position: fixed;
+  top: 1px;
+  right: -300px;
+  width: 300px;
+  transform: translateX(-100%);
+  transition: transform 0.5s ease-in-out;
+}
