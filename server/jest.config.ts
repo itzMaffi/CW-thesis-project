@@ -5,11 +5,10 @@ const config: Config.InitialOptions = {
   preset: 'ts-jest',
   testEnvironment: 'node',
   rootDir: path.join(__dirname, './'), // Set root directory
-  globalSetup: './jest.global-setup.ts',
   verbose: true,
   collectCoverage: true,
   coverageReporters: ['json', 'lcov', 'text', 'clover'],
-  setupFiles: ['./__mocks__/globalMocks.ts'],
+  setupFilesAfterEnv: ['./__mocks__/globalMocks.ts'],
 };
 
 export default config;
