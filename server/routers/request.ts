@@ -21,7 +21,6 @@ router.post('/', async (req, res, next) => {
   );
 
   const authorizeUrl = oAuth2Client.generateAuthUrl({
-    // TODO change this from 'offline' for prod later
     // for testing should remain 'offline'
     access_type: 'offline',
     scope: 'https://www.googleapis.com/auth/userinfo.profile openid',
