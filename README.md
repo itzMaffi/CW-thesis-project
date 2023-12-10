@@ -16,7 +16,7 @@ Worried about compatibility? Fear not! Code Play is designed to be responsive an
 
 ### 0. Prerequisites
 
-stream requires `node 18` or above, and `docker` to run.
+Code-play requires `node 18` or above, and `docker` to run.
 
 ### 1. Clone and install dependencies
 
