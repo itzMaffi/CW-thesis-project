@@ -25,7 +25,7 @@ export default function Menu() {
     .map((el) => createWidget(el));
 
   return (
-    <div className=" sidebar-menu flex flex-col absolute top-[56px] pt-3 pb-[56px] right-0 z-10 w-[300px] h-screen shadow-md  backdrop-blur-[10px] bg-white/15 pl-5 pr-10">
+    <div className=" sidebar-menu flex flex-col absolute top-[56px] pt-3 pb-[56px] right-0 z-10 w-[300px] h-screen shadow-md  backdrop-blur-[10px] bg-white/20 pl-5 pr-10">
       <div className="mb-3 flex justify-end">
         <LogoutButton />
       </div>

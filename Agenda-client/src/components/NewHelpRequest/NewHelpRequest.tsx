@@ -142,7 +142,7 @@ const NewHelpRequest: React.FC<{ widget: Widget }> = ({
             Are you coding with other students?
           </div>
 
-          <div onClick={showListHandler} className="min-w-full input-area">
+          <div onClick={showListHandler} className="min-w-full input-area ">
             {isSelected ? (
               <div className="flex justify-center items-center  gap-2  fixed z-10 mt-1 ml-2 pl-2 pt-0.5 shadow-md rounded-2xl  bg-slate-200 ">
                 <div className="cursor-default">{selectedStudent}</div>
@@ -158,7 +158,7 @@ const NewHelpRequest: React.FC<{ widget: Widget }> = ({
               value={isSelected ? '' : inputValue}
               onChange={valueChangeHandler}
               placeholder={isSelected ? '' : 'Add students here'}
-              className="p-2 shadow-sm min-w-full max-w-full placeholder-gray-400 rounded-md border border-slate-200"
+              className="p-2 shadow-sm min-w-full max-w-full placeholder-gray-400 rounded-md border border-slate-200 bg-white/50"
             />
             {!showError && showList ? (
               <StudentsList
@@ -187,7 +187,7 @@ const NewHelpRequest: React.FC<{ widget: Widget }> = ({
             Anything else you want us to know?
           </div>
           <textarea
-            className="question-area resize-none shadow-sm p-1 min-w-full max-w-full pl-2 placeholder-gray-400 rounded-md border border-slate-200"
+            className="question-area resize-none shadow-sm p-1 min-w-full max-w-full pl-2 placeholder-gray-400 rounded-md border border-slate-200 bg-white/50"
             name="help-question"
             id="help-question"
             cols={30}

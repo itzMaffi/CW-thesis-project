@@ -10,7 +10,7 @@ const StudentsList: React.FC<StudentsListProps> = ({
   return (
     <div
       data-testid="student-list"
-      className="bg-white w-[283px] h-[157px]
+      className="bg-white/30 backdrop-blur-25 w-[283px] h-[157px]
      overflow-y-auto absolute z-50 rounded-md shadow"
     >
       {students.map((student, index) => (

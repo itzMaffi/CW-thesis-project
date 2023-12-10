@@ -45,7 +45,7 @@ export const StackOverflow: FC<{ widget: Widget }> = ({
         <div className="flex justify-center items-center gap-3 m-3">
           <input
             placeholder={'Type in your question here'}
-            className="p-2 shadow-sm w-full placeholder-gray-400 rounded-md border border-slate-200 "
+            className="p-2 shadow-sm w-full placeholder-gray-400 rounded-md border border-slate-200 bg-white/50"
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
@@ -63,7 +63,7 @@ export const StackOverflow: FC<{ widget: Widget }> = ({
         <ul className="flex flex-col justify-center items-start pl-2 ">
           <div>
             <img
-              className="w-[95%] opacity-10 fixed -z-20"
+              className="w-[95%] opacity-5 fixed -z-20"
               src={stackoverflow}
               alt="stack overflow logo"
             />
@@ -72,7 +72,7 @@ export const StackOverflow: FC<{ widget: Widget }> = ({
           {answers.map((answer, index) => (
             <li
               key={index}
-              className="text-gray-700  w-full hover:bg-cp-light-blue  cursor-pointer p-2"
+              className="text-cp-dark-blue  w-full hover:bg-cp-light-blue/40  cursor-pointer p-2"
             >
               <a
                 href={`https://stackoverflow.com/questions/${answer.question_id}`}

@@ -68,7 +68,7 @@ const Announcement: React.FC<{ widget: Widget }> = ({ widget }) => {
         {slackMessages.map((message: string, index: number) => (
           <li
             key={index}
-            className="text-lg mb-2 bg-cp-light-blue rounded-lg px-4 py-2 text-gray-700"
+            className="text-lg mb-2 bg-cp-light-blue rounded-lg px-4 py-2 text-cp-dark-blue border border-slate-200 bg-white/50 "
           >
             {formatSlackMessage(message)}
           </li>

@@ -1,0 +1,9 @@
+use newtest
+db.createUser(
+  {
+    user: "mongo",
+    pwd: "mongo-pwd",
+    roles: [ { role: "readWrite", db: "newtest" },
+             { role: "read", db: "newtest" } ]
+  }
+)

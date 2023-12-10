@@ -65,17 +65,17 @@ export default function DailyCurriculum({ widget }: { widget: Widget }) {
             )}
           </div>
         </WidgetHeader>
-        <div className="flex flex-1 w-full bg-gradient-to-br from-white from-45% to-cp-middle-blue">
+        <div className="flex flex-1 w-full">
           <div className="grow pl-6 w-1/2 flex flex-col justify-center ">
             {dailyCurriculum.toy_problem_name && (
               <div>
-                <div className="text-gray-400">Code Play Challenge:</div>
+                <div className="text-cp-blue">Code Play Challenge:</div>
                 <p className="text-bold text-2xl text-cp-dark-blue">
                   {dailyCurriculum.toy_problem_name}
                 </p>
               </div>
             )}
-            <div className="text-gray-400">Lecture:</div>
+            <div className="text-cp-blue">Lecture:</div>
             <p className="flex text-bold text-2xl text-cp-dark-blue">
               <Link to={'/Lecture/' + dailyCurriculum.lecture_id}>
                 {dailyCurriculum.lecture_name}
@@ -86,7 +86,7 @@ export default function DailyCurriculum({ widget }: { widget: Widget }) {
                 className="ml-4 pin-component"
               ></TypePin>
             </p>
-            <div className="text-gray-400">Exercise</div>
+            <div className="text-cp-blue">Exercise</div>
             <p className="text-bold text-2xl text-cp-dark-blue">
               {dailyCurriculum.exercise_name}
             </p>

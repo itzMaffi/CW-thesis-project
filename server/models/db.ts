@@ -7,11 +7,14 @@ const MONGOPASSWORD = process.env.MONGOPASSWORD;
 const MONGO_URL = process.env.MONGO_URL;
 const MONGOPORT = process.env.MONGOPORT;
 
-const uri = `mongodb://${MONGOUSER}:${MONGOPASSWORD}@${MONGO_URL}:${MONGOPORT}`;
+const uri = `mongodb://${MONGO_URL}:${MONGOPORT}`;
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(uri, { dbName: 'newtest' }); //dbname
+    await mongoose.connect(
+      uri,
+      { dbName: 'newtest' }
+    ); //dbname
     console.log('MongoDB connected successfully. 🥳');
   } catch (error) {
     console.error('Error connecting to MongoDB: 🛑', error);

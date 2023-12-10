@@ -1,5 +1,5 @@
 {
-  "name": "cw-thesis-project",
+  "name": "code-play",
   "version": "1.0.0",
   "description": "Codeworks senior thesis project",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/itzMaffi/CW-thesis-project.git"
+    "url": "git+https://github.com/muzixiaowuwuyi/Code-play.git"
   },
   "contributors": [
     "Dinara Bekeshova",
@@ -18,10 +18,7 @@
     "Oguz Tugan"
   ],
   "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/itzMaffi/CW-thesis-project/issues"
-  },
-  "homepage": "https://github.com/itzMaffi/CW-thesis-project#readme",
+  "homepage": "https://github.com/muzixiaowuwuyi/Code-play#readme",
   "prettier": {
     "trailingComma": "es5",
     "tabWidth": 2,

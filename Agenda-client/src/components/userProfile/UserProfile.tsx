@@ -11,8 +11,7 @@ export const UserProfile: FC = () => {
   async function getUserInfo() {
     try {
       const user = UserProgressDB.GetInstance().user;
-      if(!user)
-        return;
+      if (!user) return;
 
       setUser(user);
 
@@ -24,13 +23,13 @@ export const UserProfile: FC = () => {
   }
 
   useEffect(() => {
-      getUserInfo();
+    getUserInfo();
   }, []);
 
   return user ? (
     <div className="profile flex justify-between w-full h-full p-2 overflow-hidden">
       <div className="flex gap-4 justify-between items-center">
-        <div className="avatar grow flex-shrink-0">
+        <div className="avatar grow flex-shrink-0 ">
           <img
             className="rounded-[0.5rem]"
             src={avatar}

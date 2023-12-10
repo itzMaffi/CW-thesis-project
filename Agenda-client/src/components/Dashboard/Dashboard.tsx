@@ -5,6 +5,7 @@ import 'react-grid-layout/css/styles.css';
 import 'react-resizable/css/styles.css';
 import dbInstance from '../../utils/layoutsDB';
 import { DashboardContext } from '../../App';
+import Background from '../../assets/2.png';
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
@@ -43,10 +44,15 @@ function Dashboard() {
   const widgets = dashboardState?.widgets;
   return (
     <>
+      <img
+        src={Background}
+        alt="background"
+        className="w-full h-full fixed -z-50 "
+      />
       {layouts && widgets ? (
         <div className="max-w-[1280px] mx-auto">
           <ResponsiveGridLayout
-            className="border-2 border-transparent rounded-lg bg-cp-light-blue bg-opacity-20"
+            className="border-2 border-transparent rounded-lg backdrop-blur-[10px] bg-white/20"
             breakpoints={{ lg: 1024, md: 768, sm: 640 }}
             cols={{ lg: 4, md: 2, sm: 1 }}
             layouts={layouts}
@@ -55,7 +61,7 @@ function Dashboard() {
             {widgets.map((widget: Widget) => (
               <div
                 key={widget.id}
-                className="border-2 border-cp-blue rounded-lg bg-white overflow-auto scrollbar-hide"
+                className="border-1 border-cp-blue bg-white/40 rounded-lg shadow-xl overflow-auto scrollbar-hide"
               >
                 {widget.component}
               </div>

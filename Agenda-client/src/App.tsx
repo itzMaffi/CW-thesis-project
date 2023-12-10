@@ -18,11 +18,20 @@ interface AuthContextType {
   setIsAuthenticated: (isAuthenticated: boolean) => void;
 }
 
-export const DashboardContext = createContext<DashboardContextType>({dashboardState:{layouts:{},widgets:[]}, setDashboardState: ()=> void 0});
-export const AuthContext = createContext<AuthContextType>({isAuthenticated:false, setIsAuthenticated:()=> void 0});
+export const DashboardContext = createContext<DashboardContextType>({
+  dashboardState: { layouts: {}, widgets: [] },
+  setDashboardState: () => void 0,
+});
+export const AuthContext = createContext<AuthContextType>({
+  isAuthenticated: false,
+  setIsAuthenticated: () => void 0,
+});
 
 function App() {
-  const [dashboardState, setDashboardState] = useState<DashboardState>({layouts:{},widgets:[]});
+  const [dashboardState, setDashboardState] = useState<DashboardState>({
+    layouts: {},
+    widgets: [],
+  });
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   return (

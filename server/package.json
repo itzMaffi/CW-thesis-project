@@ -5,7 +5,8 @@
   "main": "index.ts",
   "scripts": {
     "test": "jest --silent",
-    "start": "ts-node index.ts"
+    "start": "ts-node index.ts",
+    "start-mongodb-docker": "docker run -p 27017:27017 mongo"
   },
   "keywords": [],
   "author": "",
